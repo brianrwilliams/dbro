@@ -59,6 +59,7 @@
 \newcommand{\kk}{\mathrm{k}}
 \newcommand{\Mt}{\tl{M}}
 \newcommand{\pd}{\p\!\!\!\p}
+\newcommand{\Mb}{\mathbb{M}}
 %----------------------------------------
 \def\gld{generalized Lie derivative }
 \def\glds{generalized Lie derivatives }
@@ -116,23 +117,103 @@ We study a class of $2d$ topological sigma models that are formulated on general
 \tableofcontents
 \newpage
 \section{Introduction}
-Since the work of (..) \cite{?} it has been known that on any K\"ahler manifold $(M,I,\omega)$, one can define a $2d$ sigma model admitting a $(2,2)$ supersymmetry (SUSY) and such model has a simple local description in terms of the K\"ahler potential.  Moreover, Witten has shown \cite{?} that such sigma model gives rise to two distinct topological theories -- the A- and B-models -- via a procedure called topological twisting. These topological theories have an important interpretation in terms of their underlying geometry: the A-model only depends on the symplectic structure $(M,\omega)$, while the B-model only depends on the complex structure $(M,I)$. Additionally, there exists an ${\mathbb Z}_2$ automorphism acting on the original $(2,2)$ supersymmetric theory that exchanges its A- and B-models. This is the simplest way one can observe the phenomenon of mirror symmetry in the context of $2d$ sigma models.
 
-The K\"ahler geometry does not describe the most general $(2,2)$ sigma model, as was shown in \cite{Gates-hull-rocek-biherm}. Instead, the most general geometry is described by a bi-Hermitian geometry, defined by a pair of complex structures $I_\pm$ compatible with the same Riemannian metric $g$ and satisfying the compatibility relation
+In \cite{HullTwistedSUSY}, Abou-Zeid and Hull studied the target geometry of certain $2D$ $(2,2)$ supersymmetric sigma models, which compared to the usual $(2,2)$ supersymmetry differ by a choice of sign in the supercommutator relations of its $4$ real supercharges:
 \begin{align*}
-\rd^c_\pm\omega_\pm=\pm H \in \Omega^3_{cl.}(M),
+\{Q_\pm,\tl{Q}_\pm\}=-2\p_\pm,
 \end{align*}
-$\omega_\pm$ being the fundamental forms of $I_\pm$ and $\rd^c_\pm$ the associated $\rd^c$-operators. For this geometry, the local description is more complicated than in the K\"ahler case, in particular because the analogue of the K\"ahler potential is much harder to describe. Consequently, the topological twists are also  more complicated.
+with all other anti-brackets vanishing. The geometry of the target space of these sigma models reflects this sign change and in contrast to complex geometry needed for the usual supersymmetry, the target needs to be para-complex. More precisely, the required target geometry must be bi-para-Hermitian. In \cite{HullTwistedSUSY}, this type of supersymmetry was dubbed {twisted} SUSY, while the name {pseudo}-SUSY was used in various other works. Here we use the name {\bf para-SUSY} to reflect its relationship to para-complex geometry and to reserve the adjective ``twisted'' for the context of topological twists.
 
-This problem is nevertheless partially mitigated by an alternative geometric formulation in terms of generalized K\"ahler (GK) geometry, which has been shown in \cite{Gualtieri:2003dx} to be equivalent to the above-described bi-Hermitian geometry $(g,I_\pm,H)$. A GK structure on $M$ is given by the data of two complex endomorphisms $\JJ_\pm$ of the bundle $(\TT)M$:
+Para-complex structure on a manifold $\Mb$ is given by the data of an integrable endomorphism $K \in \End(T\Mb)$ such that $K^2=\id$ and its two eigenbundles corresponding to the $+1$ and $-1$ eigenvalues have the same rank. Consequently, $\Mb$ needs to have an even dimension $2n$. A para-Hermitian structure on $(\Mb,\eta)$ is then obtained by adding a compatible metric $\eta$:
 \begin{align*}
-\JJ_\pm \in \End((\TT)M),\quad \JJ_\pm^2=-\id, \quad \la \JJ \cdot,\JJ\cdot \ra= \lara,
+\eta(K\cdot,K\cdot)=-\eta(\cdot,\cdot).
 \end{align*}
-where $\lara$ denotes the natural duality pairing on $(\TT)M$:
+This condition forces $\eta$ to be of signature $(n,n)$ and implies that $\omega=\eta K$ is an almost symplectic structure called the fundamental form of $K$. A bi-para-Hermitian geometry is then defined as a pair of para-Hermitian structures $(\eta,K_\pm)$ sharing the same metric and satisfying an additional condition
+\begin{align}
+\rd^p_\pm\omega_\pm=\pm H \in \Omega^3_{cl.}(\Mb),
+\end{align}
+where $\rd^p_\pm=K^*\circ \rd\circ K_\pm^*$ is the para-complex twisted differential and $\omega_\pm=\eta K_\pm$ are the fundamental forms of $K_\pm$.
+
+In \cite{Hu:2019zro}, it is shown that the bi-para-Hermitian geometry $(\Mb,\eta,K_\pm,H)$ is equivalent to the data of a generalized para-K\"ahler geometry, which is defined as a pair of {\it generalized} para-complex (GpC) structures $\KK_\pm$ \cite{wade2004dirac,Zabzine:2006uz,Hu:2019zro} on $\Mb$,
 \begin{align*}
-\la X+\ap,Y+\bt\ra=\ap(Y)+\bt(X),\quad X,Y\in \se(TM),\quad \ap,\bt \in \se(T^*M).
+\KK_\pm \in \End((\TT)\Mb), \quad \KK^2=\id, \quad \la \KK\cdot,\KK\cdot\ra=-\la\cdot,\cdot \ra,
 \end{align*}
-Additionally, $\JJ_\pm$ are required to commute and their product $\GG\coloneqq -\JJ_+\JJ_-$ to define a 
+that commute and whose product $\GG=\KK_+\KK_-$ defines a split signature metric $G$ on $(\TT)\Mb$ via $G(\cdot,\cdot)=\la \GG\cdot,\cdot\ra$. Here, $\la\cdot,\cdot \ra$ is the symmetric duality pairing on $(\TT)M$ and the generalized para-complex endomorphisms $\KK_\pm$ satisfy a Courant integrability condition which ensures that its $\pm 1$-eigenbundles are Dirac structures \cite{courant1990dirac}.
+
+
+Para-complex and para-Hermitian geometry was also recently studied as the description of the extended geometry in the context of T-duality \cite{freidel2017generalised,Freidel:2018tkj,Svoboda:2018rci,Marotta:2018myj}, following the earlier work of Vaisman \cite{vaisman2012geometry,vaisman2013towards}. In \cite{Marotta:2019eqc}, Szabo and Marotta described the bosonic sector of the $2D$ sigma models targeted in this extended geometry. Various topological models in the AKSZ framework on the para-Hermitian manifold $\Mb=T^*M\simeq M^n\times \RR^n$ were studied in \cite{Kokenyesi:2018xgj} and $3D$ membrane sigma models with this target were the subject of \cite{Chatzistavrakidis:2018ztm}. The generalized geometry corresponding to Para-Hermitian geometry and its refined version, Born geometry, has been studied in \cite{Hu:2019zro}.
+
+
+\paragraph{Main results} In this paper, we combine the results of \cite{HullTwistedSUSY} and \cite{Hu:2019zro} to study the $2D$ topological sigma models with a generalized para-complex target manifold $(\Mb,\KK_+)$. This geometry leads to a $2D$ topological theory via the AKSZ formalism as follows. The Courant algebroid $(\TT)\Mb$ defines a $3D$ topological theory with a $2$-shifted symplectic NQ target space $({\cal E},\Omega)$ \cite{Roytenberg:2002nu}. Because the $\pm 1$-eigenbundles of $\KK$ are Dirac structures in $(\TT)\Mb$, they each define a Lagrangian in $({\cal E},\Omega)$, which are $1$-shifted symplectic NQ manifolds and as such define a $2D$ topological boundary theories.
+
+Additionally, we show that when the GpC manifold $(\Mb,\KK_+)$ additionally admits a generalized para-K\"ahler structure $(\Mb,\KK_+,\KK_-)$, the topological theories for $(\Mb,\KK_+)$ described above can be realized as topological twists of the $(2,2)$ para-SUSY theory attached to $(\Mb,\KK_\pm)$.
+
+We also present several explicit examples of our construction. The well-known examples include the Poisson sigma model of a real Poisson manifold $(\Mb,\Pi)$ that is described by the GpC structure
+\begin{align*}
+\KK_\Pi=
+\begin{pmatrix}
+\id & 2\Pi \\
+0 & -\id
+\end{pmatrix},
+\end{align*}
+the A-model of a symplectic manifold $(\Mb,\omega)$ described by the GpC structure
+\begin{align*}
+\KK_\omega=
+\begin{pmatrix}
+0 & \omega^{-1} \\
+\omega & 0
+\end{pmatrix},
+\end{align*}
+and also the BFF theory (?) that is simply given by the trivial GpC structure
+\begin{align*}
+\KK_0=
+\begin{pmatrix}
+\id & 0 \\
+0 & -\id
+\end{pmatrix}.
+\end{align*}
+
+The new examples that we describe are all tied to para-complex geometry. They are the para-complex version of the B-model of a para-complex manifold $(\Mb,K)$ that is given by the GpC structure
+\begin{align*}
+\KK_K=
+\begin{pmatrix}
+K & 0 \\
+0 & -K^*
+\end{pmatrix},
+\end{align*}
+and the para-complex topological Landau-Ginzburg model that can be seen as a deformation of the above geometry by a para-holomorphic poisson bi-vector $Q$
+\begin{align*}
+\KK_Q=
+\begin{pmatrix}
+K & Q \\
+0 & -K^*
+\end{pmatrix}.
+\end{align*}
+
+Importantly, our construction can also be applied to the more notoriously known generalized complex (GC) geometry, which was in the context of topological sigma models extensively studied in \cite{Zucchini:2004ta,Ikeda:2004cm,Kapustin:2004gv,Pestun:2006rj,Cattaneo:2009zx} to name some of the works, but to the authors' knowledge a similar construction to ours via a boundary reduction was not proposed before. Similarly in the GpC case, the GC structure defines a pair of Dirac structures (that are now tied by complex conjugation) and the $2D$ topological theory is recovered again as a boundary theory of the $3D$ theory defined by the underlying Courant algebroid. The advantage of our approach is that it provides a unified way to extract the data of a topological theory from any GC structure via a clear geometric procedure on the underlying shifted symplectic spaces. In the special case when the manifold is generalized K\"ahler \cite{Gualtieri:2003dx,Gualtieri:2010fd} -- implying it admits a $(2,2)$ SUSY --  the topological theories can again be realized as topological twists \cite{Kapustin:2004gv} of the $(2,2)$ theory. Here, the main examples are given by the A- and B- model corresponding to the GC structures $\JJ_\omega$ and $\JJ_I$, respectively:
+\begin{align*}
+\JJ_\omega=
+\begin{pmatrix}
+0 & -\omega^{-1} \\
+\omega & 0
+\end{pmatrix}, \quad
+\JJ_I=
+\begin{pmatrix}
+I & 0 \\
+0 & -I^*
+\end{pmatrix},
+\end{align*}
+as well as the topological Landau-Ginzburg model which is again viewed via the deformation of $\JJ_I$ by a holomorphic poisson bi-vector \cite{Gualtieri:2007bq} $\sigma=-\frac{1}{4}(IQ+iQ)$:
+\begin{align*}
+\JJ_Q=
+\begin{pmatrix}
+I & Q \\
+0 & -I^*
+\end{pmatrix}.
+\end{align*}
+
+Notice, however, that for example the usual Poisson sigma model cannot be obtained in the realm of GC geometry because no GC structure is defined by a real Poisson structure $\Pi$.
+
 
 \subsection{Notations and conventions}
 
