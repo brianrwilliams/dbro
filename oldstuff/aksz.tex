@@ -1,0 +1,259 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath, amsthm, mathtools, bbm, tikz-cd,stmaryrd,enumerate}
+%-------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+%----------------
+\newcommand{\TT}{{T\oplus T^*}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\Cc}{\mathbf{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\XX}{\mathfrak{X}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\QQ}{\mathcal{Q}}
+\newcommand{\LL}{\mathcal{L}}
+%----------------------------------------
+\newcommand{\PP}{\mathrm{P}}
+\newcommand{\PPt}{\tilde{\mathrm{P}}}
+\newcommand{\id}{\mathbbm{1}}
+\newcommand{\nlr}{\overset{\leftrightarrow}{\n}}
+\newcommand{\lc}{\mathring{\n}}
+\newcommand{\im}{\mathrm{Im}\,}
+\newcommand{\Ker}{\mathrm{Ker}\,}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\PS}{\mathcal{P}}
+\newcommand{\ap}{\alpha}
+\newcommand{\bt}{\beta}
+\def\w{\wedge}
+\newcommand{\p}{\partial}
+\newcommand{\pt}{\tilde{\partial}}
+\newcommand{\xt}{{\tilde{x}}}
+\newcommand{\n}{\nabla}
+\newcommand{\rd}{\mathrm{d}}
+\newcommand{\PH}{(\PS,\eta,\omega)}
+\newcommand{\Lt}{\tl{L}}
+\newcommand{\Lb}{\mathbf{L}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\se}{\Gamma}
+\newcommand{\Endo}{\text{End}}
+\newcommand{\ellt}{{\tl{\ell}}}
+\newcommand{\ot}{{1/2}}
+\newcommand{\inv}{{-1}}
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lara}{\la\ ,\ \ra}
+\newcommand{\brac}{[\ ,\ ]}
+\newcommand{\bl}{[\![}
+\newcommand{\br}{]\!]}
+\newcommand{\bracd}{\bl \ ,\ \br}
+\newcommand{\yt}{\tl{y}}
+\newcommand{\zt}{\tl{z}}
+\newcommand{\tth}{\tl{\theta}}
+\newcommand{\kk}{\mathrm{k}}
+\newcommand{\bu}{\bullet}
+
+
+\def\d{{\rm d}}
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+\def\david{\textcolor{green}{DS: }\textcolor{green}}
+%----------------------------------------
+\def\gld{generalized Lie derivative }
+\def\glds{generalized Lie derivatives }
+\def\tl{\tilde}
+
+% These will be typeset in italics
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{Rem}[theorem]{Remark}
+
+% These will be typeset in Roman
+\theoremstyle{definition}
+\newtheorem{Def}[theorem]{Definition}
+\newtheorem{Conj}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem*{notation*}{Notation}
+\newtheorem*{definition*}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{Ex}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $[acksquare$}
+
+\input xy
+
+\xyoption{all}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\rk}{rk}
+
+\begin{document}
+\section{AKSZ stuff}
+
+\subsection{Two-dimensional TFT from GC structures}
+
+In this section, we summarize the work of Kapustin-Li in the AKSZ formalism with an eye towards modification in the para geometric setting. 
+
+\subsubsection{A recollection of generalized complex geometry}
+
+Recall, an exact Courant algebroid on a smooth manifold $X$ is determined, up to equivalence, by a class $H \in H^1(X, \Omega^2_{cl})$, called its Severa class, or $H$-flux. 
+The underlying vector bundle of an exact Courant algebroid is $TX \oplus T^*X$, and the $H$-flux deforms the standard Dorfman bracket. 
+
+An almost generalized complex structure on a manifold $X$ is the data of a smooth bundle map
+\[
+\JJ : TX \oplus T^*X \to TX \oplus T^*X
+\]
+satisfying $\JJ^2 = - \id$ and $\langle\JJ u, \JJ v\rangle = \langle u,v\rangle$, where $\langle-,-\rangle$ denotes the obvious pairing between the tangent and cotangent bundle.
+Given an almost generalized complex structure, we denote by $L \subset T X^{\Cc} \oplus T^* X^{\Cc}$ the complex $+i$ eigenbundle of $\JJ$. 
+
+Fix an exact Courant algebroid on $X$ with class $H$. 
+An almost generalized complex structure on $X$ is an $H$-{\em twisted generalized complex structure} if the subbundle $L$ is preserved under the $H$-twisted Dorfman bracket. 
+An $H$-twisted generalized complex structure is equivalent to an $H$-twisted complex Dirac structure $L$ \footnote{A complex Dirac structure is a maximally isotropic involutive subbundle of the exact complex Courant algebroid $TX^{\Cc} \oplus T^*X^{\Cc}$} satisfying $L \cap \Bar{L} = \{0\}$. 
+When $H = 0$, one simply calls this a generalized complex structure. 
+
+\begin{Ex}\label{ex: complexstr}
+Every almost complex structure on $X$ determines an almost generalized complex structure on $X$. 
+It is a generalized complex structure if the almost complex structure is integrable.
+
+In fact, consider the almost generalized complex structure
+\begin{align*}
+\JJ=
+\begin{pmatrix}
+I & 0 \\
+0 & -I^*
+\end{pmatrix},
+\end{align*}
+where $I : TX \to TX$ is an almost complex structure, and $I^*$ is the dual bundle map.
+The $+i$ eigenbundle is $L=T^{(1,0)}\oplus T^{*(0,1)}$ and the $-i$ eigenbundle is $\bar{L}=T^{(0,1)}\oplus T^{*(1,0)}$. 
+Involutivity of $L$ under $\brac_H$ is equivalent to the condition
+\begin{align*}
+[X+\bar{\ap},Y+\bar{\bt}]=[X,Y]+\Lie_X\bar{\bt}-\imath_Y\rd \bar{\ap}+H(X,Y),
+\end{align*}
+where $X,Y\in \XX^{(1,0)}$ and $\bar{\ap},\bar{\bt}\in \Omega^{(0,1)}$.
+This implies that one must have have $[X,Y]\subset T^{(1,0)}$, meaning $I$ must be a complex structure. 
+Moreover, inspecting the cotangent component of the above and splitting $\rd=\p+\bar{\p}$, the non-zero components are
+\begin{align*}
+\imath_X(\p\bar{\bt})-\imath_Y(\p \bar{\ap})+H(X,Y),
+\end{align*}
+where $\imath_X\p\bar{\bt}-\imath_Y\p \bar{\ap}$ is always in $T^{*(0,1)}$ and so $H(X,Y)$ must be in $T^{*(0,1)}$ as well, i.e. the $(3,0)$ component of $H$ must vanish. The same argument for $\bar{L}$ gives $H^{(0,3)}=0$.
+\end{Ex}
+
+\begin{Ex}
+Suppose $\omega \in \Omega^2(X)$ is a nondegenerate $2$-form.
+Then, $\omega$ determines an almost generalized complex structure on $X$.
+It is a generalized complex structure for $H = \d \omega$.
+In particular, every symplectic structure determines a generalized complex structure for $H = 0$.
+
+Indeed, define the almost generalized complex structure
+\begin{align*}
+\JJ=
+\begin{pmatrix}
+0 & -\omega^{-1} \\
+\omega & 0
+\end{pmatrix},
+\end{align*}
+With eigenbundles given by $X\pm i\omega(X)$ for any $X\in \XX$. Checking the involutivity of these under $\brac_H$:
+\begin{align*}
+[X\pm i\omega(X),Y\pm i\omega(Y)]=[X,Y]\pm i \omega([X,Y])\pm i\rd \omega (X,Y)+H(X,Y),
+\end{align*}
+where some identities for Lie derivatives etc. have been used. Clearly $[X,Y]\pm i \omega([X,Y])$ is of the desired form and the remaining terms are in $\Omega^1$ so they have to vanish (cannot be of the form $Z\pm i \omega(Z)$). This gives
+\begin{align*}
+i\rd \omega (X,Y)+H(X,Y)=0 
+\end{align*}
+for all $X,Y$. 
+\end{Ex}
+
+More generally, one can speak of (almost) generalized complex structures in {\em any} (possibly non exact) Courant algebroid. 
+If $E$ is the underlying vector bundle of the Courant algebroid, then an almost generalized complex structure is a bundle map $\JJ : E \to E$ satisfying the same conditions as above, namely $\JJ^2 = - \id$ and $\langle\JJ u, \JJ v\rangle = \langle u,v\rangle$.
+It is a generalized complex structure if it is integrable for the bracket defining the Courant algebroid. 
+
+Analogous to the exact case, we have the following equivalent characterization of generalized complex structures in $E$. 
+
+\begin{proposition}
+A generalized complex structure in a Courant algebroid $E$ is equivalent to a Dirac structure $L$ in the complex Courant algebroid $E^{\Cc}$ satisfying $L \cap \Bar{L} = 0$. 
+\end{proposition}
+
+\brian{Should I define what a Dirac structure in a general CA is?}
+
+\subsubsection{The associated Lie algebroid and cohomology}
+
+To any (twisted) generalized complex structure there exists a naturally associated (complex) Lie algebroid defined as follows.
+
+Let $\JJ$ be an $H$-twisted generalized complex structure and $\Bar{L} \subset T X^{\Cc} \oplus T^* X^{\Cc}$ the complex $-i$ eigenbundle.
+\brian{I think we want to use the $-i$ eigenbundle.}
+While the Dorfman bracket does {\em not} define a Lie bracket on $T X^{\Cc} \oplus T^* X^{\Cc}$ it does define one on the subbundle $L$.
+Indeed, by definition $\Bar{L}$ is isotropic and integrable, so the Jacobi identity is satisfied. 
+The anchor map $a : \Bar{L} \to T X^{\Cc}$ is given by the restriction of the natural projection $T X^{\Cc} \oplus T^* X^{\Cc} \to T X^{\Cc}$ to $L$. 
+We denote this Lie algebroid by $\Bar{L}_{\JJ, H}$. 
+
+We define {\em cohomology} of an $H$-twisted generalized complex structure $\JJ$ to be the Lie algebroid cohomology of $L_{\JJ, H}$.
+
+\begin{Ex}
+When the generalized complex structure $\JJ$ is defined using an ordinary complex structure, as in Example \ref{ex: complexstr} the resulting Lie algebroid is given by 
+\[
+\Bar{L}_{\JJ, H} = T^{0,1} X \to T X^{\Cc} .
+\]
+The cohomology of the twisted generalized complex structure is equal to the Dolbeault cohomology $H^{0,*}(X)$. 
+\end{Ex}
+
+More generally, there is a (complex) Lie algebroid associated to a generalized complex structure $\JJ$ in any (possibly non exact) Courant algebroid $E$. 
+Again, we define $\Bar{L} \subset E^{\Cc} $ to be the $-i$ eigenspace of $\JJ$. 
+The same argument as in the exact case shows that $\Bar{L}$ has a natural Lie algebroid structure, where bracket is given by restricting the bracket of $E$ defining the Courant algebroid structure, and the anchor map is given by the composition
+\[
+a : \Bar{L} \hookrightarrow E^{\Cc} \to T X^{\Cc} .
+\]
+We denote the resulting Lie algebroid by $\Bar{L}_{\JJ, E}$, and define the cohomology of $\JJ$ to be the Lie algebroid cohomology of $\Bar{L}_{\JJ,E}$. 
+
+\subsubsection{The AKSZ theory}
+
+\def\fg{\mathfrak{g}}
+
+From the point of view of topological field theory, Courant algebroids are important because they provide geometric examples of $2$-shifted symplectic spaces. 
+Via the AKSZ construction, $2$-shifted symplectic spaces are the natural home for $3$-dimensional topological field theories in the BV formalism. 
+
+\begin{Ex}
+Any Lie algebra together with a non-degenerate invariant pairing defines a $2$-shifted symplectic structure on the classifying stack $B \fg$. 
+The resulting AKSZ theory is Chern-Simons theory. 
+\end{Ex}
+
+To any Courant algebroid $E$, we can associate a derived stack $\XX_E$ which carries a $2$-shifted symplectic structure $\omega_E$. 
+In the case that the Courant algebroid is exact, we denote the $2$-shifted symplectic space as $\XX_H$ where $H$ is the Severa class. 
+
+To a compact, oriented $3$-manifold $M^3$ the AKSZ construction endows the derived mapping space 
+\[
+{\rm Map}(M^3 , \XX_E) 
+\]
+with a BV structure. 
+
+\brian{Recall Lagrangian of a stack.}
+
+An $H$-twisted generalized complex structure $\JJ$ defines a complex Dirac structure on $TX^{\Cc} \oplus T^*X^{\Cc}$, and hence a $2$-shifted Lagrangian inside of the $2$-shifted symplectic space $\XX_H$.  
+More generally, if $\JJ$ is a generalized complex structure in an arbitrary Courant algebroid $E$, then we obtain a $2$-shifted Lagrangian inside of the $2$-shifted symplectic space $\XX_E$. 
+
+The Lagrangian in $\XX_E$ associated to a generalized complex structure $\JJ$ defines a boundary condition for the three-dimensional AKSZ theory. 
+In the case the the Courant algebroid is exact, the resulting boundary theory is the generalized $A/B$-model of \cite{KapustinLi}.
+
+\subsection{Two dimensional TFT from GpC structures}
+
+The goal in this section is to describe a construction of a two-dimensional topological field theory from the data of a generalized para complex structure. 
+This construction is analogous to the generalized A/B-model of \cite{KapustinLi} that we have just recollected. 
+
+
+
+\end{document}

@@ -1,0 +1,401 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath, amsthm, mathtools, bbm, tikz-cd, stmaryrd, enumerate,cite}
+
+
+\newcommand{\TT}{{T\oplus T^*}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\Cc}{\mathbf{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\XX}{\mathfrak{X}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\bl}{[\![}
+\newcommand{\br}{]\!]}
+\newcommand{\bbl}{\bl}
+\newcommand{\bbr}{\br}
+\newcommand{\brac}{[\ ,\ ]}
+\newcommand{\bracp}{\{\ ,\ \}}
+\newcommand{\bbrac}{\bbl\ ,\ \bbr}
+\newcommand{\bracd}{\bl\ ,\ \br}
+\newcommand{\la}{{\langle}}
+\newcommand{\ra}{{\rangle}}
+\newcommand{\Tp}{{T_+}}
+\newcommand{\Tm}{{T_-}}
+\newcommand{\xp}{{x_+}}
+\newcommand{\yp}{{y_+}}
+\newcommand{\zp}{{z_+}}
+\newcommand{\Sigmah}{\hat{\Sigma}}
+%----------------------------------------
+\newcommand{\PP}{{\mathrm{P}_{\! +}}}
+\newcommand{\PPt}{{\mathrm{P}_{\! -}}}
+\newcommand{\PPB}{\mathrm{P}^{B}_{\! +}}
+\newcommand{\PPtB}{\mathrm{P}^{B}_{\! -}}
+\newcommand{\PPBpm}{{\mathrm{P}^{B}_{\! \pm}}}
+\newcommand{\PPpm}{{\mathrm{P}_{\! \pm}}}
+\newcommand{\id}{{\mathbbm{1}}}
+\newcommand{\nlr}{\overset{\leftrightarrow}{\n}}
+\newcommand{\lc}{\mathring{\n}}
+\newcommand{\im}{\mathrm{Im}\,}
+\newcommand{\Ker}{\mathrm{Ker}\,}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\PS}{\mathcal{P}}
+\newcommand{\ap}{\alpha}
+\newcommand{\bt}{\beta}
+\def\w{\wedge}
+\newcommand{\p}{\partial}
+\newcommand{\pt}{\tilde{\partial}}
+\newcommand{\xt}{{x_-}}
+\newcommand{\yt}{{y_-}}
+\newcommand{\zt}{{z_-}}
+\newcommand{\n}{\nabla}
+\newcommand{\rd}{\mathrm{d}}
+\newcommand{\PH}{(\PS,\eta,\omega)}
+\newcommand{\Lt}{{\tl{L}}}
+\newcommand{\Lb}{\mathbf{L}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\se}{\Gamma}
+\newcommand{\Endo}{\text{End}}
+\newcommand{\ellt}{{\tl{\ell}}}
+\newcommand{\ot}{{1/2}}
+\newcommand{\inv}{{-1}}
+%----------------------------------------
+\def\gld{generalized Lie derivative }
+\def\glds{generalized Lie derivatives }
+\def\ph{para-Hermitian }
+\def\tl{\tilde}
+
+
+% These will be typeset in italics
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{Rem}[theorem]{Remark}
+
+% These will be typeset in Roman
+\theoremstyle{definition}
+\newtheorem{Def}[theorem]{Definition}
+\newtheorem{Conj}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem*{notation*}{Notation}
+\newtheorem*{definition*}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{Ex}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+\newtheoremstyle{ref}{}{}{\itshape}{}{\bfseries}{.}{.5em}{#1 \thmnote{#3}}
+\theoremstyle{ref}
+\newtheorem*{reftheorem}{Theorem}
+\newtheorem*{refproposition}{Proposition}
+
+\input xy
+
+\xyoption{all}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Maps}{Maps}
+\title{Topological Sigma Models from Generalized Paracomplex Geometry}
+%\author{ Seyed Faroogh Moosavian, David Svoboda\\ \\
+%\it{Perimeter Institute For Theoretical Physics}\\
+%\it{31 Caroline St. N., N2L2Y5, Waterloo ON, Canada}\thanks{e-mail:dsvoboda@perimeterinstitute.ca}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+
+\end{abstract}
+\newpage
+\section*{Random notes}
+Here we'll be putting random notes / remarks / calculations when reading various literature and putting pieces together.
+
+\paragraph*{Names of different approaches}
+Let's first agree on names we'll be calling the different approaches. 
+\begin{itemize}
+\item The first is the {\bf Dirac Sigma Model (DSM)} discussed in \cite{DSM1,DSM2} and the gauging procedure is described in \cite{DSMgauge1,DSMgauge2}.
+\item Next we have the paper \cite{Pestun:2006rj} by Pestun, we will call this approach the {\bf Pestun's Topological J-model (PTJ)}.
+\item Lastly, there is the paper \cite{Cattaneo:2009zx} by Cattaneo, Zabzine and Qiu, which we will call the {\bf CQZ Model} for a lack of better names.
+\item Now I also found out about the {\bf Zucchini a.k.a. Hitchin Sigma model (ZSM)} \cite{Zucchini:2004ta} which I believe is the oldest of them all. Also seems like the most straightforward to understand. (edit: not topological, see below)
+\end{itemize}
+
+\paragraph*{Comments on relationships between different approaches}
+Chronologically, the ZSM was first, then DSM, then the PTJ and CQZ is last. In the introduction of the CQZ paper \cite{Cattaneo:2009zx}, they simply comment they are aware about PTJ and ZSM but do not say anything further. Similarly, in the introduction of PTJ \cite{Pestun:2006rj}, he says DSM is the analogy of his construction in the real case but that is not quite true. I think DSM is closer to be the real version of CQZ than PTJ since CQZ predominantly use Dirac structures as opposed to GC structures. In the DSM paper, the again, note the existence of ZSM and also cite other works related to GC geometry and sigma models. DSM paper also claims they plan to extend their work in the case of GC structures but I did not find anything relevant later. ({\bf edit: I just now realized/noticed that the other approaches, including the ZSM are not topological} I guess the reason they are interesting is that the sigma models usually reproduce some sort of resemblance of integrability conditions on the side of GG)
+
+\paragraph*{Facts about different approaches}
+\begin{itemize}
+\item Relationship to Poisson sigma model (PSM): ZSM gives PSM only in the case when the poisson structure is invertible to symplectic. DSM reproduces PSM fully. CQZ generalizes it for Lie algebroids (see below). PTJ gives the PSM for invertible symplectic structure.
+\item CQZ claim their 2D version is for Dirac structures corresponding to cpx / symplectic form equivalent to B / A models {\it upon gauging}
+\end{itemize}
+
+\paragraph*{PTJ}
+The data used here is a GC structure $\JJ$ with gen. CY condition. One uses the $\pm i$ eigenbundles of $\JJ$ and a the corresponding bialgebroid to construct a BV algebra and from there uses the AKSZ approach to construct the theory. The AKSZ method does the following: one needs to have a PQ manifold $M$ as a target, which is a supermanifold $\MM$ with a symplectic structure $\omega$, giving the Poisson bracket $\{\ ,\ \}$ on inversion, and a compatible homological vector field $Q$. The compatibility means $\Lie_Q\omega=0$. The homological property $Q^2=0$ then means $\{S,S\}=0$, where $S$ is a Hamiltonian fction of $Q$, $\imath_Q\omega=\rd S$. The source supermanifold is taken to be $T[1]\Sigma$, I think this is the supermanifold people usually use (with coordinates $(\sigma^1, \sigma^, \theta^1,\theta^2)$. This manifold also has a $Q$-structure, simply given by a de-Rham differential on $\hat{\Sigma}$. One then observes the space of maps between $\hat{\Sigma}$ and $\MM$, $\Maps(\hat{\Sigma},\MM)$ is itself a PQ manifold. The symplectic structure comes from a pullback of $\omega$ on $\MM$ and the $\hat{Q}$ structure comes from $Q$'s on $\Sigmah$ and $\MM$. One then simply gets the action $S$ as the Hamiltonian generating the $\hat{Q}$ on $\Maps(\hat{\Sigma},\MM)$.
+
+Here is how the AKSZ procedure applies to the case of the gen. CY case. The target is the shifted bundle of the Lie algebroid, $\MM= L[1]$. We have the BV algebra which in particular gives Q and a Poisson bracket $\bracp$, but this bracket does not come from a symplectic form, i.e. the corresponding poisson structure is not invertible (in general). Pestun then says {\it ``Using only BV algebra, it is possible to define closed topological string
+filed theory, which generalizes the Kodaira-Spencer theory. It definitely works in the genus zero and in the sector of topologically trivial maps, but it is not yet clear whether
+the BV algebra completely defines the full theory, however there are some indications [ref].} He then says okay well let's just go the simple way, add some assumptions about the poisson structure and try to write down some symplectic realization trick which will provide us with a symplectic structure on $\MM=L[1]$ and we can then go the AKSZ procedure as described above.
+
+{\bf To relate this to the DSM:} Given just a Dirac structure, we get a corresponding Lie algebroid $L$ (as opposed to Lie bialgebroid in the case of PTJ). This gives the $Q$ structure in the following way: part of the Lie algebroid data is a differential $\rd_L$, which acts on sections of $\Lambda^\bullet L^*$. We identify $\se(\Lambda^\bullet L^*) \leftrightarrow C^\infty(L[1])$, therefore through this identification $\rd_L$ maps to $Q$ (properties of $Q$ follow from $\rd_L^2=0$). Therefore, given Dirac structure, we get a $Q$-manifold $L[1]$. We do not, however, get any poisson or symplectic structure on $L[1]$. But (!) the Lie algebroid data on $L$ does define a poisson structure on $L^*$, since we have a bracket on sections of $L$ and this bracket can be extended to arbitrary sections of $\Lambda^\bullet L$ which in turn is identified with $C^\infty(L^*)$, therefore we have a bracket on functions on total space of $L^*$ satisfying Jacobi identity and so this is a Poisson bracket. To sum up, the Lie algebroid data gives:
+\begin{align*}
+(L,\brac_L,\rd_L)\leftrightarrow \rd_L:& \Lambda^\bullet L^*\rightarrow \Lambda^{\bullet+1} L^* \Leftrightarrow Q: C^\infty(L[1]) \rightarrow C^\infty(L[1])\\
+\brac_L:& L \times L \rightarrow L \Leftrightarrow \bracp: C^\infty(L^*) \times C^\infty(L^*) \rightarrow C^\infty(L^*)
+\end{align*}
+What Pestun does is that he uses $Q$ on $L[1]$ coming from an algebroid $L$ and then, because he has a bialgebroid, i.e. also an independent compatible Lie algebroid structure on $L^*$, he gets via the above a poisson bracket on $L[1]$ as well.
+
+How does it all work for a Poisson sigma model? The corresponding Lie algebroid is $T^*M$ with the usual Poisson Lie algebroid structure. The target is therefore $T^*[1]M$ which already has the canonical symplectic one can use to define the poisson bracket. The Lie algebroid structure in particular gives $d_\pi: \Lambda^\bullet TM\rightarrow \Lambda^{\bullet+1} TM$, therefore induces $Q: C^\infty(T^*[1]M)\rightarrow C^\infty(T^*[1]M)$. Note that the Poisson structure on $M$ is entering the data of Q, not the Poisson bracket we are using (which is just given by the canonical symplectic form on $T^*M$)!!
+
+Now, the {\bf 2D CQZ} uses a generalization of the above in the following way. One starts with a Lie algebroid $L$, which as we saw above, gives a Poisson structure on $L^*$. Therefore $L^*$ is a Poisson manifold and then we can in direct analogy with poisson sigma model just take the target as $T^*[1]L^*$ with its canonical symplectic form and $Q$ from the poisson Lie algebroid on it. Therefore, this construction does NOT generalize the PSM, it just studies a particular example of PSM where the base is a dual of a Lie algebroid, $M=L^*$. In fact, if we started with the Poisson Lie algebroid on $T^*M$ and used this construction, we will get a Poisson sigma model on $T^*[1]TM$ and my guess is that you can probably do some sort of reduction and restrict yourself to zero section of $TM\simeq M$ and get the normal PSM on $T^*[1]M$.
+
+Authors of CQZ then observe that any GC structure gives a Lie algebroid ($+i$ eigenbundle) and therefore gives a topological model through this construction. They then claim that they get a model equivalent to A/B models upon gauging of the models one gets from their construction out of the $\JJ$ corresponding to symplectic / complex structures. Paper in progress is referenced but I couldn't find it.
+
+I think the PTJ construction should be thought of as somewhat of a generalization of the {\it generalized A/B-twists} of a $(2,2)$ theory. The geometry of $(2,2)$ is given by a pair $(\JJ_1,\JJ_2)$ of GC structures (integrable) forming a GK structure, and the A/B twists essentially use the data of one of the $\JJ_i$. This boils down to the usual A/B models when the GK structure is just K\"ahler. In PTJ, one starts with one integrable $\JJ$ and then only uses another $\JJ'$ to gauge fix. This other $\JJ'$ does not need to be integrable. Pestun comments that it would be interesting to compare the gauge fixed PTJ with the top. twisted $(2,2)$. In one of the refs you sent me there is even a comment on what happens when one does not require full integrability. My guess is that the PTJ model simply generalizes the top. twist approach by going from the other side and building a model that a priori does not know it comes from a twist of a $(2,2)$ theory and upon some integrability criteria are satisfied, one can probably realize this $(2,2)$ theory.
+
+\paragraph*{DSM}
+
+
+\paragraph*{Goals}
+\begin{enumerate}
+\item Understand DSM and apply to explicit examples of GpC structures
+\item Try to reproduce PTJ in the real case. {\it advanced:} try to see if this can be realized as a topological twist of a SUSY theory
+\item We will be able to reproduce PSM by DSM approach but we should be able to do it in the PTJ approach as well. In the cpx case this is not possible because there is no GC structure corresponding to real Poisson bivector but there is a GpC structure that does that.
+\end{enumerate}
+\paragraph*{More stuff to read}
+Here's another way to produce some topological models out of GC geometry \cite{Ikeda:2007rn} and here is a paper on `Topological S-duality' between A/B models that has bunch of details about various 2D/3D constructions and relating them by gauge fixing/reductions \cite{Kokenyesi:2018xgj}
+
+\section*{Various Generalized Paracomplex Structures}
+\begin{Ex}
+The simplest gen. paracomplex structure that exists on any manifold is the following
+\begin{align*}
+\KK_0=
+\begin{pmatrix}
+\id & 0 \\
+0 & -\id
+\end{pmatrix}.
+\end{align*}
+Its eigenbundles are simply $T$ and $T^*$.
+\end{Ex}
+
+\begin{Ex}
+\textbf{Product structures}, i.e. tensor fields $P\in \Endo(T)$, such that $P^2=\id$, give the diagonal generalized paracomplex structures:
+\begin{align*}
+\KK_P=
+\begin{pmatrix}
+P & 0 \\
+0 & -P^*
+\end{pmatrix}.
+\end{align*}
+The corresponding Dirac structures are given by $L=p_+\oplus p^*_-$ and $\Lt=p_-\oplus p^*_+$, where $p_\pm$ are the $\pm 1$ eigenbundles of $P$. When $p_\pm$ have the same rank, $P$ is a paracomplex structure. The integrability of $\KK_P$ is equivalent to Frobenius integrability of $P$ , i.e. vanishing of the Nijenhuis tensor of $P$.
+\end{Ex}
+
+\begin{Ex}\label{ex:A-model}
+\textbf{Symplectic structures} give the off-diagonal generalized paracomplex structures:
+\begin{align*}
+\KK_\omega=
+\begin{pmatrix}
+0 & \omega^{-1} \\
+\omega & 0
+\end{pmatrix}.
+\end{align*}
+The $\pm 1$ eigenbundles are given by $\text{graph}(\pm\omega)=\{X\pm\omega(X)\mid X\in \XX\}$, and the integrability of $\KK_\omega$ is equivalent to $\rd\omega=0$. Its type is $(2n,2n)$.
+\end{Ex}
+
+\section*{General Prescription for PTJ Model}
+We start with a Lie algebroid $L$ that is an eigenbundle of a GC or GpC structure. The differentiable structure gets inherited from the Courant algebroid on $\TT$. This means that the Lie bracket is just the restriction of the Courant bracket
+\begin{align*}
+[X+\ap,Y+\bt]_c=[X,Y]+\Lie_X\bt-\imath_Y\rd\ap,
+\end{align*}
+to the sections of $L$. The anchor is projection to $T$. This gives us the the differential $\rd_L:\se(\Lambda^\bullet L^*)\rightarrow \Lambda^{\bullet+1} \se(L^*)$. Because $L^*$ is a Lie algebroid as well and $(L,L^*)$ is a Lie bialgebroid, we have bracket $\brac_{L^*}$ on $\se(L^*)$ which can be extended to $\se(\Lambda^\bullet L^*)$. We now identify $\se(\Lambda^\bullet L^*)$ with functions $C^\infty(L[1])$ polynomial in the fibre coordinates, which need to be shifted so that we get anticommuting coordinates. The identification goes like this:
+Let $(e_i)$ be a local frame for $L$ such that every section is written as $\psi^i(x)e_i$. This means $(x^i,\psi^i)$ are coordinates on the total space of $L[1]$. If $e^i$ is a dual frame for $L^*$, any section of $\Lambda^\bullet L^*$ can be written as sum of terms of the form $\alpha(x)_{i\cdots k}e^i\cdots e^k$ and we identify this with the function on $L[1]$
+\begin{align*}
+\alpha(x)_{i\cdots k}e^i\w \cdots\w e^k \longleftrightarrow \alpha(x)_{i\cdots k} \psi^i\cdots \psi^k.
+\end{align*}
+We now describe how $\rd_L$ gives a vector field and $\brac_{L^*}$ a Poisson bracket on these functions. The operations of a Lie algebroid can be represented in coordinates as \cite{Roytenberg}:
+\begin{align*}
+a(e_i)&=A_i^\mu \p_\mu\\
+[e_i,e_j]_L&=C_{ij}^ke_k\\
+\rd_L&=e^iA_i^\mu\p_\mu-\frac{1}{2}C_{ij}^ke^ie^j\frac{\p}{\p e^k}
+\end{align*}
+where $a:L\rightarrow TM$ is the anchor map. From here we can define $Q$ in the obvious way
+\begin{align*}
+Q=\psi^iA_i^\mu\p_\mu-\frac{1}{2}C_{ij}^k\psi^i\psi^j\frac{\p}{\p \psi^k}
+\end{align*}
+Let $\tl{C}^{ij}_k$ denote the structure constants of the dual Lie algebroid $L^*$:
+\begin{align*}
+[e^i,e^j]_{L^*}=\tl{C}^{ij}_ke^k.
+\end{align*}
+This bracket can be extended to arbitrary sections of $\Lambda^\bullet L^*$ and therefore gives a poisson bracket $\bracp$ on $C^\infty(L[1])$. The extension to $\Lambda^\bullet L^*$ is done via
+\begin{align*}
+[e^i,e^j\w e^k]_{L^*}=[e^i,e^j]_{L^*}\w e^k+e^j\w [e^i,e^k]_{L^*},
+\end{align*}
+and the action on functions on $M$ is by the anchor $\tl{a}$ or equivalently $\rd_{L^*}$ (definition of Lie algebroid)
+\begin{align*}
+[e^i,f(x)e^j]_{L^*}=f(x)[e^i,e^j]_{L^*}+\tl{a}(e^i)[f(x)] e^j=f(x)[e^i,e^j]_{L^*}+(\rd_{L^*}f(x))(e^i)e^j.
+\end{align*}
+The Poisson bracket $\bracp$ then gets inverted to a Symplectic form $\Omega$ and one finds a function $S$ on $L[1]$ such that 
+\begin{align}\label{eq:S_def}
+\rd S=\imath_Q\Omega.
+\end{align}
+
+{\bf To summarize}, the data of Lie algebroid $L$ gives the vector field $Q$ while the data of a Lie algebroid $L^*$ defines $\Omega$.
+
+Let us demonstrate on some examples.
+\begin{Ex}{\bf Tangent and cotangent bundles}
+Let $(\p_i,dx^i)$ be local frames for $T$ and $T^*$. Denote the coordinates on $T^*M$ by $(x^i,p_i)$ and on $(x^i,v^i)$, where $p_i(dx^i)=\delta_i^j$ and $v^i(\p_i)=\delta^i_j$ (essentially $v^i$ can be identified with $dx^i$ and $p_i$ with $\p_i$). The Lie algebroid structure on $TM$ is given by the de-Rham complex and the Lie bracket
+\begin{align*}
+[\p_i,\p_j]=0,
+\end{align*}
+because $\p_i$ are holonomic. The anchor is identity and $\rd_L=dx^i\w \p_i$. The identification between $\se(\Lambda^\bullet T^*)=\Omega^\bullet$ is given by
+\begin{align*}
+\alpha(x)_{i\cdots k}dx^i\w \cdots\w dx^k \longleftrightarrow \alpha(x)_{i\cdots k} v^i\cdots v^k,
+\end{align*}
+so that $Q=v^i\p_i$. The Lie algebroid structure on $L=T^*$ is just trivial since the Courant bracket restricts to a zero bracket on one-forms. Therefore we would get a zero Poisson bracket on $C^\infty(L[1]=T[1]M)$.\footnote{In usual geometry the symplectic realization of a Poisson manifold $N$ with zero Poisson structure is $T^*N$ with the canonical symplectic structure but let's not go too into detail here} Even if we take the dual point of view, $L=T^*$, where we would get the canonical symplectic form on $T^*$, the vector field $Q$ would be zero because it would come from the trivial Lie algebroid structure on $T^*$. It is still worth working out how one ends up with the canonical $\Omega$. For this we need to determine the Poisson brackets $\{p_i,x^j\}$, $\{p_i,p_j\}$ and $\{x^i,x^j\}$ on $T^*[1]M$. The bracket $\{p_i,x^j\}$ is identified with $[\p_i,x^j]=\delta_i^j$, similarly $\{p_i,p_j\}=[\p_i,\p_j]=0$ and $\{x^i,x^j\}=[x^i,x^j]=0$ since the Lie bracket is of degree $-1$ and $x^i$ is a function, i.e. degree zero vector field. We therefore see we get the canonical Poisson structure.
+
+This and more general examples are described in the book \cite[pg.~119]{weinsteingeomodels}.
+\end{Ex}
+
+\begin{Ex}
+{\bf Symplectic structure (A-model)}
+We now describe the Lie algebroids corresponding to the Example \eqref{ex:A-model}. Let's just follow the prescription above instead of what Pestun does (realizing the isomorphism between $T$ and $T^*$ given by $\omega$). Denote
+\begin{align*}
+L=\{X+\omega(X)\mid X \in \se(T)\}
+\end{align*}
+and 
+\begin{align*}
+L^*=\{X-\omega(X)=\ap-\omega^{-1}(\ap)\mid \ap \in \se(T^*)\}.
+\end{align*}
+The frame for $L$ is $e_i=\p_i+\omega_{ij}dx^j$ while the frame for $L^*$ is $e^i=dx^i-\omega^{ij}\p_j$. Coordinates on $L$ are $(x^i,\psi^i=v^i-\omega^{ij}p_j)$ and on $L^*$ $(x^i,\psi_i=p_i+\omega_{ij}v^j)$.
+
+
+$L$ has the bracket $\brac_L$ given by (by simple calculation)
+\begin{align*}
+[X+\omega(X),Y+\omega(Y)]=[X,Y]+\omega([X,Y]),
+\end{align*}
+so that the structure constants for the frame above are $C_{ij}^k=0$. The anchor is $X+\omega(X)\mapsto X$ and $Q$ coming from the differential
+\begin{align*}
+Q=\psi^iA_i^\mu\p_\mu-\frac{1}{2}C_{ij}^k\psi^i\psi^j\frac{\p}{\p \psi^k}=(v^i-\omega^{ij}p_j)\p_i.
+\end{align*}
+The anchor of $L^*$ is projection onto the tangent component,
+\begin{align*}
+\tl{a}(e^i)=\tl{a}(dx^i-\omega^{ij}\p_j)=-\omega^{ij}\p_j \Longrightarrow \tl{A}^{ij}=-\omega^{ij}
+\end{align*}
+and the structure constants of $L^*$ are
+\begin{align*}
+\tl{C}^{ij}_ke^k&=[e^i,e^j]_c=[dx^i-\omega^{-1}(dx^i),dx^j-\omega^{-1}(dx^j)]_c\\
+&=\omega^{-1}[dx^i,dx^i]_{\omega^{-1}}-[dx^i,dx^j]_{\omega^{-1}},
+\end{align*}
+where $[dx^i,dx^i]_{\omega^{-1}}$ is the Poisson Lie algebroid bracket on $T^*M$ defined by the Poisson structure $\omega^{-1}$ which satisfies $[dx^i,dx^i]_{\omega^{-1}}=\rd(\omega^{-1})^{ij}=\p_k\omega^{ij}dx^k$. We therefore see that
+\begin{align*}
+\tl{C}^{ij}_k(dx^k-\omega^{-1}(dx^k))=-(\p_k\omega^{ij}dx^k-\omega^{-1}(\p_k\omega^{ij}dx^k)),
+\end{align*}
+so that
+\begin{align*}
+\tl{C}^{ij}_k=-\p_k\omega_{ij}.
+\end{align*}
+By \cite[pg.~119]{weinsteingeomodels} we therefore see that the poisson bracket on $C^{\infty}(L[1])$ is given by
+\begin{align*}
+\{x^i,x^j\}&=0\\
+\{\psi^i,\psi^j\}&=-\p_k\omega^{ij}\psi^k\\
+\{\psi^i,x^j\}&=\omega^{ij}
+\end{align*}
+Taking now Darboux coordinates in which $\omega^{ij}$ is constant, we can easily invert the above Poisson structure and arrive at (up to sign I didn't bother to check)
+\begin{align*}
+\Omega=\omega_{ij}dx^i\w d\psi^j
+\end{align*}
+and since $Q=\psi^i\p_i$, we have $\imath_Q\Omega=\omega_{ij}\psi^i d\psi^j$ so that
+\begin{align*}
+S=\frac{1}{2}\omega_{ij}\psi^i\psi^j
+\end{align*}
+satisfies \eqref{eq:S_def}. Had we taken the dual point of view (i.e. switching the roles of $L$ and $L^*$), we would have gotten $Q=-\omega^{ij}\p_j$ with only non-zero Poisson bracket being $\{\psi_i,x^j\}=\delta_i^j$, which inverts to $\Omega=dx^i\w d\psi_j$ and we have $\imath_Q\Omega=\omega^{ij}\psi_i d\psi_j$ so that
+\begin{align*}
+S=\frac{1}{2}\omega^{ij}\psi_i \psi_j.
+\end{align*}
+
+\end{Ex}
+\newpage
+
+\section{Deformation by Hol. Poisson bi-vector and the LG model}
+Let $I$ be a complex structure and $\beta$ a holomorphic Poisson bi-vector (i.e. a Holomorphic section of $\Lambda^2(T^{(1,0)})$). Decompose $\beta$ into its real and imaginary parts as $\beta=Re(\beta)+iIm(\beta)$. Because $\beta$ is in $\Lambda^2(T^{(1,0)})$, we have $\beta=-\frac{1}{4}(IQ+iQ)$ for some real Poisson bivector $Q$ of type $(2,0)+(0,2)$. Then we can deform the diagonal GC structure:
+\begin{align*}
+\begin{pmatrix}
+-I & 0 \\
+0 & I^*
+\end{pmatrix}
+\overset{\beta}{\longmapsto}
+\begin{pmatrix}
+-I & Q \\
+0 & I^*
+\end{pmatrix}.
+\end{align*}
+
+The $+i$ eigenbundle of the deformed GC structure is given by
+\begin{align*}
+L_\beta=\{X+\ap+\beta(\ap)\mid X\in T^{0,1},\ \ap \in T^*_{1,0}\}.
+\end{align*}
+
+Let now $E=T^*[2]T[1]M$ be the PQ manifold with coordinates $(x^i,v^a,p_i,\mu_a)$ of degrees $(0,1,2,1)$ corresponding to the CA $(\TT)M$, with the symplectic form
+\begin{align*}
+\Omega= dx^i\w dp_i+dv^a\w d\mu_a.
+\end{align*}
+
+Let now $z^i$ be the holomorphic coordinates on $M$ and we will denote the holomorphic splitting of the bundle $a$-index by $a=(j,\bar{j})$. Then $L_\beta$ defines a Lagrangian in $(E,\Omega)$ given by
+\begin{align*}
+L_\beta=\text{span}_{\mathbb C}\{x^i,v^j+\beta^{jk}\mu_k,\mu_{\bar{j}}\}
+\end{align*}
+
+
+The para-complex analogue is the following gen. para-cpx. structure
+\begin{align*}
+\KK_Q=\begin{pmatrix}
+-K & 2Q \\
+0 & K^*
+\end{pmatrix},
+\end{align*}
+formally, everything is the same except $Q$ {\it is} the real Poisson bivector and the $+1$-eigenbundle is
+\begin{align*}
+L_Q=\{\tl{x}+\ap+Q(\ap)\mid \tl{x}\in T^{0,1},\ \ap \in T^*_{1,0}\}.
+\end{align*}
+This defines a Lagrangian in $(E,\Omega)$ is therefore given by
+\begin{align*}
+L_\beta=\text{span}_{\mathbb R}\{x^i,v^a+Q^{ab}\mu_b,\tl{\mu}_{{a}}\},
+\end{align*}
+where we introduced the para-complex splitting (given by $K$) of the $2n+2n$ degree $1$ coordinates:
+\begin{align*}
+v^j&=v^a+\tl{v}^b,\\
+\mu_j&=\mu_a+\tl{\mu}_b,\ a=1\cdots n,\ b=n+1\cdots 2n,
+\end{align*}
+i.e. $v^j=v^a$ for $j=a=1\cdots n$ and $v^j=\tl{v}^b$ for $j+n=b=n+1\cdots 2n$ etc. The $-1$ eigenbundle of $\KK_Q$ is given by $T^{1,0}$, the $+1$-eigenbundle of $K$.
+
+Lastly, there is the gen. para-cpx. structure that should yield the Poisson sigma model:
+\begin{align*}
+\KK_\Pi=
+\begin{pmatrix}
+-\id & 2Q \\
+0 & \id
+\end{pmatrix},
+\end{align*}
+where $Q$ is a real Poisson bivector. The $-1$ eigenbundle is just $T$ while the $+1$ eigenbundle is
+\begin{align*}
+L_Q=graph(Q)=\{\ap+Q(\ap)\mid \ap \in T^*\},
+\end{align*}
+with a corresponding Lagrangian in $(E,\Omega)$:
+\begin{align*}
+L_Q=\text{span}_{\mathbb R}\{x^i,v^i+Q^{ij}\mu_j\}.
+\end{align*}
+
+
+
+\bibliographystyle{JHEP}
+\bibliography{mybib1}
+\end{document} 
