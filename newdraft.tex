@@ -1,0 +1,1251 @@
+\documentclass{article}
+\usepackage{amssymb, amsmath, amsthm, mathtools, bbm, tikz-cd,stmaryrd,enumerate,hyperref}
+%-------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+%----------------
+\newcommand{\TT}{{T\oplus T^*}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\Cc}{\mathbf{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\XX}{\mathfrak{X}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\QQ}{\mathcal{Q}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cN}{\mathcal{N}}
+%----------------------------------------
+\newcommand{\PP}{\mathrm{P}}
+\newcommand{\PPt}{\tilde{\mathrm{P}}}
+\newcommand{\id}{\mathbbm{1}}
+\newcommand{\nlr}{\overset{\leftrightarrow}{\n}}
+\newcommand{\lc}{\mathring{\n}}
+\newcommand{\im}{\mathrm{Im}\,}
+\newcommand{\Ker}{\mathrm{Ker}\,}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\PS}{\mathcal{P}}
+\newcommand{\ap}{\alpha}
+\newcommand{\bt}{\beta}
+\def\w{\wedge}
+\newcommand{\p}{\partial}
+\newcommand{\pt}{\tilde{\partial}}
+\newcommand{\xt}{{\tilde{x}}}
+\newcommand{\n}{\nabla}
+\newcommand{\rd}{\mathrm{d}}
+\newcommand{\PH}{(\PS,\eta,\omega)}
+\newcommand{\Lt}{\tl{L}}
+\newcommand{\Lb}{\mathbb{L}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\se}{\Gamma}
+\newcommand{\Endo}{\text{End}}
+\newcommand{\ellt}{{\tl{\ell}}}
+\newcommand{\ot}{{1/2}}
+\newcommand{\inv}{{-1}}
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lara}{\la\ ,\ \ra}
+\newcommand{\brac}{[\ ,\ ]}
+\newcommand{\bl}{[\![}
+\newcommand{\br}{]\!]}
+\newcommand{\bracd}{\bl \ ,\ \br}
+\newcommand{\yt}{\tl{y}}
+\newcommand{\zt}{\tl{z}}
+\newcommand{\tth}{\tl{\theta}}
+\newcommand{\kk}{\mathrm{k}}
+\newcommand{\Mt}{\tl{M}}
+\newcommand{\pd}{\p\!\!\!\p}
+\newcommand{\Mb}{\mathbb{M}}
+\newcommand{\Drm}{\mathrm{D}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\wtl}{\widetilde}
+%----------------------------------------
+\def\gld{generalized Lie derivative }
+\def\glds{generalized Lie derivatives }
+\def\tl{\tilde}
+
+\def\xto{\xrightarrow}
+
+% These will be typeset in italics
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{Rem}[theorem]{Remark}
+
+% These will be typeset in Roman
+\theoremstyle{definition}
+\newtheorem{Def}[theorem]{Definition}
+\newtheorem{Conj}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem*{notation*}{Notation}
+
+\theoremstyle{remark}
+\newtheorem{Ex}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $[acksquare$}
+
+
+\input xy
+
+\xyoption{all}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\rk}{rk}
+
+\def\brian{\textcolor{blue}{BM: }\textcolor{blue}}
+\def\david{\textcolor{red}{DB: }\textcolor{red}}
+
+\title{Topological Sigma Models for Generalized Para-Complex Geometry}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+We study a class of $2d$ topological sigma models that are formulated on generalized para-complex target manifolds via the AKSZ framework. When the target is additionally generalized para-K\"ahler, these topological theories can be realized as topological twists of $(2,2)$ para-supersymmetric sigma models of Abou-Zeid and Hull. We compare our results to the case of generalized complex and generalized K\"ahler geometry, where similar results have been described in the context of the usual $(2,2)$ SUSY by Kapustin and Li. We present several examples and show that our construction recovers the A-model and the Poisson sigma model as special cases. Moreover, we also introduce new examples of topological theories inherently tied to the para-complex geometry, the para-B-model and a para-complex version of the Landau-Ginzburg model.
+
+
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+
+In \cite{HullTwistedSUSY}, Abou-Zeid and Hull studied the target geometry of certain $2D$ $(2,2)$ supersymmetric sigma models, which compared to the usual $(2,2)$ supersymmetry differ by a choice of sign in the supercommutator relations of its $4$ real supercharges:
+\begin{align*}
+\{Q_\pm,\tl{Q}_\pm\}=-2\p_\pm,
+\end{align*}
+with all other anti-brackets vanishing. The geometry of the target space of these sigma models reflects this sign change and in contrast to complex geometry needed for the usual supersymmetry, the target needs to be para-complex. More precisely, the required target geometry must be bi-para-Hermitian. In \cite{HullTwistedSUSY}, this type of supersymmetry was dubbed {twisted} SUSY, while the name {pseudo}-SUSY was used in various other works. Here we use the name {\bf para-SUSY} to reflect its relationship to para-complex geometry and to reserve the adjective ``twisted'' for the context of topological twists.
+
+Para-complex structure on a manifold $\Mb$ is given by the data of an integrable endomorphism $K \in \End(T\Mb)$ such that $K^2=\id$ and its two eigenbundles corresponding to the $+1$ and $-1$ eigenvalues have the same rank. Consequently, $\Mb$ needs to have an even dimension $2n$. A para-Hermitian structure on $(\Mb,\eta)$ is then obtained by adding a compatible metric $\eta$:
+\begin{align*}
+\eta(K\cdot,K\cdot)=-\eta(\cdot,\cdot).
+\end{align*}
+This condition forces $\eta$ to be of signature $(n,n)$ and implies that $\omega=\eta K$ is an almost symplectic structure called the fundamental form of $K$. A bi-para-Hermitian geometry is then defined as a pair of para-Hermitian structures $(\eta,K_\pm)$ sharing the same metric and satisfying an additional condition
+\begin{align}
+\rd^p_\pm\omega_\pm=\pm H \in \Omega^3_{cl.}(\Mb),
+\end{align}
+where $\rd^p_\pm=K^*\circ \rd\circ K_\pm^*$ is the para-complex twisted differential and $\omega_\pm=\eta K_\pm$ are the fundamental forms of $K_\pm$.
+
+In \cite{Hu:2019zro}, it is shown that the bi-para-Hermitian geometry $(\Mb,\eta,K_\pm,H)$ is equivalent to the data of a generalized para-K\"ahler geometry, which is defined as a pair of {\it generalized} para-complex (GpC) structures $\KK_\pm$ \cite{wade2004dirac,Zabzine:2006uz,Hu:2019zro} on $\Mb$,
+\begin{align*}
+\KK_\pm \in \End((\TT)\Mb), \quad \KK^2=\id, \quad \la \KK\cdot,\KK\cdot\ra=-\la\cdot,\cdot \ra,
+\end{align*}
+that commute and whose product $\GG=\KK_+\KK_-$ defines a split signature metric $G$ on $(\TT)\Mb$ via $G(\cdot,\cdot)=\la \GG\cdot,\cdot\ra$. Here, $\la\cdot,\cdot \ra$ is the symmetric duality pairing on $(\TT)M$ and the generalized para-complex endomorphisms $\KK_\pm$ satisfy a Courant integrability condition which ensures that its $\pm 1$-eigenbundles are Dirac structures \cite{courant1990dirac}.
+
+
+Para-complex and para-Hermitian geometry was also recently studied as the description of the extended geometry in the context of T-duality \cite{freidel2017generalised,Freidel:2018tkj,Svoboda:2018rci,Marotta:2018myj}, following the earlier work of Vaisman \cite{vaisman2012geometry,vaisman2013towards}. In \cite{Marotta:2019eqc}, Szabo and Marotta described the bosonic sector of the $2D$ sigma models targeted in this extended geometry. Various topological models in the AKSZ framework on the para-Hermitian manifold $\Mb=T^*M\simeq M^n\times \RR^n$ were studied in \cite{Kokenyesi:2018xgj} and $3D$ membrane sigma models with this target were the subject of \cite{Chatzistavrakidis:2018ztm}. The generalized geometry corresponding to Para-Hermitian geometry and its refined version, Born geometry, has been studied in \cite{Hu:2019zro}.
+
+
+\paragraph{Main results} In this paper, we combine the results of \cite{HullTwistedSUSY} and \cite{Hu:2019zro} to study the $2D$ topological sigma models with a generalized para-complex target manifold $(\Mb,\KK_+)$. This geometry leads to a $2D$ topological theory via the AKSZ formalism as follows. The Courant algebroid $(\TT)\Mb$ defines a $3D$ topological theory with a $2$-shifted symplectic NQ target space $({\cal E},\Omega)$ \cite{Roytenberg:2002nu}. Because the $\pm 1$-eigenbundles of $\KK$ are Dirac structures in $(\TT)\Mb$, they each define a Lagrangian in $({\cal E},\Omega)$, which are $1$-shifted symplectic NQ manifolds and as such define a $2D$ topological boundary theories.
+
+Additionally, we show that when the GpC manifold $(\Mb,\KK_+)$ additionally admits a generalized para-K\"ahler structure $(\Mb,\KK_+,\KK_-)$, the topological theories for $(\Mb,\KK_+)$ described above can be realized as topological twists of the $(2,2)$ para-SUSY theory attached to $(\Mb,\KK_\pm)$.
+
+We also present several explicit examples of our construction. The well-known examples include the Poisson sigma model of a real Poisson manifold $(\Mb,\Pi)$ that is described by the GpC structure
+\begin{align*}
+\KK_\Pi=
+\begin{pmatrix}
+\id & 2\Pi \\
+0 & -\id
+\end{pmatrix},
+\end{align*}
+the A-model of a symplectic manifold $(\Mb,\omega)$ described by the GpC structure
+\begin{align*}
+\KK_\omega=
+\begin{pmatrix}
+0 & \omega^{-1} \\
+\omega & 0
+\end{pmatrix},
+\end{align*}
+and also the BFF theory (?) that is simply given by the trivial GpC structure
+\begin{align*}
+\KK_0=
+\begin{pmatrix}
+\id & 0 \\
+0 & -\id
+\end{pmatrix}.
+\end{align*}
+
+The new examples that we describe are all tied to para-complex geometry. They are the para-complex version of the B-model of a para-complex manifold $(\Mb,K)$ that is given by the GpC structure
+\begin{align*}
+\KK_K=
+\begin{pmatrix}
+K & 0 \\
+0 & -K^*
+\end{pmatrix},
+\end{align*}
+and the para-complex topological Landau-Ginzburg model that can be seen as a deformation of the above geometry by a para-holomorphic poisson bi-vector $Q$
+\begin{align*}
+\KK_Q=
+\begin{pmatrix}
+K & Q \\
+0 & -K^*
+\end{pmatrix}.
+\end{align*}
+
+Importantly, our construction can also be applied to the more notoriously known generalized complex (GC) geometry, which was in the context of topological sigma models extensively studied in \cite{Zucchini:2004ta,Ikeda:2004cm,Kapustin:2004gv,Pestun:2006rj,Cattaneo:2009zx} to name some of the works, but to the authors' knowledge a similar construction to ours via a boundary reduction was not proposed before. Similarly in the GpC case, the GC structure defines a pair of Dirac structures (that are now tied by complex conjugation) and the $2D$ topological theory is recovered again as a boundary theory of the $3D$ theory defined by the underlying Courant algebroid. The advantage of our approach is that it provides a unified way to extract the data of a topological theory from any GC structure via a clear geometric procedure on the underlying shifted symplectic spaces. In the special case when the manifold is generalized K\"ahler \cite{Gualtieri:2003dx,Gualtieri:2010fd} -- implying it admits a $(2,2)$ SUSY --  the topological theories can again be realized as topological twists \cite{Kapustin:2004gv} of the $(2,2)$ theory. Here, the main examples are given by the A- and B- model corresponding to the GC structures $\JJ_\omega$ and $\JJ_I$, respectively:
+\begin{align*}
+\JJ_\omega=
+\begin{pmatrix}
+0 & -\omega^{-1} \\
+\omega & 0
+\end{pmatrix}, \quad
+\JJ_I=
+\begin{pmatrix}
+I & 0 \\
+0 & -I^*
+\end{pmatrix},
+\end{align*}
+as well as the topological Landau-Ginzburg model which is again viewed via the deformation of $\JJ_I$ by a holomorphic poisson bi-vector \cite{Gualtieri:2007bq} $\sigma=-\frac{1}{4}(IQ+iQ)$:
+\begin{align*}
+\JJ_Q=
+\begin{pmatrix}
+I & Q \\
+0 & -I^*
+\end{pmatrix}.
+\end{align*}
+
+Notice, however, that for example the usual Poisson sigma model cannot be obtained in the realm of GC geometry because no GC structure is defined by a real Poisson structure $\Pi$.
+
+%Since the work of (..) \cite{?} it has been known that on any K\"ahler manifold $(M,I,\omega)$, one can define a $2d$ sigma model admitting a $(2,2)$ supersymmetry (SUSY) and such model has a simple local description in terms of the K\"ahler potential.  Moreover, Witten has shown \cite{?} that such sigma model gives rise to two distinct topological theories -- the A- and B-models -- via a procedure called topological twisting. These topological theories have an important interpretation in terms of their underlying geometry: the A-model only depends on the symplectic structure $(M,\omega)$, while the B-model only depends on the complex structure $(M,I)$. Additionally, there exists an ${\mathbb Z}_2$ automorphism acting on the original $(2,2)$ supersymmetric theory that exchanges its A- and B-models. This is the simplest way one can observe the phenomenon of mirror symmetry in the context of $2d$ sigma models.
+%
+%The K\"ahler geometry does not describe the most general $(2,2)$ sigma model, as was shown in \cite{Gates-hull-rocek-biherm}. Instead, the most general geometry is described by a bi-Hermitian geometry, defined by a pair of complex structures $I_\pm$ compatible with the same Riemannian metric $g$ and satisfying the compatibility relation
+%\begin{align*}
+%\rd^c_\pm\omega_\pm=\pm H \in \Omega^3_{cl.}(M),
+%\end{align*}
+%$\omega_\pm$ being the fundamental forms of $I_\pm$ and $\rd^c_\pm$ the associated $\rd^c$-operators. For this geometry, the local description is more complicated than in the K\"ahler case, in particular because the analogue of the K\"ahler potential is much harder to describe. Consequently, the topological twists are also  more complicated.
+%
+%This problem is nevertheless partially mitigated by an alternative geometric formulation in terms of generalized K\"ahler (GK) geometry, which has been shown in \cite{Gualtieri:2003dx} to be equivalent to the above-described bi-Hermitian geometry $(g,I_\pm,H)$. A GK structure on $M$ is given by the data of two complex endomorphisms $\JJ_\pm$ of the bundle $(\TT)M$:
+%\begin{align*}
+%\JJ_\pm \in \End((\TT)M),\quad \JJ_\pm^2=-\id, \quad \la \JJ \cdot,\JJ\cdot \ra= \lara,
+%\end{align*}
+%where $\lara$ denotes the natural duality pairing on $(\TT)M$:
+%\begin{align*}
+%\la X+\ap,Y+\bt\ra=\ap(Y)+\bt(X),\quad X,Y\in \se(TM),\quad \ap,\bt \in \se(T^*M).
+%\end{align*}
+%Additionally, $\JJ_\pm$ are required to commute and their product $\GG\coloneqq -\JJ_+\JJ_-$ to define a 
+
+\subsection{Notations and conventions}
+
+\brian{Conventions for odd Lie brackets $[-,-]$ and $\{-,-\}$.}
+
+\section{Background on paracomplex and generalized geometry}
+\david{would just put the introduction of paracomplex geometry (minus the generalized part) in appendix, we did that even in the other paper which is literally a differential geometry paper}
+
+\subsection{Paracomplex geometry}
+
+In this section we introduce para-complex geometry with emphasis on the analogy with complex geometry. More details can be found in \cite{Hu:2019zro} or \cite[Ch.~15]{Cortes:2010ykx}, for example. \brian{I think you should cite your work here too.} 
+
+\begin{Def}\label{def:paracpx}
+An (almost) {\bf product structure} on a smooth manifold $\PS$ is an endomorphism $K\in \Endo(T\PS)$ which squares to the identity, $K^2=\id_{T\PS}$, $K\neq \id$. An (almost) \textbf{para-complex structure} is a product structure such that the $+1$ and $-1$ eigenbundles of $K$ have the same rank.
+\end{Def}
+A direct consequence of above definition is that any para-complex manifold is of even dimension. From now on, the $+1$ and $-1$ eigenbundles of an almost product/para-complex structure will be denoted $L$ and $\Lt$, respectively.
+
+\paragraph{Integrability} The use of the word {\it almost} as usual refers to integrability of the endomorphism, i.e. whether its eigenbundles are involutive with respect to the Lie bracket and therefore define a foliation of the underlying manifold. Similarly to the complex case, the integrability is governed by the \textbf{Nijenhuis tensor}
+\begin{align}\label{eq:nijenhuis}
+\begin{aligned}
+N_K(X,Y)&=[X,Y]+[KX,KY]-K([KX,Y]+[X,KY])\\
+&=(\n_{KX}K)Y+(\n_XK)KY-(\n_{KY}K)X-(\n_YK)KX\\
+&=4(\PP[\PPt X,\PPt Y]+\PPt[\PP X,\PP Y]),
+\end{aligned}
+\end{align}
+where $\n$ is any torsionless connection and $\PP\coloneqq\frac{1}{2}(\id+K)$ and $\PPt\coloneqq\frac{1}{2}(\id-K)$ are the projections onto $L$ and $\Lt$, respectively. We say $K$ is integrable and call $K$ a product/para-complex manifold if $N_K=0$. From \eqref{eq:nijenhuis} it is apparent that $K$ is integrable if and only if {\it both} eigenbundles are simultaneously Frobenius integrable, i.e. involutive distributions in $T\PS$. This is one of the main differences between complex and para-complex geometry; one of the eigenbundles can be integrable while the other is not. In such cases, we call $\PS$ {\bf half-integrabile}. For more details, see for example \cite{??,??}.
+
+\paragraph{Type decomposition} The splitting of the tangent bundle $T\PS=L\oplus \Lt$ gives rise to a decomposition of tensors analogous to the $(p,q)$-decomposition in complex geometry. For differential forms, we denote the decomposition as
+\begin{align}\label{eq_plusminus_decomp}
+\Lambda^k (T^*\mathcal{P})&=\bigoplus_{k=m+n}\Lambda^{(m,n)}(T^*\mathcal{P}),
+\end{align}
+where $\Lambda^{(m,n)}(T^*\mathcal{P})=\Lambda^m(T^{*}_{1,0})\otimes \Lambda^n(T^{*}_{0,1})$ and the corresponding sections are denoted by $\Omega^{(m,n)}(\mathcal{P})$. The bigradings \eqref{eq_plusminus_decomp} yield the natural projections
+\begin{align*}
+\Pi^{(p,q)}:\Lambda^k(T^*\mathcal{P})&\rightarrow \Lambda^{(p,q)}(T^*\mathcal{P}),
+\end{align*}
+so that when $K$ is integrable, the de-Rham differential splits as $\rd=\p+\tl{\p}$, where
+\begin{align*}
+\begin{array}{cc}
+\p \coloneqq \Pi^{(p+1,q)}\circ \rd, & \tl{\p} \coloneqq \Pi^{(p,q+1)}\circ \rd,
+\end{array}
+\end{align*}
+are the \textbf{para-complex Dolbeault operators}, satisfying
+\begin{align*}
+\p^2=\tl{\p}^2=\p\tl{\p}+\tl{\p}\p=0.
+\end{align*}
+
+One can also introduce the {\it twisted differential $\rd^p\coloneqq(\Lambda^{k+1}K^*)\circ\rd\circ (\Lambda^kK^*)$}. When $K$ is integrable, it can be simply written as $\rd^p=(\p_++\p_-)$ on real forms and $\rd^p=\kk (\p+\bar{\p})$ on para-complex forms.
+  
+\paragraph{Para-Holomorphic structure}
+Let now $(\mathcal{P},K)$ be an almost para-complex manifold of dimension $2n$. If $K$ is integrable, we get a set of $2n$ coordinates $(x^i,\tilde{x}_i)$ called {\bf adapted coordinates}, $\mathcal{P}$ locally splits as $M\times \tilde{M}$, and $K$ acts as identity on $TM=L$ and negative identity on $T\tilde{M}=\tilde{L}$. The adapted coordinates therefore define two complimentary foliations that we will call {\bf canonical foliations} of the para-complex manifold $\PS$ and denote $M$ and $\Mt$. Both $M$ and $\Mt$ are therefore $n$-dimensional manifolds composed of connected components called leafs $M_i$, $\Mt_i$:
+\begin{align*}
+M=\bigcup_i M_i,\quad \Mt=\bigcup_i \Mt_i,
+\end{align*}
+and each are as sets equal to $\PS$.
+
+As usual, a map of para-complex manifolds is called para-holomorphic if its pushforward commutes with the respective para-complex structures
+\begin{Def}
+Let $(M,K_M)$ and $(N,K_N)$ be para-complex manifolds. A map $F:M\rightarrow N$ is called para-holomorphic if
+\begin{align}\label{eq:def_parahol}
+K_N\circ F_*=F_*\circ K_M
+\end{align}
+\end{Def}
+\begin{remark}
+In the following we will omit the prefix ``para-'' in para-holomorphic whenever no confusion with complex holomorphicity is possible.
+\end{remark}
+
+Locally, the map $F:M\rightarrow N$ of para-complex manifolds can be understood via composition of coordinates as a
+\begin{align*}
+F&: \RR^{2n}\rightarrow \RR^{2m}\\
+F=(f^i,\tl{f}_j)&=(y^i(x^k,\xt_l),\yt_j(x^k,\xt_l))^{i,j=1,\cdots,m}_{k,l=1,\cdots, n}, 
+\end{align*}
+where $(x^k,\xt_l)$ and $(y^i,\yt_j)$ are adapted local coordinates on $M$ and $N$, respectively. It is easy to check from \eqref{eq:def_parahol} that $F$ is a holomorphic map iff the components satisfy
+\begin{align}\label{eq:holomorphic_real}
+\frac{\p}{\p \xt_i}f^j=\frac{\p}{\p x^i}\tl{f}_j=0.
+\end{align}
+
+The conditions \eqref{eq:holomorphic_real} tell us that the holomorphic functions map the canonical foliations of the para-complex manifolds $M$ and $N$. This also means that the transition functions on a para-complex manifold (seen as maps $\RR^{2n}\rightarrow \RR^{2m}$) are holomorphic since the foliations must be preserved, i.e. the coordinates transform as
+\begin{align}\label{para-coordinate-transf}
+(x^i,\xt_i)\mapsto (y^j(x^i),\yt_j(\xt_i)).
+\end{align}
+
+This also gives us an intuition into what holomorphic bundles and their holomorphic sections look like. First, we notice that the tangent bundle $T\PS$ itself is a holomorphic bundle (see for example \cite{Cortes:2003zd,Hu:2019zro}); this is simply because of the form of the transition functions \eqref{para-coordinate-transf} that induce a holomorphic structure on the tangent bundle. The holomorphic sections of $T\PS$ -- the holomorphic vector fields -- are locally of the form
+\begin{align*}
+X= X^i(x)\p_i+\tl{X}_i(\xt)\pt^i,
+\end{align*}
+i.e. the components in $L$ and $\Lt$ individually define vector fields on the foliations $M$ and $\Mt$, respectively.  
+
+Similarly, the cotangent bundle is a holomorphic bundle. For the higher wedge powers, we find that only $\Lambda^{(k,0)+(0,k)}(T^*\PS)$, $1\leq k\leq n$, are holomorphic bundles. The {\bf para-complex Dolbeault complex} is therefore given by
+\begin{align}
+\left(\Omega^{(\bullet,0)}\otimes\Omega^{(0,\bullet)},(\p,\pt)\right)\coloneqq \left(\mathbf{\Omega}^{\bullet,0},\pd\right).
+\end{align}
+%\begin{lemma}
+%Let $(\PS,K)$ be a paracomplex manifold. Then $\rd^p\coloneqq(\Lambda^{k+1}K)\circ\rd\circ (\Lambda^kK)$ can be expressed as
+%\begin{align}\label{eq:dp-operator}
+%\rd^p=\p_+-\p_-.
+%\end{align}
+%\end{lemma}
+%\begin{proof}
+%Let $\ap \in \Omega^{+m,-n}(\PS)$. Then we have
+%\begin{align*}
+%\rd^p\ap=(-1)^n(\Lambda^kK)\rd\ap=(-1)^{2n}\p_+ \ap +(-1)^{2n+1}\p_-\ap=(\p_+-\p_-)\ap,
+%\end{align*}
+%\end{proof}
+
+
+\subsection{Basics of generalized geometry}
+In this paper, the term {\it generalized geometry} is used for the study of geometric structures on the bundle $TM \oplus T^*M$ over some manifold $M$. We will typically abbreviate this bundle to $\TT$ whenever the base is understood or unimportant for the discussion.
+
+\subsubsection{The exact Courant algebroid structure}
+The bundle $\TT$ has a natural Courant algebroid structure given by the symmetric pairing
+\begin{align*}
+\langle X+\ap,Y+\bt\rangle=\ap(Y)+\bt(Y),
+\end{align*}
+the Dorfman bracket,
+\begin{align}\label{eq:dorfman}
+[ X+\ap,Y+\bt]=[X,Y]+\Lie_X\bt-\imath_Y\rd \ap, 
+\end{align}
+and the anchor $\pi:X+\ap\mapsto X$. In the above, $X+\ap$ denotes a section of $\TT$ with the splitting to tangent and cotangent parts given explicitly. The Dorfman bracket can be thought of as an extension of the Lie bracket from $T$ to $\TT$ and therefore we opt to use the same notation for both brackets; the expression $[X,Y]$ is always the Lie bracket of vector fields whether we think of $\brac$ as the Lie bracket or the Dorfman bracket and no confusion is therefore possible.
+
+The Courant algebroid on $\TT$ is exact, meaning that the associated sequence
+\begin{align}\label{eq:exact_seq}
+0\longrightarrow T^* \overset{\pi^T}{\longrightarrow} \TT\overset{\pi}{\longrightarrow} T\longrightarrow 0,
+\end{align}
+is exact. Here, $\pi^T$ is the transpose of $\pi$ with respect to the pairing $\lara$,
+%\begin{align*}
+%\la \pi^T(\ap),Y+\bt\ra=\la \ap,\pi(Y+\bt)\ra=\la \ap,Y\ra
+%\end{align*}
+i.e. $\pi^T: \ap \mapsto \ap+0$. In fact, all possible Courant algebroid structures on $\TT$ are parametrized by a closed three-form $H\in \Omega^3_{cl}$, which enters the definition of the bracket \eqref{eq:dorfman}, changing it to a {\it twisted} Dorfman bracket
+\begin{align*}
+[ X+\ap,Y+\bt]_H=[X,Y]+\Lie_X\bt-\imath_Y\rd \ap+\imath_Y\imath_X H.
+\end{align*}
+Moreover, any isotropic splitting of \eqref{eq:exact_seq} $s:T\rightarrow \TT$ is given by a two-form $b$, such that $X\overset{s}{\mapsto}X+b(X)$. This is equivalent to an action of a $b$-field transformation on $\TT$\footnote{Here we are using the term $b$-field transformation more liberally as it is customary to use the term only in the cases when $\rd b=0$ so that $e^b$ is a symmetry of $\brac$.}
+\begin{align*}
+e^b=
+\begin{pmatrix}
+\id & 0 \\
+b & \id
+\end{pmatrix}
+\in \End(\TT),
+\end{align*}
+which consequently changes the bracket as
+\begin{align*}
+[ e^b(X+\ap),e^b(Y+\bt)]_H=e^b([ X+\ap,Y+\bt]_{H+\rd b}),
+\end{align*}
+which implies that when $H$ is trivial in cohomology, then a choice of a $b$-field transformation such that $\rd b=-H$ brings the twisted bracket $\brac_H$ into the standard form \eqref{eq:dorfman}. When $H$ is cohomologically non-trivial this can be done at least locally. This also means that any choice of splitting with a non-trivial $b$-field can be absorbed in the Courant algebroid bracket in terms of the {\it flux}\footnote{Flux is a term used mainly in physics, in this context simply meaning the ``tensorial contribution to the bracket''.} $\rd b$.
+
+\paragraph{Dirac Structures}
+An important object in Dirac geometry are (almost) dirac structures, which are subbundles $L\subset \TT$ with special properties.
+\begin{Def}
+An {\bf almost Dirac structure} $L$ is a maximally isotropic subbundle of $\TT$, i.e. $\la u,v\ra=0$ for any $u,v \in \se(L)$ and $\text{rank}(L)=\text{rank}(T)$. When $L$ is involutive under the Dorfman bracket, i.e. it satisfies $[L,L]\subset L$, we call $L$ simply a {\bf Dirac structure}.
+\end{Def}
+An important fact we will repeatedly use is the following:
+
+\begin{proposition}[\cite{courant1990dirac}]\label{prop:dirac_Liealg}
+Let $L$ be a Dirac structure in the Courant algebroid $\TT$ with a flux $H$. Then the restriction of the Dorfman bracket to $L$, $\brac\mid_L$ is skew and gives $L$ a structure of a Lie algebroid compatible with the anchor $\pi\mid_L$, a restriction of the projection $\pi:\TT\rightarrow T$ to $L$.
+\end{proposition} 
+ 
+ 
+We remark here that all the results in this paper remain valid for any exact courant algebroid $E$ (i.e. $E$ fits in the sequence \eqref{eq:exact_seq}), which can be always identified with $\TT$ by the choice of splitting equivalent to a choice of a representative $H\in\Omega^3_{cl}$. This also amounts to setting $b=0$ in all formulas since the $b$-field appears as a difference of two splittings.
+
+\subsection{Generalized para-complex geometry}
+We now recall the notion of a generalized para-complex \cite{wade2004dirac,Zabzine:2006uz,Hu:2019zro} and a generalized para-K\"ahler \cite{Hu:2019zro} structure. We follow the discussion presented in \cite{Hu:2019zro}.
+
+\begin{Def}
+A \textbf{(twisted) generalized para-complex} (GpC) structure $\KK$ is an endomorphism of $\TT$, such that $\KK^2=\id$ and $\la\KK,\KK\ra=-\lara$, whose generalized Nijenhuis tensor vanishes:
+\begin{align}\label{eq:gen_nijenhuis}
+\mathcal{N}_\KK(u,v)=[\KK u,\KK v]_H+\KK^2[ u,v]_H-\KK([\KK u,v]_H+[ u,\KK v]_H)=0.
+\end{align}
+\end{Def}
+It is easy to check that the condition \eqref{eq:gen_nijenhuis} is equivalent to the $\pm 1$ eigenbundles of $\KK$ to be involutive under the twisted Dorfman bracket. Since in this paper the flux $H$ will be generically non-zero but all results hold for the special case $H=0$ as well, we will drop the word ``twisted" from our definitions.
+
+Generalized para-complex structures can be understood as the data one needs to specify a splitting of $\TT$ to a pair of integrable Dirac structures:
+
+\begin{theorem*}[\cite{wade2004dirac}]\label{thm:pairofdirac}
+There is a one-to-one correspondence between generalized para-complex structures on $M$ and pairs of transversal Dirac subbundles of $\TT$.
+\end{theorem*}
+
+Combining this result with the well-known result of \cite{Liu:1995lsa} which states that any pair of transversal Dirac structures $(L,\Lt)$ forms a Lie bialgebroid $(L,L^*\simeq \Lt)$, one can immediately infer the following
+
+\begin{corollary}
+Generalized para-complex structures on $\TT$ are in one-to-one correspondence with Lie bialgebroid pairs $(L,L^*)$ such that $L\oplus L^*=\TT$. 
+\end{corollary}
+
+
+\begin{Ex}[The trivial structure and its deformations]\label{ex:GpC_trivial}
+Any manifold supports the following GpC structure
+\begin{align*}
+\KK_0=
+\begin{pmatrix}
+\id & 0 \\
+0 & -\id
+\end{pmatrix},
+\end{align*}
+that has eigenbundles $T$ and $T^*$ and is always integrable. The following two GpC structures can be seen as deformations of $\KK_0$ by either a two-form $b$ or a bi-vector $\beta$:
+\begin{align*}
+\KK_b=
+\begin{pmatrix}
+\id & 0 \\
+2b & -\id
+\end{pmatrix},\quad
+\KK_\beta=
+\begin{pmatrix}
+\id & 2\beta \\
+0 & -\id
+\end{pmatrix}.
+\end{align*}
+$\KK_b$ is integrable iff $\rd b =-H$, and its eigenbundles are $\Lb_b=\text{graph}(b)=\{X+b(X)\mid X \in \XX\}$ and $\widetilde{\Lb}=T^*$. Similarly, $\KK_\beta$ is integrable iff $\beta$ is a Poisson structure, (see \cite[Lemma~2.13]{Hu:2019zro}) and its eigenbundles are $\Lb=T$ and $\widetilde{\Lb}=\text{graph}(-\beta)=\{\ap-\beta(\ap)\}\mid \ap \in \Omega\}$.
+\end{Ex}
+
+\begin{Ex}[Para-complex structures]
+A para-complex structure $K\in \Endo(T)$, defines the diagonal generalized para-complex structure:
+\begin{align*}
+\KK_K=
+\begin{pmatrix}
+K & 0 \\
+0 & -K^*
+\end{pmatrix}.
+\end{align*}
+The corresponding Dirac structures are given by $\Lb=T^{(1,0)}\oplus T^{*(0,1)}$ and $\widetilde{\Lb}=T^{(0,1)}\oplus T^{*(1,0)}$, where the bigrading is with respect to $K$. The integrability of $\KK_K$ is equivalent to Frobenius integrability of $K$ , i.e. vanishing of the Nijenhuis tensor of $K$.
+%
+%The structure $\KK_P$ can be generalized to the following
+%\begin{align*}
+%\KK=
+%\begin{pmatrix}
+%P & \Pi \\
+%\Omega & -P^*
+%\end{pmatrix},
+%\end{align*}
+%where we can read off from the constraints in \eqref{eq:GpC_generalform} that $P^2=\id$ implies that $\Pi\Omega=0$ and both $\Pi$ and $\Omega$ have to be of type $(2,0)+(0,2)$ with respect to the grading given by $P$.
+
+\end{Ex}
+
+\begin{Ex}[Symplectic structures]\label{ex:GpC_sympl}
+A symplectic form $\omega$ defines the anti-diagonal GpC structure
+\begin{align*}
+\KK_\omega=
+\begin{pmatrix}
+0 & \omega^{-1} \\
+\omega & 0
+\end{pmatrix}.
+\end{align*}
+The $\pm 1$ eigenbundles are given by $\text{graph}(\pm\omega)=\{X\pm\omega(X)\mid X\in \XX\}$, and the integrability of $\KK_\omega$ is equivalent to $\rd\omega=0$.
+\end{Ex}
+
+\brian{Can we import some of the other examples here?
+Maybe some explicit ones like the toric fibrations you mentioned.}
+
+\paragraph{Comparision with generalized complex structures}
+Example \ref{ex:GpC_sympl} shows that a symplectic manifold $(M,\omega)$ is a GpC manifold and it is well-known \cite{Gualtieri:2003dx} that $(M,\omega)$ is also generalized complex (GC). However, while almost GC structures exist only on almost complex manifolds \cite{Gualtieri:2003dx}, Example \ref{ex:GpC_trivial} demonstrates that GpC structures exist on any Poisson manifold and in particular on any smooth manifold (with trivial Poisson structure). Another feature of GpC geometry that is not present in GC geometry is that the GpC structures can be half-integrable (similarly to ordinary para-complex structures): see the cases of $\KK_b$ and $\KK_\beta$ from Example \ref{ex:GpC_trivial} which are always at least half integrable and are fully integrable iff $b$ is closed and $\beta$ is Poisson, respectively. On the other hand, $\KK_\omega$ in Example \ref{ex:GpC_sympl} can only be half-integrable when the $H$-flux is non-zero.
+
+
+\subsection{Generalized para-K\"ahler geometry}\label{sec:GpK}
+\begin{Def}
+A \textbf{generalized para-K\"ahler structure} (GpK) is a commuting pair $(\KK_+,\KK_-)$ of GpC structures, such that their product $\GG=\KK_+\KK_-$ defines a split-signature metric $G$ on $\TT$ via
+\begin{align*}
+G(\cdot,\cdot)\coloneqq \la \GG\cdot,\cdot\ra.
+\end{align*}
+\end{Def}
+
+Because $\KK_\pm$ are GpC structures, they induce the splitting $\TT= \Lb_\pm\oplus\widetilde{\Lb}_\pm$. Moreover, because they commute, each of $\Lb_+$ and $\widetilde{\Lb}_+$ further splits to eigenbundles of $\KK_-$, so that one arrives at the decomposition of $\TT$ into four bundles:
+\begin{align}\label{GpK_bundles}
+\TT=\ell_+\oplus\ell_-\oplus \ellt_+\oplus \ellt_-,
+\end{align}
+such that the eigenbundles of $\KK_+$ are $\Lb_+=\ell_+\oplus\ell_-$ and $\tl{\Lb}_+=\ellt_+\oplus \ellt_-$, the eigenbundles of $\KK_-$ are $\Lb_-=\ell_+\oplus\ellt_-$ and $\tl{\Lb}_-=\ell_-\oplus \ellt_+$ and the eigenbundles of the generalized metric are $C_\pm=\ell_\pm\oplus\ellt_\pm$. All $\ell_\pm$ and $\ellt_\pm$ are isotropic and integrable under the Dorfman bracket \cite{Hu:2019zro} and bundles with opposite chirality are orthogonal.
+
+Similarly to generalized K\"ahler structures, the GpK structures can be equivalently given in terms of a pair of para-Hermitian structures satisfying a particular integrability condition:
+\begin{theorem}[\cite{Hu:2019zro}]
+The data of a GpK structure is equivalent to a pair of para-Hermitian structures $(\eta,K_+,K_-)$, such that $\KK_\pm$ are given by
+\begin{align}\label{eq:GpK_genform}
+\KK_{\pm}=\frac{1}{2}
+\begin{pmatrix}
+\id & 0 \\
+b & \id
+\end{pmatrix}
+\begin{pmatrix}
+K_+\pm K_- & \omega^{-1}_+\mp \omega^{-1}_- \\
+\omega_+\mp \omega_- & -(K_+^*\pm K_-^*)
+\end{pmatrix}
+\begin{pmatrix}
+\id & 0 \\
+-b & \id
+\end{pmatrix},
+\end{align}
+for some $2$-form $b$. The integrability of $\KK_\pm$ then translates into $K_\pm$ being integrable and satisfying
+\begin{align*}
+\n^\pm K_\pm=0,
+\end{align*}
+where the connections $\n^\pm$ are defined by the Levi-Civita connection $\lc$ of $\eta$ and the $H$-flux:
+\begin{align*}
+\eta(\n^\pm_XY,Z)=\eta(\lc_XY,Z)\pm\frac{1}{2}(H+\rd b).
+\end{align*}
+\end{theorem}
+
+The additional integrability condition on $K_\pm$, $\n^\pm K_\pm$, can be equivalently expressed using the fundamental forms associated to $K_\pm$, $\omega_\pm=\eta K_\pm$, and a para-complex version of the $\rd^c$-operator, which we call $\rd^p$:
+\begin{align*}
+\n^\pm K_\pm=0 \Longleftrightarrow \rd^p_\pm\omega_\pm=\pm (H+\rd b).
+\end{align*}
+$\rd^p_\pm$ here denote the $\rd^p$ operators associated to $K_\pm$, $\rd^p_\pm\coloneqq K_\pm^*\circ \rd\circ K_\pm^*$. We will call the geometry given by the data $(\eta, K_\pm, H+\rd b)$ above a {\bf bi-para-Hermitian} geometry.
+
+
+\subsubsection{Isomorphism between $\TT$ and $T\oplus T$}\label{sec:isomorphism}
+In both the GK and GpK cases, the product of the pair of G(p)C structures defines a generalized (indefinite) metric $\GG$, which means that
+\begin{align*}
+G(\cdot,\cdot)\coloneqq \la \GG\cdot,\cdot\ra,
+\end{align*}
+defines a genuine (indefinite) metric on the bundle $\TT$. It can be shown (see eg. \cite{Gualtieri:2003dx,Hu:2019zro}) that such metric can be always locally expressed in terms of a two-form $b$ and a metric $g$
+\begin{align}\label{genmetric}
+\GG=\GG(g,b)=\begin{pmatrix}
+\id & 0 \\
+b & \id
+\end{pmatrix}
+\begin{pmatrix}
+0 & g^{-1} \\
+g & 0
+\end{pmatrix}
+\begin{pmatrix}
+\id & 0 \\
+-b & \id
+\end{pmatrix},
+\end{align}
+and the signature of $g$ then determines the signature of $\GG(g,b)$. Therefore, a generalized metric determines a splitting of $\TT\simeq e^b(T)\oplus T^*$ in which the eigenbundles $C_\pm$ of $\GG$ are $C_\pm=graph(\pm g)$ and the flux of this splitting is given by the closed three-form $H\overset{loc.}{=}\rd b$. In the usual splitting $\TT$, we then have $C_\pm=graph(b\pm g)$.
+
+
+An important property of the generalized metric $\GG$ is that its  eigenbundles $C_\pm$ are isomorphic to the tangent bundle $T$ via the projection:
+\begin{align}\label{pi_iso}
+\begin{aligned}
+\pi_\pm:C_\pm &\simeq T,\\
+X+\ap &\overset{\pi_\pm}{\longmapsto} X,\\
+X+(b\pm g)X &\overset{\pi^{-1}_\pm}{\longmapsfrom} X,
+\end{aligned}
+\end{align}
+where $g$ and $b$ are the defining data of $\GG$. Therefore, since $\TT=C\oplus C_-$, we also have $\TT\simeq T\oplus T$:
+\begin{align}
+\begin{aligned}
+(X_+,X_-)\overset{\pi^{-1}_+\oplus \pi^{-1}_-}{\longmapsto}& X_++(b+g)X_++X_-+(b-g)X_-\\
+&=
+\begin{pmatrix}
+ X_++X_- \\
+ g(X_+-X_-)+b(X_++X_-)
+\end{pmatrix}.
+\end{aligned}\label{map_pi_pm}
+\end{align}
+In particular, one can check that $\pi_+\oplus \pi_-$ maps the eigenbundles of the generalized structures $\KK_\pm$ ($\JJ_\pm$) to eigenbundles of the corresponding pair of tangent bundle endomorphisms $\KK_\pm$ ($\JJ_\pm$). This is because of the following relationship \cite{Hu:2019zro},
+\begin{align*}
+K_+=\pi_+\KK_\pm\pi_+^{-1},\quad K_-=\pm\pi_-\KK_\pm\pi_-^{-1},
+\end{align*}
+and analogously for $\JJ_\pm$ and $J_\pm$. From here, it is easy to see that the $+1$ eigenbundle of $\KK_+$ $\Lb_+$, for example, is given by
+\begin{align*}
+\Lb_+=\pi_+^{-1}(T^{(1,0)_+})\oplus\pi_-^{-1}(T^{(1,0)_-}),
+\end{align*}
+where $T^{(1,0)_\pm}$ denotes the $+1$ eigenbundle of $K_\pm$. Analogously, the $-1$ eigenbundle of $\KK_-$,
+$\widetilde{\Lb}_-$, is given by
+\begin{align*}
+\widetilde{\Lb}_-=\pi_+^{-1}(T^{(0,1)_+})\oplus\pi_-^{-1}(T^{(1,0)_-}),
+\end{align*}
+and so on. Therefore, one should think about the pair $K_\pm$ corresponding to the GpK structure as each of the $K_\pm$ acting on its own copy of $T$, which are then mapped via $\pi_\pm$ to $C_\pm$ in $\TT$.
+
+We will also notice that $\pi_\pm$ map the the pseudo-Riemannian structures $G$ and $g$ on each other:
+\begin{align}\label{pi:gG_relationship}
+g(X,Y)=\pm\frac{1}{2}\la \pi_\pm^{-1}X,\pi_\pm^{-1}Y\ra = \frac{1}{2}\la \GG \pi_\pm^{-1}X,\pi_\pm^{-1}Y\ra =\frac{1}{2}G(\pi_\pm^{-1}X,\pi_\pm^{-1}Y).
+\end{align}
+Another important property we will make use of is the fact that the connections $\n^\pm$ give rise via $\pi_\pm$ to a generalized connection $D$ on $\TT$ called the generalized Bismut connection \cite{Gualtieri:2007bq}:
+\begin{align}\label{genBismut_pi_nabla_pm}
+D_uv=\pi^{-1}_+\n^+_{\pi u}\pi_+ v_++\pi^{-1}_-\n^-_{\pi u}\pi_- v_-.
+\end{align}
+This connection preserves $\lara$ and $\GG$ and in the case when $\GG$ is a generalized metric corresponding to a GpK structure, $D$ also preserves all the eigenbundles in \eqref{GpK_bundles}. 
+
+There is a tensorial quantity associated to any generalized connection called generalized torsion, which is defined as \cite{Gualtieri:2007bq}
+\begin{align}\label{gentorsion_def}
+T^D(u,v,w)=\la D_uv-D_vu-[u,v]_H,w\ra +\la D_wu,v\ra.
+\end{align}
+For the generalized Bismut connection, this torsion has only pure components in $\Lambda^3C_\pm$ and satisfies the following formula \cite[Prop.~2.29]{Hu:2019zro}:
+\begin{align}\label{gentorsion_H}
+T^D(\pi_\pm^{-1}X,\pi_\pm^{-1}Y,\pi_\pm^{-1}Z)=2H_b(X,Y,Z).
+\end{align}
+
+
+%\paragraph*{Relationship to Kapustin-Li}
+%On pg. 12 of Kapustin-Li paper they implicitly use the isomorphisms $\pi_\pm$ to map the sections $\chi \in \se(T^{(0,1)_+})$ and $\lambda \in \se(T^{(0,1)_-})$ to the $-i$ eigenbundle of $\JJ_+$ as 
+%\begin{align*}
+%\begin{pmatrix}
+%\chi+\lambda \\
+%g(\chi-\lambda)
+%\end{pmatrix},
+%\end{align*}
+%which is the same as \eqref{map_pi_pm} with $b=0$, which they implicitly absorb inside the $H$-flux.
+
+\subsubsection{SKT Geometry and half generalized structures}
+\david{will see if we'll be using this}
+An {\bf SKT} structure is a Hermitian structure $(I,g)$ for which the fundamental form $\omega$ even though is not closed, is $\rd \rd^c$-closed, i.e. $\rd \rd^c \omega=0$. The version of this geometry is easily formulated for the para- case where we will call it para-SKT. It follows directly from the definition that the bi-para-Hermitian geometry consists of two such structures -- one for each chirality -- and here we will describe how one SKT structure can be described using the language of generalized geometry.
+
+For this purpose we define a positive-chirality\footnote{Similarly one could define a negative-chirality half G(p)C structure by changing $C_+$ for $C_-$} {\bf half generalized almost (para-)complex structure} as a pair $(\GG,\JJ_{C_+})$, where $\GG$ is a (neutral) generalized metric which induces a splitting $\TT=C_+\oplus C_-$ and an isomorphism $C_+\oplus C_-\simeq T\oplus T$, and $\JJ_{C_+}$ is a (para-)complex endomorphism of $C_+$, i.e.
+\begin{align*}
+\JJ_{C_+}\in \End(C_+),\quad \JJ_{C_+}=\pm \id_{C_+},\quad \la \JJ_{C_+} u_+,v_+\ra=-\la u_+,\JJ_{C_+} v_+\ra,
+\end{align*}
+for any $u_+,v_+ \in \se(C_+)$. The integrability condition on $\JJ_{C_+}$ is then that its eigenbundles $\ell_+\oplus \ell_-=C_+$ (in the complex case $\ell\oplus \bar{\ell}=C_+\otimes \mathbb{C}$) are involutive with respect to the (twisted) Dorfman bracket. It is easy to see that $\JJ_{C_+}$ defines a (para-)Hermitian structure $(J_+,g)$, where
+\begin{align*}
+g(X,Y)=\frac{1}{2}\la \pi_+^{-1}X,\pi_+^{-1}Y\ra,\quad J_+=\pi_+\JJ_{C_+}\pi^{-1}_+
+\end{align*}
+and the integrability condition on $\JJ_{C_+}$ translates into the condition
+\begin{align*}
+\n^+J_+=0,\ \n^+=\lc+\frac{1}{2}g^{-1}(H+\rd b) \Longleftrightarrow \rd^{c/p}\omega_+=H+\rd b,
+\end{align*}
+i.e. giving exactly half of the data of a G(p)K geometry. If there is a negative-chirality half structure $\JJ_{C_-}$, then $(\GG,\JJ\coloneqq \JJ_{C_+}\oplus \JJ_{C_-})$ defines a genuine G(p)K structure.
+
+
+\section{Two-dimensional parasupersymmetry}  \label{sec: parasusy}
+
+In this section we introduce the $(2,2)$ para-SUSY algebra in two dimensions, which is an extension of the $(1,1)$ SUSY similarly to the usual $(2,2)$ SUSY. We then realize this superalgebra as a symmetry of a $2D$ $\sigma$-model.
+
+It was shown in \cite{HullTwistedSUSY} that in order to do this, one needs to introduce a pair of para-Hermitian structures $(\eta,K_\pm)$ that form a so-called bi-para-Hermitian geometry. In \cite{Hu:2019zro} it was then shown that such geometry can be equivalently described by {\bf generalized para-K\"ahler} geometry. Because generalized para-K\"ahler geometry is defined by a pair of generalized para-complex structures that obey extra algebraic conditions (see Section \ref{sec:GpK}), this geometry supports the topological $\sigma$-models discussed in Section \ref{sec:GpC_AKSZ}.
+
+The main content of the present section is therefore to define the topological twists of the $(2,2)$ para-SUSY sigma models and show that they are exactly equal to the topological sigma models defined by the pair of GpC structures.
+%
+%It has been known since \cite{Zumino:1979et} that the $(1,1)$ supersymmetric $\sigma$-model \eqref{eq:(1,1)action} admits $(2,2)$ supersymmetry when $(M,g)$ is a K\"{a}hler manifold. In general, $(2,2)$ supersymmetry in fact requires the target to be {\bf generalized K\"ahler} \cite{Gualtieri:2003dx}, which is equivalent to a data of a bi-Hermitian geometry discovered in \cite{Gates:1984nk}. For $(2,2)$ para-SUSY, the story is analogous. 
+%
+%will see later that in order to realize the para-$(2,2)$ superalgebra as a symmetry of a $2D$ $\sigma$ model, the target manifold must carry a pair of para-complex structures $K_\pm$. This is in contrast to the usual case that requires complex structures $I_\pm$ on the target instead.
+
+\subsection{A reminder on $(1,1)$ supersymmetry}
+
+The $2$-dimensional $(1,1)$ supertranslation algebra is the super Lie algebra
+\[
+\mathfrak{t}_{(1,1)} = \RR^{1,1} \oplus \Pi (S_+) \oplus \Pi(S_-)
+\]
+where $S_\pm \cong \RR$ are the semi-spin representations of ${\rm Spin}(1,1)$ labeled by helicities $\pm \frac{1}{2}$. 
+Note that there are natural ${\rm Spin}(1,1)$-equivariant maps
+\[
+\Gamma_{\pm} : {\rm Sym}^2(S_\pm) \to \RR^{1,1}
+\]
+which are non-degenerate and whose images hit the subalgebras spanned by $\partial_{\pm}$, respectively. 
+The only nonvanishing Lie brackets in $\mathfrak{t}_{(1,1)}$ are defined by
+\[
+[Q_+, Q_+'] = \Gamma_+(Q_+ \otimes Q_+') \;\; , \;\; [Q_-, Q_-'] = \Gamma_-(Q_- \otimes Q_-')
+\]  
+where $Q_\pm, Q_\pm'$ are generic elements in $S_\pm$. 
+
+We will use the lightcone basis $\p_{\pm}$ for $\RR^{1,1}$ and we also fix a basis $Q_\pm^1$ for $S_{\pm}$ with a relative normalization so that
+\begin{align}\label{eq:(1,1)_susy}
+[Q^1_\pm,Q^1_\pm] = 2\p_\pm.
+\end{align}
+
+\subsubsection{The $(1,1)$ supersymmetric $\sigma$-model} 
+
+Let $\Sigma^{2|2}$ be a super Riemann surface with two real odd directions. 
+The even part of this supermanifold is a Riemann surface (with coordinates $\sigma$, $\tau$).
+For instance, in the flat case we consider the superspace $\RR^{2|2} = \{(x^i , \theta_1^{\pm}) \; | \; i = 1,2\}$, where $\theta_1^{\pm}$ are odd variables. 
+
+The most general $(1,1)$ supersymmetric sigma model into a target pseudo-Riemannian manifold $(M,\eta)$ is given by the action functional
+\begin{align}\label{eq:(1,1)action}
+S_{(1,1)}(\Phi)=\int_{\Sigma^{2|2}} [g(\Phi)+b(\Phi)]_{ij}D^1_+\Phi^iD^1_-\Phi^j,
+\end{align}
+where $\Phi=(\Phi^i)_{i=1\cdots n}$ are local representatives for the $(1,1)$ {superfields} which are maps $\Phi: \Sigma^{2|2} \rightarrow M$.
+In the action, $b$ denotes a local two-form potential for a closed three-form, $H=\rd b$, and $D^1_\pm$ are the superderivatives
+\begin{align}\label{eq:D1}
+D^1_\pm=\frac{\p}{\p \theta_1^\pm}-\theta_1^\pm \p_\pm,
+\end{align}
+where $\p_\pm=\frac{\p}{\p x_\pm}$ are derivatives along the lightcone coordinates on $\Sigma$, $x_\pm=\tau\pm\sigma$. In superworldsheet coordinates, the superfields decompose as
+\begin{align}\label{fields_(1,1)}
+\Phi^i(\sigma,\tau,\theta_+,\theta_-)=\phi^i(\sigma,\tau)+\theta^+\psi^i_+(\sigma,\tau)+\theta^-\psi_-(\sigma,\tau)+\theta^+\theta^-F^i(\sigma,\tau).
+\end{align}
+Here, $(\phi^i)$ are local representatives for a smooth map $\phi: \Sigma \rightarrow M$. The fact that this action carries $(1,1)$ supersymmetry means that the action \eqref{eq:(1,1)action} is invariant under transformations generated by the two {supercharges} $Q^1_\pm$, 
+\begin{align}\label{eq:Q1}
+Q^1_\pm=\frac{\p}{\p \theta_1^\pm}+\theta_1^\pm \p_\pm,
+\end{align}
+obeying the supercommutation relations of the $(1,1)$ supersymmetry algebra (\ref{eq:(1,1)_susy}). 
+\begin{remark}
+The sigma model \eqref{eq:(1,1)action} is fully determined by the geometric data of the generalized pseudo-metric $\GG(g=\eta,b)$ \eqref{genmetric}.
+\end{remark}
+
+\paragraph{Expanding the $(1,1)$ action}
+We now expand the action \eqref{eq:(1,1)action} by plugging in \eqref{fields_(1,1)} and \eqref{eq:D1}. The expansions read
+%In components, the superfield has the form
+%\[
+%\Phi^i =\phi^i+\theta^+\psi^i_++\theta^-\psi^i_-+\theta^+\theta^-F^i
+%\]
+%The super covariant derivatives $D_{\pm}$ applied to $\Phi^i$ read
+\[
+D_\pm\Phi^i =\psi^i_\pm\pm\theta^\mp F^i-\theta^\pm\p_\pm\phi^i\mp\theta^+\theta^-\p_\pm\psi^i_\mp,
+\]
+and
+\begin{align*}
+[\eta(\Phi)+b(\Phi)]_{ij} = & [\eta(\phi)+b(\phi)]_{ij}+\p_k[\eta(\phi)+b(\phi)]_{ij}(\theta^+\psi_+^k+\theta^-\psi_-^k+\theta^+\theta^-F^k)\\
+& +\frac{1}{2}\p_k\p_l[\eta(\phi)+b(\phi)]_{ij}(\theta^+\psi_+^k+\theta^-\psi_-^k)(\theta^+\psi_+^l+\theta^-\psi_-^l).
+\end{align*}
+After plugging the above in the action and performing the odd integration, the only terms that survive are the $\theta^+\theta^-$ coefficients. From this we find that
+%\begin{align*}
+%\theta^+\theta^-&\left[(g+b)_{ij}(\psi_+^i\p_-\psi^j_++\psi^j_-\p_-\psi^i_-+F^iF^j+\p_+\phi^i\p_-\phi^j)\right. \\
+%&+\p_k(g+b)_{ij}\left(F^k\psi^i_+\psi^j_-+\psi^k_+(-F^i\psi^j_--\psi^i_+\p_-\phi^j)+\psi^k_-(-\p_+\phi^i\psi^j_-+\psi_+^iF^j)\right)\\
+%&\left. +\frac{1}{2}\p_k\p_l(g+b)_{ij}(-\psi_+^k\psi_-^l\psi_+^i\psi_-^j+\psi_-^k\psi_+^l\psi^i_+\psi^j_-) \right].
+%\end{align*}
+the field $F$ enters only algebraically and not via its derivatives. Therefore, it is auxiliary and can be integrated out. To obtain the equations of motion for $F$,
+%we use the formula $\p_kg_{ij}=\Gamma_{ikj}+\Gamma_{jki}$ and collect the terms involving $F$:
+%\begin{align*}
+%g_{ij}F^iF^j+&(\Gamma_{ikj}+\Gamma_{jki})(F^k\psi^i_+\psi^j_--F^i\psi^k_+\psi^j_-+F^j\psi^k_-\psi_+^i)\\
+%+&F^k\psi^i_+\psi^j_-(\p_kb_{ij}+\p_ib_{jk}+\p_jb_{ki}).
+%\end{align*}
+%Using $\Gamma_{ikj}=\Gamma_{kij}$ and $H_{ijk}=(\p_kb_{ij}+\p_ib_{jk}+\p_jb_{ki})$, we can rewrite this as
+%\begin{align*}
+%g_{ij}F^iF^j+2\Gamma_{ikj}F^j\psi^k_-\psi_+^i+F^k\psi^i_+\psi^j_-H_{ijk}=g_{ij}(F^iF^j+2F^j(\Gamma^-)_{lk}^i\psi_-^k\psi_+^l),
+%\end{align*}
+%where $\Gamma^-$ are the Christoffel symbols of the connection $\n^-=\lc-\frac{1}{2}g^{-1}H$. This yields the equation of motion for $F$,
+we vary the resulting bosonic action with respect to $F^i$:
+\begin{align} \label{F_EoM}
+\frac{\delta S_{(1,1)}}{\delta F^i}=0\quad \Longleftrightarrow\quad  F^i=-(\Gamma^-)^i_{jk}\psi^k_-\psi^j_+.
+\end{align}
+Here, $\Gamma^-$ are the Christoffel symbols of the connection $\n^-=\lc-\frac{1}{2}\eta^{-1}H$.
+\david{we can show more of the calculations or put some more in the appendix but this is fairly standard knowledge and I think the above is sufficient}
+\subsection{$(2,2)$ para-supersymmetry}\label{sec:(2,2)parasusy}
+We continue by extending the above $(1,1)$ picture to the $(2,2)$ para-SUSY setting. This version of supersymmetry and the corresponding sigma models were first discussed in \cite{HullTwistedSUSY}.
+
+The {\bf (2,2) para-supersymmetry algebra} has the underlying supervector space
+\[
+\mathfrak{t}_{(2,2)} = \RR^{1,1} \oplus \Pi(S_+ \oplus S_+) \oplus \Pi(S_- \oplus S_-),
+\]
+with the Lie brackets defined as follows: we choose a basis $\{Q^1_{\pm}, Q^2_\pm\}$ for $S_\pm \oplus S_\pm$ in which the nontrivial brackets read 
+\begin{equation}\label{eq:(2,2)para}
+(2,2)\ \text{para-SUSY:}\quad [Q_\pm^1, Q_\pm^1] = 2 \partial_{\pm}, \quad [Q_{\pm}^2, Q_{\pm}^2] = -2 \partial_{\pm} .
+\end{equation}
+
+\begin{remark}
+Note that this differs from ordinary $(2,2)$ supersymmetry by a sign:
+\begin{equation*}
+(2,2)\ \text{(ordinary) SUSY:}\quad [Q_\pm^1, Q_\pm^1] = 2 \partial_{\pm}, \quad [Q_{\pm}^2, Q_{\pm}^2] = 2 \partial_{\pm} .
+\end{equation*}
+\end{remark}
+
+We can also write the para-SUSY algebra in the more conventional off-diagonal basis $\{{Q}_\pm,\wtl{Q}_\pm\}$, in which the only non-zero brackets read:
+\begin{align*}
+[{Q}_\pm,\wtl{Q}_\pm]=-2\p_\pm.
+\end{align*}
+The two bases $\{Q^1_{\pm}, Q^2_\pm\}$ and $\{{Q}_\pm,\wtl{Q}_\pm\}$ are related by
+\begin{align*}
+Q_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm+Q^1_\pm),\quad \wtl{Q}_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm-Q^1_\pm).
+\end{align*}
+Again, this is analogous to the complex basis of the ordinary $(2,2)$ superalgebra
+\begin{align*}
+[Q_\pm,\overline{Q}_\pm]=2\p_\pm.
+\end{align*}
+
+\david{is the following paragraph needed?}
+\brian{I think it's nice to point out how it  generalizes.}
+
+\begin{remark}
+
+More generally, suppose $W_\pm$ are vector spaces of dimension $k_\pm$, respectively.
+In addition, suppose $\eta_\pm$ are symmetric nondegenerate forms on $W_\pm$. 
+Then, we can define a super Lie algebra of the form
+\[
+\mathfrak{t}_{W} =  \RR^{1,1} \oplus \Pi(S_+ \otimes W_+) \oplus \Pi(S_- \otimes W_-)
+\]
+with brackets defined by
+\[
+[Q_\pm^{a}, Q_\pm^{b}] = 2 \eta^{ab}_\pm \partial_\pm .
+\] 
+This is a general form of the $\cN = (k_+, k_-)$ supersymmetry algebra for which ordinary supersymmetry and para-supersymmetry are special cases.
+The case of $\mathfrak{t}_{(2,2)}$, which will be of most interested to us, corresponds to taking $k_+ = k_- = 2$ and $\eta_\pm^{11} = 1$, $\eta^{22}_\pm = - 1$, $\eta^{12}_{\pm} = 0$. 
+
+\end{remark}
+
+\paragraph{R-symmetry}
+%We have seen above that the $(2,2)$ para-SUSY algebra $\mathfrak{t}_{(2,2)}$ is diagonalised in terms of the charges
+%\begin{align}\label{eq:R-sym_charges}
+%\begin{aligned}
+%[Q_\pm^1,Q_\pm^1]&=2\p_\pm\\
+%[Q_\pm^2,Q_\pm^2]&=-2\p_\pm.
+%\end{aligned}
+%\end{align}
+%We make a change of basis by the formulas $Q_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm+Q^1_\pm)$ and $\tl{Q}_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm-Q^1_\pm)$. 
+There is a symmetry of the $(2,2)$ para-SUSY algebra \eqref{eq:(2,2)para} that separately rotates the $\pm$-chirality charges, called the R-symmetry. To see this, we write the equations \eqref{eq:(2,2)para} collectively as
+\begin{align}\label{eq:R-sym_eta}
+[Q_\pm^a,Q_\pm^b]=2\eta^{ab}\p_\pm, \quad 
+\eta^{ab}=\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\end{align}
+From here it is easy to see that matrices $(M_\pm)^a_b$ that rotate the $\pm$-chirality charges among each other while preserving the commutation relations \eqref{eq:R-sym_eta},
+\begin{align*}
+[(M_\pm)^a_cQ_\pm^c,(M_\pm)^b_dQ_\pm^d]=2\eta^{ab}\p_\pm
+\end{align*}
+have to satisfy
+\begin{align*}
+(M_\pm)^a_c\eta^{cd}(M_\pm)^a_d=\eta^{ab},
+\end{align*}
+i.e. $M_\pm$ have to lie in $SO(1,1)$ for each subscript $\pm$ and the R-symmetry group is therefore $G_R=SO(1,1)_+\times SO(1,1)_-$.
+%\david{this is only relevant for the (2,2) formalism, will se if we need this or not}
+%The R-symmetry acts on the odd coordinates accordingly as
+%\begin{align*}
+%\begin{pmatrix}
+%\theta^1_\pm \\
+%\theta^2_\pm	
+%\end{pmatrix}
+%\mapsto
+%\begin{pmatrix}
+%\cosh(\alpha_\pm) & \sinh(\alpha_\pm) \\
+%\sinh(\alpha_\pm) & \cosh(\alpha_\pm)
+%\end{pmatrix}
+%\begin{pmatrix}
+%\theta^1_\pm \\
+%\theta^2_\pm	
+%\end{pmatrix}
+%\end{align*}
+%or, equivalently, $(\theta^\pm,\tth^\pm)\mapsto (e^{\alpha_\pm} \theta^\pm,e^{-\alpha_\pm}\tth^\pm)$. There are therefore two inequivalent embeddings of the Lorentz group $SO(1,1)$ into the R-symmetry group, we label them by $V$ and $A$:
+%\begin{align*}
+%R_V(\alpha)&:(\theta^\pm,\tth^\pm)\mapsto (e^\alpha \theta^\pm,e^{-\alpha}\tth^\pm)\\
+%R_A(\alpha)&:(\theta^\pm,\tth^\pm)\mapsto (e^{\pm \alpha} \theta^\pm,e^{\mp \alpha}\tth^\pm),
+%\end{align*}
+%mapping the supercharges as
+%\begin{align*}
+%R_V(\alpha):& (Q_\pm,\tl{Q}_\pm)\mapsto (e^{-\alpha}Q_\pm,e^{\alpha}\tl{Q}_\pm)\\
+%R_A(\alpha):& (Q_\pm,\tl{Q}_\pm)\mapsto (e^{\mp\alpha}Q_\pm,e^{\pm \alpha}\tl{Q}_\pm).
+%\end{align*}
+%The generators of these transformations are
+%\begin{align*}
+%F_{V/A}=\theta^+\frac{\p}{\p\theta^+}-\tth^+\frac{\p}{\p\tth^+}\pm \theta^-\frac{\p}{\p\theta^-}\mp\tth^-\frac{\p}{\p\tth^-}.
+%\end{align*}
+%
+%Because $F_{V/A}$ has same commutators with other operators as $M$, the Lorentz generator, and additionally all $F_{V/A}$ and $M$ commute among themselves, we can define new "Lorentz" generators in one of the two following ways:
+%\begin{align*}
+%M_A=M+F_V,\quad M_B=M+F_A.
+%\end{align*}
+
+\subsubsection{The $(2,2)$ parasupersymmetric $\sigma$-model}
+We now describe the $2D$ sigma models that carry the $(2,2)$ para-supersymmetry described above.
+%\paragraph{(2,2) SUSY}
+%We propose the following symmetry by the $(2,2)$ parasupersymmetry algebra (\ref{(2,2)para}) (setting $\theta^\pm_1\coloneqq \theta^\pm$ for simplicity), which read in superspace notation:
+%\begin{align*}
+%Q^1_\pm&=\frac{\p}{\p\theta^\pm}+\theta^\pm\p_\pm \\
+%Q^2_\pm\Phi^i&=(K_\pm)^i_j(\Phi)D_\pm\Phi^j \\
+%\end{align*}
+%where $D_\pm =\frac{\p}{\p\theta^\pm}-\theta^\pm\p_\pm$. 
+\paragraph{Extended supersymmetry}
+
+The $\sigma$-model \eqref{eq:(1,1)action} has manifest $(1,1)$ supersymmetry.  We now impose additional symmetries of the action $S_{(1,1)}$ that generate the $(2,2)$ parasupersymmetry algebra (\ref{eq:(2,2)para}) and discuss the required geometric properties of the target manifold for such extension.
+%In general, this extended symmetry exists only after we make some additional assumptions on the geometric data prescribing the action. 
+
+Setting $\theta^\pm_1\coloneqq \theta^\pm$ for notational simplicity, we propose the following $(2,2)$ para-supersymmetry algebra representation on the $(1,1)$ superfields:
+\begin{align}
+\label{q1} Q^1_\pm&=\frac{\p}{\p\theta^\pm}+\theta^\pm\p_\pm \\
+\label{q2} Q^2_\pm\Phi^i&=(K_\pm)^i_j(\Phi)D_\pm\Phi^j,
+\end{align}
+where $D_\pm =\frac{\p}{\p\theta^\pm}-\theta^\pm\p_\pm$. In \cite{HullTwistedSUSY}, it was shown that in order for \eqref{q1} and \eqref{q2} to generate the superalgebra \eqref{eq:(2,2)para}, the bosonic part of $(K_\pm)^i_j(\Phi)$, $(K_\pm)^i_j(\phi)$, must be a tangent bundle endomorphism on the target manifold such that $K^2=\id$. Moreover, $K_\pm$ must be integrable in the sense that the Nijenhuis tensors $N_{K_\pm}$ \eqref{eq:nijenhuis} vanish and $K_\pm$ are parallel with respect to the following connections $\n^\pm$
+\begin{align*}
+\n^\pm K_\pm=0, \quad \n^\pm=\lc\pm\frac{1}{2}\eta^{-1}H,
+\end{align*}
+$\lc$ being the Levi-Civita connection of $\eta$. Additionally, the requirement that \eqref{q2} is a symmetry of the action \eqref{eq:(1,1)action} imposes the following algebraic relations between $K,\eta$ and $b$:
+\begin{align*}
+g(T_\pm\cdot,\cdot)+g(\cdot,T_\pm\cdot)&=0\\
+b(T_\pm\cdot,\cdot)+b(\cdot,T_\pm\cdot)&=0.
+\end{align*}
+
+We conclude that $(\eta,K_\pm,b)$, where $\rd b=H$ is a local potential for the $3$-form flux $H\in\Omega_{cl}^3$, is a {\bf bi-para-Hermitian} structure. Equivalently, this is the defining data of a {\bf generalized para-K\"ahler structure} $(\KK_\pm)$ on the Courant algebroid $(\TT)$ with a flux $H$.
+
+
+
+\paragraph{Action on superfields} The infinitesimal action of the element $Q^1_{\pm} \in \mathfrak{t}_{(2,2)}$ is:
+\begin{align}\label{Q1_phi}
+\Phi^i \mapsto \Phi^i + \epsilon^{\pm}_1 \left( \frac{\p}{\p\theta^\pm}+\theta^\pm\p_\pm \right) \Phi^i
+\end{align}
+where $\epsilon^{\pm}_1$ is an infinitesimal odd parameter. Similarly, the infinitesimal action by the element $Q^2_{\pm} \in \mathfrak{t}_{(2,2)}$ is:
+
+\begin{align}\label{Q2_phi}
+ \Phi \mapsto \Phi + \epsilon^{\pm}_2 (K_\pm)^i_j(\Phi)D_\pm\Phi^j
+\end{align}
+where $\epsilon^\pm_2$ is again an infinitesimal parameter. Expanding \eqref{Q1_phi}, we get
+\begin{align}\label{Q1_action}
+\begin{aligned}
+Q^1_{+} : (\phi^i, \psi^i_+, \psi^i_-, F^i) &\mapsto (\phi^i, \psi^i_+,\psi^i_-, F^i) + \epsilon^+_1 (\psi^i_+, -\partial_+ \phi, -F^i, \partial_+ \psi^i_-),\\
+Q^1_{-} : (\phi^i, \psi^i_+, \psi^i_-, F^i)  &\mapsto (\phi^i, \psi^i_+,\psi^i_-, F^i) + \epsilon^-_1 (\psi^i_-, -\partial^i_- \phi^i, + F^i, - \partial_- \psi^i_+). 
+\end{aligned}
+\end{align}
+Similarly, expanding \eqref{Q2_phi} gives \textcolor{red}{variations of $F$ are still wrong, need to be finished}
+\begin{align}\label{Q2_action}
+\begin{aligned}
+Q^2_{+} : (\phi^i, \psi^i_+, \psi^i_-, F^i) \mapsto &\  (\phi^i, \psi^i_+, \psi^i_-, F^i)
++\epsilon_2^+\Big((K_+)^i_j \psi_+ ^j\ ,\  (K_+)^{i}_{j} \partial_+ \phi^j\\
+& -\partial_k(K_+)^i_j \psi_+^k \psi_+^j\ ,\ -(K_+)^i_j F^j{-}\p_k(K_+)^i_j\psi^k_-\psi^j_+\ ,\ \\
+&-(K_+)^i_j\p_+\psi_-^j+\p_k(K_+)^i_j\psi^k_+F^j+\p_k(K_+)^i_j\psi^k_-\p_+\phi^j\Big)\\
+Q^2_{-} : (\phi^i, \psi^i_+, \psi^i_-, F^i) \mapsto &\ (\phi^i, \psi^i_+, \psi^i_-, F^i)
++\epsilon_2^-\Big((K_-)^i_j \psi_- ^j\ ,\ - (K_-)^i_j F^j  \\
+&-\partial_k(K_-)^i_j \psi_+^k \psi_-^j\ ,\ -\p_k(K_-)^i_j\psi^k_-\psi^j_-+(K_-)^{i}_{j} \partial_- \phi^j\ ,\  \\
+&(K_-)^i_j\p_-\psi_+^j+\p_k(K_-)^i_j\psi^k_-F^j-\p_k(K_-)^i_j\psi^k_+\p_-\phi^j\Big).
+\end{aligned}
+\end{align}
+%
+%\begin{lemma}
+%Expanding out in the components of the $(1,1)$ superfield, the infinitesimal action by $Q^1_{+}$ and in Equation (\ref{q1}) reads:
+%\[
+%Q^1_{+} : (\phi^i, \psi^i_+, \psi^i_-, F^i) \mapsto (\phi^i, \psi^i_{\pm}, F^i) + \epsilon^+_1 (\psi^i_+, \partial_+ \phi, F^i, \partial_+ \psi^i_-) . 
+%\]
+%and by $Q^1_-$:
+%\[
+%Q^1_{-} : (\phi^i, \psi^i_+, \psi^i_-, F^i)  \mapsto (\phi^i, \psi^i_{\pm}, F^i) + \epsilon^-_1 (\psi^i_-, \partial^i_- \phi^i, - F^i, - \partial_- \psi^i_+)
+%\]
+%Similarly, the infinitesimal action by $Q^2_{+}$ in Equation (\ref{q2}) reads:
+%\begin{equation}\label{q2plus}
+%Q^2_{+} : (\phi^i, \psi^i_+, \psi^i_-, F^i) \mapsto ((K_+)^i_j \psi_+ ^j , - (K_+)^{i}_{j} \partial_+ \phi^j - \partial_k(K_+)^i_j \psi_+^k \psi_+^k, (K_+)^i_j F^j+\p_k(K_+)^i_j\psi^k_-\psi^j_+, \brian{F term})
+%\end{equation}
+%and for $Q^2_-$:
+%\begin{equation}\label{q2minus}
+%Q^2_{-} : (\phi^i, \psi^i_+, \psi^i_-, F^i) \mapsto ((K_-)^i_j \psi_- ^j , - (K_-)^{i}_{j} \partial_- \phi^j - \partial_k(K_-)^i_j \psi_-^k \psi_-^k, (K_-)^i_j F^j+\p_k(K_-)^i_j\psi^k_+\psi^j_-, \brian{F term})
+%\end{equation}
+%\end{lemma}
+%
+%%\begin{align}\label{Q12_action}
+%%\begin{aligned}
+%%[Q_\pm^1 ,\phi^i]&=\psi_\pm^i,& [Q_\pm^2 ,\phi^i] &=(K_\pm)^i_j\psi_\pm^j,\\
+%%[Q_\pm^1 ,\psi^i_\pm] &=\p_\pm\phi^i,& [Q_\pm^2 ,\psi^i_\pm] &=-(K_\pm)^i_j\p_+\phi^j{\textcolor{red}{+}}\p_k(K_\pm)^i_j\psi_+^k\psi_+^j\\
+%%[Q_\pm^1 ,\psi^i_\mp]&=\pm F^i,& [Q_\pm^2 ,\psi^i_\mp] &=(K_\pm)^i_jF^j+\p_k(K_\pm)^i_j\psi^k_\mp\psi^j_\pm.
+%%\end{aligned}
+%%\end{align}
+%%
+%%\textcolor{red}{There's a sign issue above, the $+$ needs to be $-$.}
+%\begin{proof}
+%Recall, in components the superfield is of the form
+%\[
+%\Phi^i =\phi^i+\theta^+\psi^i_++\theta^-\psi^i_-+\theta^+\theta^-F^i .
+%\]
+%The action of the $Q^1_\pm$ charges is straightforward and can be simply read off from the infinitesimal action. 
+%%\begin{align*}
+%%[Q^1_\pm,\Phi]=[Q_\pm^1,\phi^i]+[Q_\pm^1,\psi^i_\pm]\theta^\pm+[Q_\pm^1,\psi^i_\mp]\theta^\mp+[Q_\pm^1,F]\theta^\pm\theta^\mp.
+%%\end{align*}
+%%For instance $[Q_{\pm}^1, \phi^i] = \theta^{\pm} \partial_{\pm} \phi^i$, thus 
+%To obtain the action by the charges $Q^2_\pm$ on the individual components we first need to expand $K_\pm(\Phi)$ in terms of the components of the superfield:
+%\begin{align*}
+%(K_\pm)^i_j(\Phi)=(K_\pm)^i_j(\phi)+\p_k(K_\pm)^i_j\theta^+\psi_+^k+\p_k(K_\pm)^i_j\theta^-\psi_-^k+\p_k(K_\pm)\theta^+\theta^-F^k,
+%\end{align*}
+%so that the infinitesimal action by $Q^2_\pm$ on $\Phi^i$ is:
+%\begin{align}
+%\Phi^i + \epsilon_2^\pm (K_\pm)^i_j(\Phi)(\psi^j_\pm\pm\theta^\mp F^j-\theta^\pm\p_\pm\phi^j\mp\theta^+\theta^-\p_\pm\psi^j_\mp) .
+%\end{align}
+%Reading off the various components this expression yields Equations (\ref{q2plus}) and (\ref{q2minus}).
+%\end{proof}
+
+
+%
+%\paragraph{The $(2,2)$ formalism}
+%\brian{
+%There is the following superspace model for $(2,2)$ parasupersymmetry. 
+%Consider the superspace $\RR^{1,1 | 4}$ 
+%}
+
+\subsection{$(2,1)$ and $(2,0)$ parasupersymmetry}
+\david{maybe we can just make this a paragraph and say in words (as opposed to propositions) what the geometries are?}
+\brian{I agree. I can do this.}
+Many of the constructions above make sense when there is less total supersymmetry, and we briefly mention two important cases. The first concerns the $(2,1)$ parasupersymmetry algebra.
+This algebra $\mathfrak{t}_{(2,1)}$ consists of generators $\{Q^1_\pm, Q^2_+\}$ satisfying the same algebra as in (\ref{eq:(2,2)para}). 
+Starting with the $(1,1)$ supersymmetric $\sigma$-model (\ref{eq:(1,1)action}), and labeling the odd coordinates by $\theta^\pm = \theta_1^\pm$, one can ask for an additional odd symmetry 
+\[
+Q^2_+ :  \Phi \mapsto \Phi + \epsilon_2^+ K_+(\Phi)^j_i D_+ \Phi^i
+\]
+which determines a symmetry by the $(2,1)$ parasupersymmetry algebra.
+
+\begin{proposition}
+The odd vector field $Q_2^+$ is a symmetry of the $(1,1)$ supersymmetric $\sigma$-model provided $(K_+)^{j}_i$ is a paracomplex structure satisfying \brian{What conditions here?}
+Thus, the $(1,1)$ supersymmetric $\sigma$-model has $(2,1)$ parasupersymmetry provided the target is \brian{same conditions}. 
+\end{proposition}
+
+The next symmetry algebra we wish to consider is the $(2,0)$ parasupersymmetry algebra $\mathfrak{t}_{(2,0)}$. 
+This algebra has the same even generators as the $(2,1)$ and $(2,2)$ algebras, and odd generators $\{Q^1_+, Q^2_+\}$ satisfying the relations
+\[
+[Q^1_+, Q^1_+] =  2 \partial_\pm \;\;\; , \;\;\; [Q^2_+, Q^2_+] = - 2 \partial_\pm
+\]
+
+\brian{The (1,0) action}
+
+We propose an extended symmetry of the $(1,0)$ $\sigma$-model by the following action by the odd vector field $Q_+^2$:
+\[
+Q^2_+ : \Phi \mapsto \Phi + \epsilon_2^+ K_+(\Phi)^j_i D_+ \Phi^i .
+\]
+
+\begin{proposition}
+The odd vector field $Q_2^+$ is a symmetry of the $(1,0)$ supersymmetric $\sigma$-model provided $(K_+)^{j}_i$ is a paracomplex structure. 
+Thus, the $(1,0)$ supersymmetric $\sigma$-model has $(2,0)$ parasupersymmetry provided the target is paracomplex. \brian{there is a version for a target vector bundle as well...}
+\end{proposition}
+
+\subsection{Topological twists}\label{sec:toptwist}
+
+\brian{I still think this should be a separate section. It can go before AKSZ, if you want, but the answers won't make sense until we introduce the topological theories.}
+
+\brian{Give a general prescription of twisting.}
+
+In this section we show that the R-symmetry of the para-$(2,2)$ superalgebra can be used to produce topological theories from the $(2,2)$ para-supersymmetric model presented in the Section \ref{sec:(2,2)parasusy} via a procedure called topological twisting, exactly analogous to topological twisting in ordinary supersymmetry. We show that the theories we obtain match the topological theories constructed in the Section \ref{sec:GpC_AKSZ} in the AKSZ formalism. 
+
+In our presentation, we use the similarities between the generalized K\"{a}hler (GK) and generalized para-K\"{a}hler (GpK) geometries, and we follow the approach presented in \cite{Kapustin:2004gv} for the GK case.
+
+\brian{geometry, change in gradings}
+\david{how does the embedding of $SO(1,1)$ into $G_R$ reflect on the definition of $\QQ$?}
+
+Let $(\eta,K_\pm,H=\rd b)$ be the bi-para-Hermitian geometry of the $(2,2)$ para-SUSY sigma model and let $\{Q^1_\pm,Q^1_\pm\}$ be the basis of the superalgebra \eqref{eq:(2,2)para}. We define the following nilpotent supercharge
+\begin{align}\label{QQ_nilpotent}
+\QQ=Q_L+Q_R,\quad Q_L=\frac{1}{2}(Q^1_++Q^2_+),\quad Q_R=\frac{1}{2}(Q^1_-+Q^2_-),
+\end{align}
+and we also introduce the usual notation 
+\begin{align*}
+\chi=\frac{1}{2}(\id+K_+)\psi_+=P_+\psi_+=\psi_+^{(1,0)_+},\quad\lambda=\frac{1}{2}(\id+K_-)\psi_-=P_-\psi_-=\psi_-^{(1,0)_-}.
+\end{align*}
+
+The action of $\QQ$ on these fields is the content of the following statement:
+\begin{proposition}\label{prop_toptwist}
+The action of $Q_{L/R}$ on the fields $\chi$, $\lambda$ and $\phi$ is given by
+\begin{align}\label{eq:Qcoh}
+\begin{aligned}
+[Q_L,\phi^i]&=\chi^i & [Q_R,\phi^i]&=\lambda^i\\
+[Q_L,\chi^i]&=0 & [Q_R,\lambda^i]&=0\\
+[Q_L,\lambda^i]&=-(\Gamma^-)^i_{jk}\chi^j\lambda^k & [Q_R,\chi^i]&=-(\Gamma^+)^i_{jk}\lambda^j\chi^k.
+\end{aligned}
+\end{align}
+\end{proposition}
+\begin{proof}
+See Appendix \ref{appendix:proof_prop}.
+\end{proof}
+
+The observables of the twisted theory are therefore polynomials in the odd variables $\chi,\lambda$ with even coefficients dependent on $\phi$:
+\begin{align*}
+{\cal O}_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}\chi^{i_1}\cdots\chi^{i_a}\lambda^{j_1}\cdots\lambda^{j_b}.
+\end{align*}
+Because $\chi \in \XX^{(1,0)_+}$ and $\lambda \in \XX^{(1,0)_-}$, we can identify ${\cal O}_f$ with a function on the supermanifold $(T^{(1,0)_+}\oplus T^{(1,0)_-})[1]$, which in turn can be identified with the differential form
+\begin{align*}
+\Omega_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}dx^{i_1}_+\cdots dx^{i_a}_+ dx^{j_1}_- \cdots dx^{j_b}_-,
+\end{align*}
+where $dx_\pm$ are the one-forms satisfying $K_\pm dx_\pm=dx_\pm$, i.e. sections of the bundle $T^*_{(1,0)_\pm}$. Via this identification, the operator ${\cal Q}\coloneqq Q_L+Q_R$ defines a differential
+\begin{align*}
+\rd_\QQ:\ \Lambda^\bullet(T^{*(1,0)_+}\oplus T^{*(1,0)_-})\rightarrow \Lambda^{\bullet +1}(T^{*(1,0)_+}\oplus T^{*(1,0)_-})
+\end{align*}
+and because $\QQ$ squares to zero $\rd_\QQ$ also squares to zero. Therefore, $\rd_\QQ$ gives rise to a Chevalley-Eilenberg complex $\text{CE}(L)$ of a certain Lie algebroid $L$ which we now describe.
+
+\paragraph{Lie algebroid from bi-para-Hermitian data} Consider the Lie algebroid $L\overset{a}{\rightarrow} T$ with $L=T^{(1,0)_+}\oplus T^{(1,0)_-}$ and anchor given by the sum of the two inclusions $\imath_\pm:\ T^{(1,0)_\pm}\hookrightarrow T$:
+\begin{align*}
+a:L=T^{(1,0)_+}\oplus T^{(1,0)_-} &\rightarrow T\\
+ e=(x_+,x_-) &\mapsto \imath_+(x_+)+\imath_-(x_-).
+\end{align*}
+From \eqref{eq:Qcoh} we can read off the action of $\rd_\QQ$ on degree one elements, i.e. sections $\alpha=(\alpha^+,\alpha^-)$ of $L^*=T^*_{(1,0)_+}\oplus T^*_{(1,0)_-}$:
+\begin{align*}
+\rd_\QQ\alpha&=\p_k\ap_i^+[dx_+^k+dx_-^k]\w dx_+^i-\ap^+_i(\Gamma^+)^i_{jk}dx_-^j\w dx_+^k\\
+&+\p_k\ap_i^-[dx_+^k+dx_-^k]\w dx_-^i-\ap^-_i(\Gamma^-)^i_{jk}dx_+^j\w dx_-^k.
+\end{align*}
+%In coordinate-free form, we get
+%\begin{align*}
+%\rd_\QQ\ap=(\p_++\n^+_{P_-(\bullet)})\ap^++(\p_-+\n^-_{P_+(\bullet)})\ap^-,
+%\end{align*}
+By contracting in two sections of $L$, $e_1=x_++x_-$, $e_2=y_-+y_-$, we get the coordinate-free expression
+\begin{align}\label{eq:dQ}
+\begin{aligned}
+(\rd_\QQ\ap)(e_1,e_2)&=(\p_+\ap^+)(x_+,y_+)+\n^+_{x_-}\ap^+(y_+)-\n^+_{y_-}\ap^+(x_+)\\
+&+(\p_-\ap^-)(x_-,y_-)+\n^-_{x_+}\ap^-(y_-)-\n^-_{y_+}\ap^-(x_-),
+\end{aligned}
+\end{align}
+where $\p_\pm$ denotes the para-complex Dolbeault operators $\p$ for $K_\pm$. We can further rewrite this expression by writing $\ap=(\eta(\tl{z}_+),\eta(\tl{z}_-))$ for $\tl{z}_\pm \in \se(T^{(1,0)_\pm})$, invoking the formula $\p_\pm\ap^\pm(x_\pm,y_\pm)=\lc_{x_\pm}\ap^\pm(y_\pm)-\lc_{y_\pm}\ap^\pm(x_\pm)$ and recalling $\n^\pm=\lc\pm \frac{1}{2}\eta^{-1}H$:
+\begin{align}
+\begin{aligned}
+(\rd_\QQ\ap)(e_1,e_2)&=\eta((\lc_{x_+}+\n_{x_-}^+)\zt_+,y_+)-\eta((\lc_{y_+}+\n_{y_-}^+)\zt_+,x_+)\\
+&+\eta((\lc_{x_-}+\n_{x_+}^-)\zt_-,y_-)-\eta((\lc_{y_-}+\n_{y_+}^-)\zt_-,x_-)\\
+&=\eta(\n^+_{x_++x_-}\zt_+,y_+)-\eta(\n_{y_++y_-}^+\zt_+,x_+)-H(x_+,\zt_+,y_+)\\
+&+\eta(\n_{x_++x_-}^-\zt_-,y_-)-\eta(\n_{y_++y_-}^-\zt_-,x_-)+H(x_-,\zt_-,y_-).
+\end{aligned}
+\end{align}
+This fully determines the Lie algebroid structure of $L$. However, in the following paragraph we will discuss how the same Lie algebroid arises from the data of a generalized para-K\"ahler structure.
+
+\paragraph{Lie algebroid from generalized para-K\"ahler data} Recall that a GpK structure defines the decomposition \eqref{GpK_bundles}
+\begin{align*}
+\TT=\ell_+\oplus\ell_-\oplus \ellt_+\oplus \ellt_-,
+\end{align*}
+where the the eigenbundles of $\KK_+$ are $\Lb_+=\ell_+\oplus\ell_-$ and $\wtl{\Lb}_+=\ellt_+\oplus \ellt_-$. Because $\Lb$ is a Dirac structure, it defines a Lie algebroid by restriction of the Courant algebroid on $\TT$ to $\Lb$, i.e. the Lie algebroid bracket and anchor are given by the restriction of the Dorfman bracket and the projection onto tangent bundle, respectively (see Proposition \ref{prop:dirac_Liealg}). We now show that such Lie algebroid is isomorphic to the Lie algebroid defined by $(L,a,\rd_\QQ)$ above:
+\begin{theorem}
+The Lie algebroids $(L,a,\rd_\QQ)$ and $(\Lb_+,\pi_T\!\!\mid_{\Lb_+},\brac\!\!\mid_{\Lb_+})$ are isomorphic via the map $\pi=\pi_+\oplus \pi_-$.
+\end{theorem}
+\begin{proof}
+First, we notice that the bundles themselves are related by $\pi$,  $\pi(\Lb_+)=\pi(\ell_+\oplus \ell_-)=\pi_+(\ell_+)\oplus \pi_-(\ell_-)=T^{(1,0)_+}\oplus T^{(1,0)_-}=L$ and also $\pi$ is clearly an isomorphism since both $\pi_\pm$ are. Additionally, the anchors are related by $a\circ\pi=\pi_T\!\!\mid_{\Lb_+}$. The only non-trivial task is therefore to show that the respective differentials satisfy
+\begin{align}\label{eq:d_pi}
+\pi^*\circ\rd_Q  =\rd_{\Lb_+}\circ \pi^*,
+\end{align}
+where $\pi^*=\pi^*_+\oplus\pi_-^*$ is given by the dual maps to $\pi_\pm:\ell_+\rightarrow T^{(1,0)_\pm}$, extended to a map $\pi^*:\Lambda^k(L^*)\rightarrow\Lambda^k(\Lb_+^*)$.
+
+Because of the chain rule, we only need to check \eqref{eq:d_pi} on degree $0$ and degree $1$ elements in the respective complexes. Degree $0$ follows immediately:
+\begin{align*}
+(\rd_Q f)(\pi(u))= a\circ \pi(u)[f]=\pi_T\!\!\mid_{\Lb_+}(u)[f]=(\rd_{\Lb_+}f)(u),
+\end{align*}
+%For degree one, we use the decomposition of the respective bundles and check for each component
+%\begin{alignat*}{2}
+%\rd_Q:&&T^*_{(1,0)_+}\oplus T^*_{(1,0)_-} &\rightarrow \Lambda^2(T^*_{(1,0)_+}\oplus T^*_{(1,0)_-})\\
+%\rd_{\Lb_+}:&& \ell_+^*\oplus \ell_-^* &\rightarrow \Lambda^2(\ell_+^*\oplus \ell_-^*)
+%\end{alignat*}
+and we will now prove \ref{eq:d_pi} for degree $1$ elements. In the following we will make use of the identifications provided by the metric $\eta$ and pairing $\lara$:
+\begin{alignat*}{2}
+\eta:&&\  T^*_{(1,0)_\pm} &\leftrightarrow T^{(0,1)_\pm}\\
+\lara:&& \ell^*_\pm &\leftrightarrow \ellt_\pm,
+\end{alignat*}
+so that elements in $T^*_{(1,0)_\pm}$ can be written as $\eta(\tl{z}_\pm)$ with $\tl{z}_\pm$ vector in $T^{(0,1)_\pm}$ and similarly, elements in $\ell^*_\pm$ can be expressed as $\la \tl{w}_\pm, \cdot\ra$ with $\tl{w}_\pm$ section of $\ellt_\pm$. To declutter notation, we shall also denote the bracket and anchor on $\Lb_+$ by $\brac$ and $\pi$, respectively.
+
+The differential $\rd_{\Lb_+}$ is defined by the bracket on the Lie algebroid $\Lb_+$ via the following formula:
+\begin{align}\label{eq:proof_Liethm}
+\rd_{\Lb_+}  w^* (u,v)=\pi(u) w^*(v)-\pi(u) w^*(v)- w^*([u,v]),
+\end{align}
+where $ w^* \in \se(\Lb_+^*)$ and $u,v\in \se(\Lb_+)$. Writing $ w^*$ as $\la \tl{w},\cdot\ra$, with $\tl{w}\in\se (\tl{\Lb}_+)$ we can rewrite this as
+\begin{align}\label{dL}
+\begin{aligned}
+\rd_{\Lb_+}  w^* (u,v)&=\pi(u)\la v ,\tl{w}\ra-\pi(v)\la u,\tl{w}\ra-\la [u,v],\tl{w}\ra\\
+&=\la D_uv,\tl{w}\ra+\la v,D_u \tl{w}\ra-\la D_v u,\tl{w}\ra-\la u,D_v\tl{w}\ra-\la D_uv-D_vu,\tl{w}\ra\\
+&+{T}(u,v,\tl{w})\\
+&=\la D_u \tl{w},v\ra-\la D_v\tl{w},u\ra+{T}(u,v,\tl{w})\\
+&=\la D_u \tl{w}_+,v_+\ra-\la D_v\tl{w}_+,u_+\ra+{T}(u_+,v_+,\tl{w}_+)\\
+&+\la D_u \tl{w}_-,v_-\ra-\la D_v\tl{w}_-,u_-\ra+{T}(u_-,v_-,\tl{w}_-),
+\end{aligned}
+\end{align}
+where we used \eqref{gentorsion_def} to express $\brac$ in terms of $D$, the generalized Bismut connection of the generalized metric for the GpK structure. We then used the fact that $D$ preserves $\lara$, $C_\pm$ as well as $\Lb_+$ and that $T$ only has components in $\Lambda^3 C_+\oplus\Lambda^3 C_-$ \cite{Gualtieri:2010fd}.
+
+We will now show that $\rd_{\Lb_+}$ is related to $\rd_\QQ$ via \eqref{eq:d_pi}, so that $\rd_\QQ=(\pi^{-1})^*\circ \rd_{\Lb_+}\circ \pi^*$, i.e.
+\begin{align*}
+\rd_\QQ\ap(e_1,e_2)=\rd_{\Lb_+}(\pi^*\ap)(\pi^{-1}e_1,\pi^{-1}e_2).
+\end{align*}
+To read this off from \eqref{dL} and compare with \eqref{eq:dQ}, we need to express $\pi^*\ap$ as $\pi^*\ap=w^*=\la \tl{w},\cdot\ra$ for some $\tl{w}\in\se (\tl{\Lb}_+)$ and $\ap=(\eta(\zt_+),\eta(\zt_-))$:
+\begin{align*}
+\pi^*\ap=\pi^*(\eta(\zt_+),\eta(\zt_-))=(\eta(\zt_+,\pi_+\cdot),\eta(\zt_-,\pi_-\cdot))=\frac{1}{2}\la\pi^{-1}(\zt_+,-\zt_-),\cdot\ra,
+\end{align*}
+where $\zt_\pm\in \se(T^{(1,0)_\pm})$ and we used \eqref{pi:gG_relationship}. Therefore, denoting $e_1=(x_+,x_-)$ and $e_2=(y_+,y_-)$ as in \eqref{eq:dQ}, \eqref{dL} yields (denoting $e_1=(x_+,x_-)$ and $e_2=(y_+,y_-)$ as in \eqref{eq:dQ})
+\begin{align*}
+\rd_{\Lb_+}(&\pi^*\ap)(\pi^{-1}e_1,\pi^{-1}e_2)\\
+&=\eta(\n^+_{x_++x_-}\zt_+,y_+)-\eta(\n^+_{y_++y_-}\zt_+,x_+)+\frac{1}{2}T(\pi_+^{-1}x_+,\pi_+^{-1}y_+,\pi_+^{-1}\zt_+)\\
+&+\eta(\n^-_{x_++x_-}\zt_-,y_-)-\eta(\n^-_{y_++y_-}\zt_-,x_-)-\frac{1}{2}T(\pi_-^{-1}x_-,\pi_-^{-1}y_-,\pi_-^{-1}\zt_-),
+\end{align*}
+where we used \eqref{genBismut_pi_nabla_pm} and once again \eqref{pi:gG_relationship}. Finally, invoking \eqref{gentorsion_H}, we arrive at \eqref{eq:dQ}, showing that \eqref{eq:d_pi} holds and completing the proof.
+\end{proof}
+
+We have therefore shown that the observables in the topologically twisted theories are given by the Lie algebroid cohomology of $\Lb$, which is exactly the same as the $2D$ boundary topological theories constructed in the Section \ref{??}:
+\begin{corollary}
+Let $\Phi:\Sigma^{2|2}\rightarrow \Mb$ be a $(2,2)$ para-supersymmetric $\sigma$-model with the target $(\Mb,\KK_\pm,\GG(\eta,b))$ a Generalized para-K\"ahler manifold. Then the topological twist of this $\sigma$-model defined by the nilpotent charge $\QQ$ \eqref{QQ_nilpotent} agrees with the $2D$ topological boundary theory determined by the generalized para-complex structure on the Courant algebroid $(\TT)\Mb$ with flux $H\overset{loc.}{=}\rd b$.
+\end{corollary}
+
+\section{The AKSZ formalism and 3d TFT}
+
+\brian{Merge at some point.}
+
+\appendix
+\section{Proof of Proposition \ref{prop_toptwist}}\label{appendix:proof_prop}
+\begin{proof}
+The action of $Q_{L/R}$ on $\phi$ can be immediately read off \eqref{Q12_action}:
+\begin{align}
+[Q_L,\phi^i]=\frac{1}{2}[Q_+^1+Q^2_+,\phi^i]=\chi^i.
+\end{align}
+
+We now prove the formulas for the action of $Q_{L/R}$ on $\chi$, the action on $\lambda$ is entirely analogous. First, we expand
+\begin{align}\label{QL_chi}
+[Q_L,\chi^i]=[Q_L,(P_+)^i_j\psi_+^j]=[Q_L,(P_+)^i_j]\psi_+^j{+}(P_+)^i_j[Q_L,\psi_+^j].
+\end{align}
+Because $K_+$ is a function of the bosonic coordinates, we also have $P_+=P_+(\phi)$ and so
+\begin{align}\label{QL_P}
+[Q_L,(P_+)^i_j]=\p_k(P_+)^i_j[Q_L,\phi^k]=\p_k(P_+)^i_j\chi^k.
+\end{align}
+Combining \eqref{QL_chi} and \eqref{QL_P} and using \eqref{Q12_action}, we arrive at
+\begin{align*}
+[Q_L,\chi^i]&=\p_k(P_+)^i_j\chi^k\psi_+^j{+}(P_+)^i_j\left(-(\tl{P}_+)^j_k\p_+\phi^k{-}\frac{1}{2}\p_k(K_+)^j_l\psi_+^k\psi_+^l\right)\\
+&=\p_k(P_+)^i_j(P_+)^k_l\psi_+^l\psi_+^j{-}(P_+)^i_j\p_k(P_+)^j_l\psi_+^k\psi_+^l,
+\end{align*}
+where we denoted $\tl{P}_+=\frac{1}{2}(\id-K_+)$ and used $P_+\tl{P}_+=0$. We now expand the projectors, $(P_+)^i_j=\frac{1}{2}(\delta^i_j+(K_+)^i_j)$:
+
+\begin{align*}
+[Q_L,\chi^i]&=\p_k(P_+)^i_j(P_+)^k_l\psi_+^l\psi_+^j{-}(P_+)^i_j\p_k(P_+)^j_l\psi_+^k\psi_+^l\\
+&=\frac{1}{2}(\p_j(K_+)^i_l(P_+)^j_k{-}(P_+)^i_j\p_k(K_+)^j_l)\psi_+^k\psi_+^l\\
+&=\frac{1}{4}(\p_j(K_+)^i_l(K_+)^j_k{-}(K_+)^i_j\p_k(K_+)^j_l)\psi_+^k\psi_+^l\\
+&+\frac{1}{4}(\p_j(K_+)^i_l\psi_+^j\psi_+^l{-}\p_k(K_+)^i_l\psi_+^k\psi_+^l)=-\frac{1}{2}(N_{K_+})^i_{kl}\psi_+^k\psi^l_+,
+\end{align*}
+where in the last line we rewrote $\psi_+^k\psi^l_+=\frac{1}{2}(\psi^k\psi^l-\psi^l\psi^k)$ to get the expression for the Nijenhuis tensor of $K_+$:
+\begin{align*}
+4(N_{K_+})^i_{kl}=(K_+)^j_k\p_j(K_+)^i_l-(K_+)^j_l\p_j(K_+)^i_k {-} (K_+)^i_j(\p_k(K_+)^j_l-\p_l(K_+)^j_k).
+\end{align*}
+Invoking integrability of $K_+$, $N_{K_+}=$ and we conclude that $[Q_L,\chi^i]=0$.
+
+Similarly, $[Q_L,\lambda]$ can be expanded
+\begin{align}\label{QL_lambda}
+[Q_L,\lambda^i]&=[Q_L,(P_-)^i_j\psi_-^j]=[Q_L,(P_-)^i_j]\psi_-^j+(P_-)^i_j[Q_L,\psi_-^j]\\
+&=\p_k(P_-)^i_j\chi^k\psi_-^j-(P_-)^i_k\left((P_+)^k_jF^j+\frac{1}{2}\p_l(K_+)^k_j\psi^l_-\psi_+^j\right),
+\end{align}
+where we used
+\begin{align*}
+[Q_L,\psi_-^i]=-(P_+)^i_jF^j\textcolor{red}{-}\frac{1}{2}\p_k(K_+)^i_j\psi^k_-\psi_+^j.
+\end{align*}
+Next, we rewrite the derivative in terms of $\n^-$ and use the property $\n^-P_-=0$:
+\begin{align*}
+\p_k(P_-)^i_j&=\n^-_k(P_-)^i_j-(\Gamma^-)^i_{kl}(P_-)^l_j+(\Gamma^-)^l_{kj}(P_-)^i_l\\
+&=-(\Gamma^-)^i_{kl}(P_-)^l_j+(\Gamma^-)^l_{kj}(P_-)^i_l,
+\end{align*}
+so that
+\begin{align}\label{eq:calc1}
+\begin{aligned}
+\p_k(P_-)^i_j\chi^k\psi_-^j=\left(-(\Gamma^-)^i_{kl}(P_-)^l_j+(\Gamma^-)^l_{kj}(P_-)^i_l\right)(P_+)^k_m\psi_+^m\psi_-^j.
+\end{aligned}
+\end{align}
+Similarly,
+\begin{align}\label{eq:calc2}
+\begin{aligned}
+\frac{1}{2}(P_-)^i_k\p_l(K_+)^k_j\psi^l_-\psi_+^j&=(P_-)^i_k\p_l(P_+)^k_j\psi^l_-\psi_+^j\\
+&=(P_-)^i_k\left(-(\Gamma^-)^k_{ml}(P_+)^m_j+(\Gamma^-)^m_{jl}(P_+)^k_m\right)\psi^l_-\psi_+^j,
+\end{aligned}
+\end{align}
+where we used
+\begin{align*}
+(\Gamma^+)^i_{jk}=g^{im}(\Gamma_{mjk}+\frac{1}{2}H_{jkm})=g^{im}(\Gamma_{mkj}-\frac{1}{2}H_{kjm})=(\Gamma^-)^i_{kj}.
+\end{align*}
+Plugging \eqref{eq:calc1} and \eqref{eq:calc2} into \eqref{QL_lambda} with use of the equation of motion \eqref{F_EoM} for $F$ then yields
+\begin{align*}
+[Q_L,\lambda^i]&=((\Gamma^-)^i_{km}(P_-)^m_l-(\Gamma^-)^m_{kl}(P_-)^i_m)(P_+)^k_j\psi_-^l\psi_+^j\\
+&{-}(P_-)^i_k(-(\Gamma^-)^k_{ml}(P_+)^m_j+(\Gamma^-)^m_{jl}(P_+)^k_m)\psi^l_-\psi_+^j\\
+&+(P_-)^i_k(P_+)^k_m(\Gamma^-)^m_{jl}\psi_-^l\psi_+^j.
+ \end{align*}
+Here all terms cancel except for one, which finally reads
+\begin{align*}
+[Q_L,\lambda^i]=-(\Gamma^-)^i_{kl}\chi^k\lambda^l.
+\end{align*}
+\end{proof}
+
+\bibliographystyle{JHEP}
+\bibliography{mybib}
+\end{document}
