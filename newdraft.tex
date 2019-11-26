@@ -59,7 +59,7 @@
 \newcommand{\tth}{\tl{\theta}}
 \newcommand{\kk}{\mathrm{k}}
 \newcommand{\Mt}{\tl{M}}
-\newcommand{\pd}{\p\!\!\!\p}
+\newcommand{\pd}{\overline{\p\!\!\!\p}}
 \newcommand{\Mb}{\mathbb{M}}
 \newcommand{\Drm}{\mathrm{D}}
 \newcommand{\Dcal}{\mathcal{D}}
@@ -243,7 +243,7 @@ Notice, however, that for example the usual Poisson sigma model cannot be obtain
 \section{Background on paracomplex and generalized geometry}
 \david{would just put the introduction of paracomplex geometry (minus the generalized part) in appendix, we did that even in the other paper which is literally a differential geometry paper}
 
-\subsection{Paracomplex geometry}
+\subsection{Paracomplex geometry} \label{sec: paracomplex}
 
 In this section we introduce para-complex geometry with emphasis on the analogy with complex geometry. More details can be found in \cite{Hu:2019zro} or \cite[Ch.~15]{Cortes:2010ykx}, for example. \brian{I think you should cite your work here too.} 
 
@@ -284,6 +284,7 @@ are the \textbf{para-complex Dolbeault operators}, satisfying
 One can also introduce the {\it twisted differential $\rd^p\coloneqq(\Lambda^{k+1}K^*)\circ\rd\circ (\Lambda^kK^*)$}. When $K$ is integrable, it can be simply written as $\rd^p=(\p_++\p_-)$ on real forms and $\rd^p=\kk (\p+\bar{\p})$ on para-complex forms.
   
 \paragraph{Para-Holomorphic structure}
+
 Let now $(\mathcal{P},K)$ be an almost para-complex manifold of dimension $2n$. If $K$ is integrable, we get a set of $2n$ coordinates $(x^i,\tilde{x}_i)$ called {\bf adapted coordinates}, $\mathcal{P}$ locally splits as $M\times \tilde{M}$, and $K$ acts as identity on $TM=L$ and negative identity on $T\tilde{M}=\tilde{L}$. The adapted coordinates therefore define two complimentary foliations that we will call {\bf canonical foliations} of the para-complex manifold $\PS$ and denote $M$ and $\Mt$. Both $M$ and $\Mt$ are therefore $n$-dimensional manifolds composed of connected components called leafs $M_i$, $\Mt_i$:
 \begin{align*}
 M=\bigcup_i M_i,\quad \Mt=\bigcup_i \Mt_i,
@@ -326,6 +327,7 @@ Similarly, the cotangent bundle is a holomorphic bundle. For the higher wedge po
 \begin{align}
 \left(\Omega^{(\bullet,0)}\otimes\Omega^{(0,\bullet)},(\p,\pt)\right)\coloneqq \left(\mathbf{\Omega}^{\bullet,0},\pd\right).
 \end{align}
+\brian{Should this be the thing resolving paraholomorphic functions or anti paraholomorphic functions? If paraholomorphic it should be $\mathbf{\Omega}^{0,\bullet}$. }
 %\begin{lemma}
 %Let $(\PS,K)$ be a paracomplex manifold. Then $\rd^p\coloneqq(\Lambda^{k+1}K)\circ\rd\circ (\Lambda^kK)$ can be expressed as
 %\begin{align}\label{eq:dp-operator}
