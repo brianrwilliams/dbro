@@ -1050,10 +1050,31 @@ The action of $Q_{L/R}$ on the fields $\chi$, $\lambda$ and $\phi$ is given by
 See Appendix \ref{appendix:proof_prop}.
 \end{proof}
 
+\brian{I think the approach needs to be explained here.
+The type of twisting that seems to be used here is a bit weaker than the twisting I know. 
+In this section we are claiming everything at the level of observables not at the level of fields.
+This is a small difference, but we should point it out.}
+
+\brian{
+To say that we know what the observables of the twisted theory are, we should first describe what the observables of the untwisted theory are. 
+``Twisting" is then a procedure for deforming this.
+Then, the first fact we need to state is: the observables of the twisted theory are given by the Lie algebroid cohomology of some Lie algebroid. 
+I think this is basically done below, but state it as a proposition.
+}
+
+\brian{
+I'm happy to then use the definition of a ``theory" in terms of the observables for the topological theories. 
+This will make the AKSZ description more concise.
+} 
+
+
 The observables of the twisted theory are therefore polynomials in the odd variables $\chi,\lambda$ with even coefficients dependent on $\phi$:
 \begin{align*}
 {\cal O}_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}\chi^{i_1}\cdots\chi^{i_a}\lambda^{j_1}\cdots\lambda^{j_b}.
 \end{align*}
+\brian{This already seems like we're in the twisted theory.
+For instance, why don't derivatives in the fields $\chi$ and $\lambda$ appear?
+When you topologically twist, all observables involving derivatives become cohomologically trivial, and so can be discarded.}
 Because $\chi \in \XX^{(1,0)_+}$ and $\lambda \in \XX^{(1,0)_-}$, we can identify ${\cal O}_f$ with a function on the supermanifold $(T^{(1,0)_+}\oplus T^{(1,0)_-})[1]$, which in turn can be identified with the differential form
 \begin{align*}
 \Omega_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}dx^{i_1}_+\cdots dx^{i_a}_+ dx^{j_1}_- \cdots dx^{j_b}_-,
