@@ -18,6 +18,7 @@
 \newcommand{\FF}{\mathcal{F}}
 \newcommand{\QQ}{\mathcal{Q}}
 \newcommand{\cE}{\mathcal{E}}
+\newcommand{\cN}{\mathcal{N}}
 %----------------------------------------
 \newcommand{\PP}{\mathrm{P}}
 \newcommand{\PPt}{\tilde{\mathrm{P}}}
@@ -57,11 +58,12 @@
 \newcommand{\zt}{\tl{z}}
 \newcommand{\tth}{\tl{\theta}}
 \newcommand{\kk}{\mathrm{k}}
-\def\fg{\mathfrak{g}}
-
 \newcommand{\Mt}{\tl{M}}
-\newcommand{\pd}{\p\!\!\!\p}
+\newcommand{\pd}{\overline{\p\!\!\!\p}}
 \newcommand{\Mb}{\mathbb{M}}
+\newcommand{\Drm}{\mathrm{D}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\wtl}{\widetilde}
 %----------------------------------------
 \def\gld{generalized Lie derivative }
 \def\glds{generalized Lie derivatives }
@@ -109,19 +111,32 @@
 
 \section{The AKSZ formalism and para-geometry}
 \def\fg{\mathfrak{g}}
-In this section we will show how to associate $2D$ topological theories to a generalized (para-)complex structure and relate them to the topological twists of $2D$ $(2,2)$ (para-)SUSY sigma models described in Section \ref{sec:toptwist} and in \cite{Kapustin:2004gv}. 
-The key to our construction is to realize the data of a G(p)C structure in terms of its eigenbundles, which are Dirac structures $L$ in the Courant algebroid $\TT$. 
-Via the AKSZ construction \cite{AKSZ}, this correspondence translates into the statement that the Dirac structure $L$ defines a topological boundary theory of a $3D$ topological theory defined by the Courant algebroid $\TT$ \cite{Roytenberg:2002nu}.
+In this section we will show how to associate a class of $2D$ topological field theories to generalized para-complex structures.
+The construction closely follows the relationship between ordinary (non-para) generalized complex structures and $2D$ topological field theories developed by Gualtieri, Pestun, \brian{other references?}.
 
-Throughout, we will use symplectic $NQ$ manifold as our model for shifted symplectic geometry. 
-We will recall the general setup of associating a $3D$ topological field theory to the data of a Courant algebroid. 
+The prescription of defining the $2D$ topological theory associated to a GpC structure starts with a $3D$ topological field theory which is defined for any manifold $M$. 
+More generally, this $3D$ theory can be defined for any {\em Courant algebroid} on $M$ \cite{Roytenberg:2002nu}., but for most examples we will only consider the standard exact Courant algebroid (or twisted versions) defined by the Dorfman bracket.
+The key to our construction is to realize the data of a G(p)C structure in terms of its eigenbundles, which are Dirac structures $L$ in the Courant algebroid $\TT$. 
+
+Via the AKSZ construction \cite{AKSZ}, this correspondence translates into the statement that the Dirac structure $L$ defines a topological boundary theory of the $3D$ topological theory defined by the standard Courant algebroid.
+\brian{cite Severa} \cite{SeveraTduality}. 
+
+In Section \ref{??}, we will relate these theories topological twists of $2D$ $(2,2)$ (para-)SUSY sigma models described in Section \ref{sec:toptwist} and in \cite{Kapustin:2004gv}. 
+
+All of the topological field theories in this section are of $\sigma$-model type and arise through the AKSZ formalism. 
+Throughout, we will use symplectic $NQ$ manifold as our model for shifted symplectic geometry which is the essential ingredient in this construction. 
+
+%Later we will use the idea of Lagrangian intersections \brian{PTVV, ButsonYoo, Costello,...}. 
+
+\subsection{Courant algebroids, $3D$ TFTs, and boundary conditions}
+First, we recall the general setup of associating a $3D$ topological field theory to the data of a Courant algebroid. 
 For a reference, see \cite{Roytenberg:2002nu,??}.
 
-Later we will use the idea of Lagrangian intersections \brian{Toen, ButsonYoo, Costello,...}. 
-\subsection{Courant algebroids, $3D$ TFTs, and boundary conditions}
 From the point of view of topological field theory, Courant algebroids are important because they provide geometric examples of $2$-shifted symplectic spaces. 
 Via the AKSZ construction, $2$-shifted symplectic spaces are the natural home for $3$-dimensional topological field theories in the BV formalism. 
 \brian{give citations here.}
+
+\brian{recollection on shifted symplectic NQ manifolds}
 
 In \cite{Roytenberg:2002nu}, it is shown how to associate a $2$-shifted symplectic NQ manifold from the data of a Courant algebroid. 
 
@@ -129,11 +144,16 @@ In \cite{Roytenberg:2002nu}, it is shown how to associate a $2$-shifted symplect
 There is an equivalence between isomorphism classes of $2$-shifted symplectic NQ manifolds with body $M$ and isomorphism classes of Courant algebroids on $M$.
 \end{theorem}
 
-We briefly recount this construction. 
+\begin{remark}
+In \cite{PymSafronov} it was shown that a more general class of $2$-shifted symplectic derived spaces, called $L_\infty$ algebroids, are equivalent to {\em twisted} Courant algebroids. 
+This is similar to a Courant algebroid, where the Jacobi identity only holds up to homotopy given by some closed $4$-form. 
+\end{remark}
 
+We briefly recount the construction of the $2$-shifted symplectic NQ manifold from the data of a Courant algebroid. 
 
 \def\Sym{{\rm Sym}}
 
+Given any Courant algebroid $E \to M$, we can have the following sequence of maps $T^* \to E \to T$, the latter is the anchor and the first map is the linear dual to the anchor.
 Using this sequence, we can define the associated $NQ$ manifold $X_E$, following \cite{Ryotenberg:2002nu}.
 The body of the NQ manifold is $M$, and the underlying graded vector bundle is given by $T^*[2] \oplus E[1]$. 
 Define the degree $+1$ vector field 
@@ -153,57 +173,95 @@ All that remains is to describe the $2$-shifted symplectic structure on the NQ m
 This is defined via the obvious pairing between $T^*[2]$ and $T$ together with the pairing $\langle - ,- \rangle$ on $E[1]$.
 In local coordinates \brian{finish}
 
-
-\subsubsection{The AKSZ theory associated to a Courant algebroid}
-
-To any Courant algebroid $E$, we associate an NQ manifold $X_E$ which carries a $2$-shifted symplectic structure. 
-
-The simplest type of Courant algebroid is one over a point.
-
-\begin{Ex}\label{ex: cs}
-Any Lie algebra $\fg$ together with a non-degenerate invariant pairing defines a $2$-shifted symplectic structure on the graded manifold $\fg[1]$ living over a point. 
-The dg algebra of functions is the Chevalley-Eilenberg cochain complex computing Lie algebra cohomology $C^*(\fg)$. 
-All such $2$-symplectic NQ manifolds over a point are of this form. 
-%The resulting AKSZ theory is Chern-Simons theory. 
-\end{Ex}
-
-\subsubsection{The AKSZ theory associated to a Courant algebroid}
-
-To any Courant algebroid $E$, we can associate an NQ manifold $X_E$ which carries a $2$-shifted symplectic structure.
-In the case that the Courant algebroid is exact, call the associated $2$-shifted symplectic space $X_H$, where $H$ labels the Severa class. 
+\subsubsection{The AKSZ construction}
 
 \def\sA{\mathcal{A}}
 \def\d{{\rm d}}
 \def\dbar{\Bar{\partial}}
 
 The starting point of the AKSZ construction is the mapping space
-\[
-{\rm Map}\left((M, (\sA^*_M, \d_M)), X_E\right)
-\]
-where $(M, (\sA^*_M, \d_M))$ is a dg manifold with body a smooth oriented manifold $M$. 
-That is, $\sA^*_M$ is a sheaf of graded commutative algebras over the de Rham complex $\Omega^*_M$ and $\d_M$ is a linear differential operator of degree $+1$ satisfying:
+\begin{equation}\label{eqn: map}
+\cE (M, X) = {\rm Map}\left((M, (\sA^*_M, \d_M)), X\right)
+\end{equation}
+where 
+\begin{itemize}
+\item $(M, (\sA^*_M, \d_M))$ is an {\em $n$-oriented} dg manifold with body a smooth oriented manifold $M$. \brian{recall $n$-orientation.}
+\item $X$ is a $(n-1)$-shifted symplectic NQ manifold. 
+\end{itemize}
+
+The dg manifold $(M, \sA^*_M)$ is specified by a sheaf of graded commutative algebras $\sA^*_M$ over the de Rham complex $\Omega^*_M$.
+Here, $\d_M$ is a linear differential operator of degree $+1$, and together the data must satisfy the following conditions:
 \begin{itemize}
 \item[(1)] $\sA_M$ is concentrated in finitely many degrees;
 \item[(2)] For each $k$, $\sA^k_M$ is a locally free sheaf of $C^\infty_M$-modules of finite rank;
 \item[(3)] The differential $\d_M : \sA_M^* \to \sA_M^{*+1}$ is square zero differential operator making $(\sA_M , \d_M)$ into a sheaf of commutative dg algebras over the de Rham complex $\Omega^*_M$
 \end{itemize}
 
+In particular, as a graded algebra $\sA^*_M$ is given by functions on a graded manifold $A_M$ with body $M$.
+In other words, $A_M$ is the total space of some graded vector bundle on $M$ (which is of finite rank and concentrated in finitely many degrees). 
+As a graded manifold, the mapping space $\cE(M,X)$ is given by the space of smooth maps between the underlying graded manifolds $A_M$ and $X$. 
+
 \begin{Ex}
-<<<<<<< HEAD
 The most important example for us will be the source dg manifold $(M, \Omega^*_M)$, that is $\sA_M = \Omega^*_M$ equipped with de Rham differential. 
 We denote this dg manifold by $M_{\rm dR}$.
+Take the dg manifold $(M, \Omega^*_M)$ where $M$ is any smooth manifold. 
+If $M$ is closed and oriented there exists an integration map
+\[
+\int_M : \Omega^*_M \to \RR[n]
+\]
+of degree $-n$ thus equipping the dg manifold $M_{\rm dR}$ with an $n$-orientation. 
 \end{Ex}
 
 \begin{Ex}
-If $M$ has a para-complex structure, then $(M, \Omega^{0,*}_M)$ has the structure of a dg manifold with differential given by the para $\dbar$-operator. 
-\brian{David, is this consistent notation?}
-We will denote this dg manifold by $M_{p \dbar}$. 
+If $M$ has a para-complex structure, $(M, \mathbf{\Omega}^{0,\bullet})$ has the structure of a dg manifold. 
+Here $\mathbf{\Omega}^{0,\bullet}$ is the para-Dolbeault complex from Section \ref{sec: paracomplex} with differential given by the para $\pd$-operator. 
+We will denote this dg manifold by $M_{\pd}$. 
+To equip the dg manifold $(M, \mathbf{\Omega}^{0,\bullet})$ with an orientation, one must fix additional data. 
+One way to do this is to assume that the para-complex manifold $M$ is equipped with a para-holomorphic volume form $\Omega_X$. \brian{is this defined earlier?}
 \end{Ex}
 
-\begin{Ex}
-If $\fg$ is a Lie algebra equipped with a non-degenerate invariant pairing, and $X_E = \fg[1]$ as in Example \ref{ex: cs}, then the AKSZ theory (whose target base manifold is a point) is equivalent to Chern-Simons theory on $M$. 
+In this case, that $\dim(M) = n$ and $X = (X, \omega_X)$ is an $(n-1)$-shifted symplectic NQ manifold, then the AKSZ construction endows the mapping space $\cE(M, X)$ in (\ref{eqn: map}) with a $(-1)$-shifted symplectic symplectic form. 
+The fundamental observation is that the diagram
+\[
+\xymatrix{
+& M \times \cE(M, X) \ar[dr]^-{{\rm ev}} \ar[dl]_-{\pi_M} & \\
+M & & X
+}
+\]
+induces a pairing
+\[
+\begin{array}{ccccc}
+ \Omega^p_M & \times & \Omega^q_N & \to & \Omega^{p+q-n}_{\cE(M, X)} \\
+\displaystyle \alpha & \times & \beta & \mapsto & \displaystyle \int_M \pi_M^* \alpha \wedge {\rm ev}^* \beta 
+ \end{array}
+ \]
+Applied to the element $1 \times \omega_X \in \Omega^0_M \times \Omega^{\brian{??}}_X$ we obtain a $(-1)$-shifted symplectic form that we denote $\int_M \omega_X$.
+
+\brian{Hamiltonians and action functional}
+
+\subsubsection{The AKSZ theory associated to a Courant algebroid}
+
+From here on, to any Courant algebroid $E$ we associate the NQ manifold $X_E$ which carries a $2$-shifted symplectic structure. 
+In the case that the Courant algebroid is exact, call the associated $2$-shifted symplectic space $X_H$, where $H$ labels the Severa class. 
+
+We first review some basic examples of AKSZ theories associated to Courant algebroids. 
+The simplest type of Courant algebroid is one over a point, see Example \ref{Ex: point}. 
+The resulting AKSZ theory is a familiar one.
+
+\begin{Ex}\label{ex: cs}
+Any Lie algebra $\fg$ together with a non-degenerate invariant pairing defines a $2$-shifted symplectic structure on the graded manifold $\fg[1]$ living over a point. 
+The dg algebra of functions is the Chevalley-Eilenberg cochain complex computing Lie algebra cohomology $C^*(\fg)$. 
+All such $2$-symplectic NQ manifolds over a point are of this form. 
+%The resulting AKSZ theory is Chern-Simons theory. 
+The resulting AKSZ theory on a $3$-manifold $M$ (whose target base manifold is a point) is equivalent to Chern-Simons theory on $M$. 
 \end{Ex}
 
+\begin{Ex} \label{ex: exact CA}
+The action functional is
+\[
+S = \int_M p_i \d x^i + \frac{1}{2} g_{ab} e^a \d e^b - a_a^i(x) p_i e^a + \frac{1}{6} c(x)_{abc} e^{a} e^b e^c .
+\]
+\end{Ex}
 \subsubsection{Dirac structures and boundary conditions}
 
 The AKSZ formalism is a construction which produces a $(-1)$-shifted symplectic space from the data of a closed manifold and a target shifted symplectic manifold. 
@@ -221,8 +279,19 @@ Morever, the natural restriction map $\cE(M) \to \cE(\partial M)$ is a Lagrangia
 \def\cL{\mathcal{L}}
 
 A boundary condition is the choice of an additional Lagrangian subspace $\cL$ of $\cE(\partial M)$.
-Then, one considers the intersection of the two Lagrangians $\cL$ and $\cE(\partial M)$ 
+The intersection $\cL \times_{\cE(M)} \cE(\partial M)$ of the two Lagrangians $\cL$ and $\cE(\partial M)$ 
 
+For an algebraic proof of the fact that the Lagrangian intersection \brian{finish} \cite{Calaque}
+
+\begin{Ex}
+Suppose $(X, \pi)$ is a Poisson manifold. 
+Then consider the graph of $\pi$ as a Lagrangian subbundle of $\TT$:
+\[
+{\rm Graph}(\pi) = \{(\pi \vee \alpha , \alpha) \; | \; \alpha \in T^* \} \subset \TT .
+\]
+By the Jacobi identity, this subbundle is integrable and so determines a Dirac structure. 
+If we place the 3D AKSZ theory with target the Courant algebroid $\TT$ on $M^3$ with $\partial M = \Sigma$, the boundary condition determined by this Dirac structure is equivalent to the Poisson $\sigma$-model. \brian{reference}
+\end{Ex}
 
 \subsection{Two dimensional TFT from GpC structures}
 
@@ -236,14 +305,15 @@ This Lagrangian then defines a boundary condition for the three-dimensional AKSZ
 
 \subsubsection*{Para-complex $A/B$-models}
 
-We point out two special cases of the above general construction. 
+We have seen that symplectic structures are a special case of a generalized para-complex structure. 
+If $(X, \omega)$ is a symplectic the resulting 2D AKSZ theory is equivalent to the ordinary $A$-model on $X$. 
 
-\brian{The $A$-model is the usual thing.}
+Another special case of a generalized para-complex structure is para-complex structure.
 
 \begin{Def}
-The {\bf para-complex $B$-model} with source a closed Riemann surface $\Sigma$ and target a para-complex manifold $X$ is the AKSZ theory with source the de Rham space $\Sigma_{\rm dR}$ and target the $1$-shifted symplectic space $T^*[1] X_{p \dbar}$:
+The {\bf para-$B$-model} with source a closed Riemann surface $\Sigma$ and target a para-complex manifold $X$ is the AKSZ theory with source the de Rham space $\Sigma_{\rm dR}$ and target the $1$-shifted symplectic space $T^*[1] X_{\pd}$:
 \[
-{\rm Map}\left(\Sigma_{dR}, T^*[1]  X_{p \dbar}\right) .
+{\rm Map}\left(\Sigma_{dR}, T^*[1]  X_{\pd}\right) .
 \]
 \end{Def}
 
@@ -258,8 +328,12 @@ The {\bf para-complex $B$-model} with source a closed Riemann surface $\Sigma$ a
 
 \subsection{Para holomorphic variants}
 
+\brian{My plan is to just turn this into an extended remark}
+
 So far, in each of the $\sigma$-models we have discussed in the AKSZ formalism, the fields have depended only topologically on the source Riemann surface. 
 There are closely related $\sigma$-models which depending {\em para-holomorphically} on the source Riemann surface that we briefly discuss. 
+
+
 
 \end{document}
 
