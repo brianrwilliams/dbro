@@ -106,6 +106,7 @@
 
 \def\brian{\textcolor{blue}{BM: }\textcolor{blue}}
 \def\david{\textcolor{red}{DB: }\textcolor{red}}
+\def\btd{\textcolor{orange}{BM to DB: }\textcolor{orange}}
 
 \title{Topological Sigma Models for Generalized Para-Complex Geometry}
 
@@ -642,7 +643,7 @@ and the integrability condition on $\JJ_{C_+}$ translates into the condition
 \end{align*}
 i.e. giving exactly half of the data of a G(p)K geometry. If there is a negative-chirality half structure $\JJ_{C_-}$, then $(\GG,\JJ\coloneqq \JJ_{C_+}\oplus \JJ_{C_-})$ defines a genuine G(p)K structure.
 
-\section{AKSZ} 
+\section{The AKSZ formalism and para-geometry} \label{sec: AKSZ}
 
 \section{Two-dimensional parasupersymmetry}  \label{sec: parasusy}
 
@@ -1016,9 +1017,9 @@ Thus, the $(1,0)$ supersymmetric $\sigma$-model has $(2,0)$ parasupersymmetry pr
 
 \subsection{Topological twists}\label{sec:toptwist}
 
-\brian{I still think this should be a separate section. It can go before AKSZ, if you want, but the answers won't make sense until we introduce the topological theories.}
-
-\brian{Give a general prescription of twisting.}
+\btd{Can you outline what is meant here by twisting? We aren't going to use the full language of twisting as in Kevin's paper, but it'd be good to highlight two things: (1) how to use the $R$-symmetry to twist the transformation properties of the fields and (2) how the supercharge deforms the BRST differential.
+I think you already do both below, but it'd be good to add some more discussion. 
+For instance, in accomplishing (1) we should say concretely which bundles each of the fields live in.}
 
 In this section we show that the R-symmetry of the para-$(2,2)$ superalgebra can be used to produce topological theories from the $(2,2)$ para-supersymmetric model presented in the Section \ref{sec:(2,2)parasusy} via a procedure called topological twisting, exactly analogous to topological twisting in ordinary supersymmetry. We show that the theories we obtain match the topological theories constructed in the Section \ref{sec:GpC_AKSZ} in the AKSZ formalism. 
 
@@ -1035,6 +1036,7 @@ and we also introduce the usual notation
 \begin{align*}
 \chi=\frac{1}{2}(\id+K_+)\psi_+=P_+\psi_+=\psi_+^{(1,0)_+},\quad\lambda=\frac{1}{2}(\id+K_-)\psi_-=P_-\psi_-=\psi_-^{(1,0)_-}.
 \end{align*}
+\btd{Where do $\chi$ and $\lambda$ live?}
 
 The action of $\QQ$ on these fields is the content of the following statement:
 \begin{proposition}\label{prop_toptwist}
@@ -1051,42 +1053,26 @@ The action of $Q_{L/R}$ on the fields $\chi$, $\lambda$ and $\phi$ is given by
 See Appendix \ref{appendix:proof_prop}.
 \end{proof}
 
-\brian{I think the approach needs to be explained here.
-The type of twisting that seems to be used here is a bit weaker than the twisting I know. 
-In this section we are claiming everything at the level of observables not at the level of fields.
-This is a small difference, but we should point it out.}
-
-\brian{
-To say that we know what the observables of the twisted theory are, we should first describe what the observables of the untwisted theory are. 
-``Twisting" is then a procedure for deforming this.
-Then, the first fact we need to state is: the observables of the twisted theory are given by the Lie algebroid cohomology of some Lie algebroid. 
-I think this is basically done below, but state it as a proposition.
-}
-
-\brian{
-I'm happy to then use the definition of a ``theory" in terms of the observables for the topological theories. 
-This will make the AKSZ description more concise.
-} 
-
 
 The observables of the twisted theory are therefore polynomials in the odd variables $\chi,\lambda$ with even coefficients dependent on $\phi$:
 \begin{align*}
 {\cal O}_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}\chi^{i_1}\cdots\chi^{i_a}\lambda^{j_1}\cdots\lambda^{j_b}.
 \end{align*}
-\brian{This already seems like we're in the twisted theory.
-For instance, why don't derivatives in the fields $\chi$ and $\lambda$ appear?
-When you topologically twist, all observables involving derivatives become cohomologically trivial, and so can be discarded.}
+
 Because $\chi \in \XX^{(1,0)_+}$ and $\lambda \in \XX^{(1,0)_-}$, we can identify ${\cal O}_f$ with a function on the supermanifold $(T^{(1,0)_+}\oplus T^{(1,0)_-})[1]$, which in turn can be identified with the differential form
 \begin{align*}
 \Omega_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}dx^{i_1}_+\cdots dx^{i_a}_+ dx^{j_1}_- \cdots dx^{j_b}_-,
 \end{align*}
-where $dx_\pm$ are the one-forms satisfying $K_\pm dx_\pm=dx_\pm$, i.e. sections of the bundle $T^*_{(1,0)_\pm}$. Via this identification, the operator ${\cal Q}\coloneqq Q_L+Q_R$ defines a differential
+where $dx_\pm$ are the one-forms satisfying $K_\pm dx_\pm=dx_\pm$, i.e. sections of the bundle $T^*_{(1,0)_\pm}$. Via this identification, the operator ${\cal Q}\coloneqq Q_L+Q_R$ defines an operator
 \begin{align*}
 \rd_\QQ:\ \Lambda^\bullet(T^{*(1,0)_+}\oplus T^{*(1,0)_-})\rightarrow \Lambda^{\bullet +1}(T^{*(1,0)_+}\oplus T^{*(1,0)_-})
 \end{align*}
-and because $\QQ$ squares to zero $\rd_\QQ$ also squares to zero. Therefore, $\rd_\QQ$ gives rise to a Chevalley-Eilenberg complex $\text{CE}(L)$ of a certain Lie algebroid $L$ which we now describe.
+Since $\QQ$ squares to zero the operator $\rd_\QQ$ also squares to zero, hence it defines a differential. 
+In fact, we will see that $\rd_\QQ$ gives rise to a Chevalley-Eilenberg complex $\text{CE}(L)$ computing the Lie algebroid cohomology of a certain Lie algebroid.
 
-\paragraph{Lie algebroid from bi-para-Hermitian data} Consider the Lie algebroid $L\overset{a}{\rightarrow} T$ with $L=T^{(1,0)_+}\oplus T^{(1,0)_-}$ and anchor given by the sum of the two inclusions $\imath_\pm:\ T^{(1,0)_\pm}\hookrightarrow T$:
+\paragraph{Lie algebroid from bi-para-Hermitian data} 
+\btd{I suggest renaming $L$ to $L_{twist}$, or something else to denote the fact that is the Lie algebroid obtained via twisting.}
+Consider the Lie algebroid $L\overset{a}{\rightarrow} T$ with $L=T^{(1,0)_+}\oplus T^{(1,0)_-}$ and anchor given by the sum of the two inclusions $\imath_\pm:\ T^{(1,0)_\pm}\hookrightarrow T$:
 \begin{align*}
 a:L=T^{(1,0)_+}\oplus T^{(1,0)_-} &\rightarrow T\\
  e=(x_+,x_-) &\mapsto \imath_+(x_+)+\imath_-(x_-).
@@ -1121,6 +1107,9 @@ This fully determines the Lie algebroid structure of $L$. However, in the follow
 \paragraph{Lie algebroid from generalized para-K\"ahler data}
 
 \brian{Do we use the full GpK structure, or are we only using the GpC?}
+\btd{The title of this section is OK, but we should stress that the Lie algebroid {\em explicitly} does not depend on any Kahler data.}
+\btd{I suggest renaming $\Lb_+$ to $L_{AKSZ}$, or something else to denote the fact that is the Lie algebroid coming from the AKSZ description in Section \ref{sec: AKSZ}.}
+
 Recall that a GpK structure defines the decomposition \eqref{GpK_bundles}
 \begin{align*}
 \TT=\ell_+\oplus\ell_-\oplus \ellt_+\oplus \ellt_-,
@@ -1187,6 +1176,7 @@ where we used \eqref{genBismut_pi_nabla_pm} and once again \eqref{pi:gG_relation
 \end{proof}
 
 We have therefore shown that the observables in the topologically twisted theories are given by the Lie algebroid cohomology of $\Lb$, which is exactly the same as the $2D$ boundary topological theories constructed in the Section \ref{??}:
+
 \begin{corollary}
 Let $\Phi:\Sigma^{2|2}\rightarrow \Mb$ be a $(2,2)$ para-supersymmetric $\sigma$-model with the target $(\Mb,\KK_\pm,\GG(\eta,b))$ a Generalized para-K\"ahler manifold. Then the topological twist of this $\sigma$-model defined by the nilpotent charge $\QQ$ \eqref{QQ_nilpotent} agrees with the $2D$ topological boundary theory determined by the generalized para-complex structure on the Courant algebroid $(\TT)\Mb$ with flux $H\overset{loc.}{=}\rd b$.
 \end{corollary}
