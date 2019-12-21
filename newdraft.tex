@@ -325,10 +325,11 @@ X= X^i(x)\p_i+\tl{X}_i(\xt)\pt^i,
 i.e. the components in $L$ and $\Lt$ individually define vector fields on the foliations $M$ and $\Mt$, respectively.  
 
 Similarly, the cotangent bundle is a holomorphic bundle. For the higher wedge powers, we find that only $\Lambda^{(k,0)+(0,k)}(T^*\PS)$, $1\leq k\leq n$, are holomorphic bundles. The {\bf para-complex Dolbeault complex} is therefore given by
-\begin{align}
-\left(\Omega^{(\bullet,0)}\otimes\Omega^{(0,\bullet)},(\p,\pt)\right)\coloneqq \left(\mathbf{\Omega}^{\bullet,0},\pd\right).
+\begin{align}\label{para-dolbeault}
+\left(\Omega^{(\bullet,0)}\otimes\Omega^{(0,\bullet)},(\p,\pt)\right)\coloneqq \left(\mathbf{\Omega}^{0,\bullet},\pd\right).
 \end{align}
-\brian{Should this be the thing resolving paraholomorphic functions or anti paraholomorphic functions? If paraholomorphic it should be $\mathbf{\Omega}^{0,\bullet}$. }
+
+
 %\begin{lemma}
 %Let $(\PS,K)$ be a paracomplex manifold. Then $\rd^p\coloneqq(\Lambda^{k+1}K)\circ\rd\circ (\Lambda^kK)$ can be expressed as
 %\begin{align}\label{eq:dp-operator}
@@ -341,7 +342,17 @@ Similarly, the cotangent bundle is a holomorphic bundle. For the higher wedge po
 %\rd^p\ap=(-1)^n(\Lambda^kK)\rd\ap=(-1)^{2n}\p_+ \ap +(-1)^{2n+1}\p_-\ap=(\p_+-\p_-)\ap,
 %\end{align*}
 %\end{proof}
+\paragraph{The para-holomorphic volume form}
+In K\"ahler geometry, the notion of a holomorphic volume form is very important and in particular gives rise to Calabi-Yau manifolds, perhaps the most important subclass of K\"ahler manifolds. Here we discuss the para-complex version of this story because it plays an important role when considering the anomalies of the R-symmetry at the quantum level.
 
+Remember that a holomorphic volume form on a complex manifold $M$ of complex dimension $k$ is a non-vanishing section of the canonical bundle, $\Omega \in \Omega^{k,0}(M)$, that is holomorphic, $\bar{\p}\Omega=0$. Recalling the para-complex Dolbeault complex \eqref{para-dolbeault}, we can immediately infer what should be the analogous object in para-complex geometry:
+\begin{Def}
+Let $(\PS,K)$ be a para-complex manifold of dimension $2n$. We define a para-holomorphic volume form to be a nowhere vanishing section $\hat{\Omega}=(\Omega,\tl{\Omega})\in \Omega^{(n,0)+(0,n)}(\PS)$, where $\Omega \in \Omega^{(n,0)}(\PS)$ and $\tl{\Omega}\in \Omega^{(0,n)}(\PS)$ are each non-vanishing and satisfy
+\begin{align*}
+\pt \Omega=\p \tl{\Omega}=0.
+\end{align*}
+\end{Def}
+Because $\Omega^{(n,0)}(\PS)$ is naturally isomorphic to $\Omega^n(M)$, the section $\Omega$ is non-vanishing and $\pt \Omega=0$ implies it is invariant under the translation along $\Mt$, the above definition implies that $\Omega$ defines an honest volume form on $M$. Similarly, $\tl{\Omega}$ is a volume form on $\Mt$ and therefore both the canonical foliations $M$ and $\Mt$ of the para-complex manifold are orientable.
 
 \subsection{Basics of generalized geometry}
 In this paper, the term {\it generalized geometry} is used for the study of geometric structures on the bundle $TM \oplus T^*M$ over some manifold $M$. We will typically abbreviate this bundle to $\TT$ whenever the base is understood or unimportant for the discussion.
@@ -481,9 +492,6 @@ A symplectic form $\omega$ defines the anti-diagonal GpC structure
 \end{align*}
 The $\pm 1$ eigenbundles are given by $\text{graph}(\pm\omega)=\{X\pm\omega(X)\mid X\in \XX\}$, and the integrability of $\KK_\omega$ is equivalent to $\rd\omega=0$.
 \end{Ex}
-
-\brian{Can we import some of the other examples here?
-Maybe some explicit ones like the toric fibrations you mentioned.}
 
 \paragraph{Comparision with generalized complex structures}
 Example \ref{ex:GpC_sympl} shows that a symplectic manifold $(M,\omega)$ is a GpC manifold and it is well-known \cite{Gualtieri:2003dx} that $(M,\omega)$ is also generalized complex (GC). However, while almost GC structures exist only on almost complex manifolds \cite{Gualtieri:2003dx}, Example \ref{ex:GpC_trivial} demonstrates that GpC structures exist on any Poisson manifold and in particular on any smooth manifold (with trivial Poisson structure). Another feature of GpC geometry that is not present in GC geometry is that the GpC structures can be half-integrable (similarly to ordinary para-complex structures): see the cases of $\KK_b$ and $\KK_\beta$ from Example \ref{ex:GpC_trivial} which are always at least half integrable and are fully integrable iff $b$ is closed and $\beta$ is Poisson, respectively. On the other hand, $\KK_\omega$ in Example \ref{ex:GpC_sympl} can only be half-integrable when the $H$-flux is non-zero.
@@ -745,7 +753,7 @@ we vary the resulting bosonic action with respect to $F^i$:
 \frac{\delta S_{(1,1)}}{\delta F^i}=0\quad \Longleftrightarrow\quad  F^i=-(\Gamma^-)^i_{jk}\psi^k_-\psi^j_+.
 \end{align}
 Here, $\Gamma^-$ are the Christoffel symbols of the connection $\n^-=\lc-\frac{1}{2}\eta^{-1}H$.
-\david{we can show more of the calculations or put some more in the appendix but this is fairly standard knowledge and I think the above is sufficient}
+
 \subsection{$(2,2)$ para-supersymmetry}\label{sec:(2,2)parasusy}
 We continue by extending the above $(1,1)$ picture to the $(2,2)$ para-SUSY setting. This version of supersymmetry and the corresponding sigma models were first discussed in \cite{HullTwistedSUSY}.
 
@@ -777,9 +785,6 @@ Again, this is analogous to the complex basis of the ordinary $(2,2)$ superalgeb
 \begin{align*}
 [Q_\pm,\overline{Q}_\pm]=2\p_\pm.
 \end{align*}
-
-\david{is the following paragraph needed?}
-\brian{I think it's nice to point out how it  generalizes.}
 
 \begin{remark}
 
