@@ -1035,13 +1035,26 @@ In this section we show that the R-symmetry of the para-$(2,2)$ superalgebra can
 
 In our presentation, we use the similarities between the generalized K\"{a}hler (GK) and generalized para-K\"{a}hler (GpK) geometries, and we follow the approach presented in \cite{Kapustin:2004gv} for the GK case.
 
-\brian{geometry, change in gradings}
 \david{how does the embedding of $SO(1,1)$ into $G_R$ reflect on the definition of $\QQ$?}
+\brian{In Euclidean space, we choose an embedding $SO(2) \hookrightarrow G_R$. 
+Then, the twisting supercharge is required to be invariant.
+The obvious analog is to require an embedding $SO(1,1) \to G_R$ for which $\QQ$ is invariant.
+This is the twisting homomorphism which tells us how to modify the Lorentz group.
+}
+
+\brian{
+There is another piece of data we have to fix to get the $\mathbb{Z}$-grading in the twisted theory. 
+Ordinarily this amounts to picking a homomorphism $U(1) \to G_R$ for which $\QQ$ is weight one. 
+It appears no such twisting homomorphism is possible.
+Indeed, every group homomorphism $U(1) \to SO(1,1) \times SO(1,1)$  are necessarily trivial since $U(1)$ is compact and $SO(1,1) \cong \RR \oplus \RR$ (the first copy is the connected component of the identity, and the second component is the connected component of minus identity).
+This means we may have to slightly reimagine what ``twisting data" is here.
+Since there is at least a copy of $\RR$ in $SO(1,1)$ we can probably use this to define a ``weight".}
 
 Let $(\eta,K_\pm,H=\rd b)$ be the bi-para-Hermitian geometry of the $(2,2)$ para-SUSY sigma model and let $\{Q^1_\pm,Q^1_\pm\}$ be the basis of the superalgebra \eqref{eq:(2,2)para}. We define the following nilpotent supercharge
 \begin{align}\label{QQ_nilpotent}
 \QQ=Q_L+Q_R,\quad Q_L=\frac{1}{2}(Q^1_++Q^2_+),\quad Q_R=\frac{1}{2}(Q^1_-+Q^2_-),
 \end{align}
+\brian{Should we call this the  ``generalized para B twist"? It is invariant with respect to the anti-diagonal twisting homomorphism $SO(1,1) \to SO(1,1) \times SO(1,1)$. I think Kapustin-Li call this the axial.}
 and we also introduce the usual notation 
 \begin{align*}
 \chi=\frac{1}{2}(\id+K_+)\psi_+=P_+\psi_+=\psi_+^{(1,0)_+},\quad\lambda=\frac{1}{2}(\id+K_-)\psi_-=P_-\psi_-=\psi_-^{(1,0)_-}.
