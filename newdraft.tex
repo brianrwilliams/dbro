@@ -272,11 +272,11 @@ where $\Lambda^{(m,n)}(T^*\mathcal{P})=\Lambda^m(T^{*}_{1,0})\otimes \Lambda^n(T
 \Pi^{(p,q)}:\Lambda^k(T^*\mathcal{P})&\rightarrow \Lambda^{(p,q)}(T^*\mathcal{P}),
 \end{align*}
 so that when $K$ is integrable, the de-Rham differential splits as $\rd=\p+\tl{\p}$, where
-\begin{align*}
+\begin{align}\label{paracomplex_dels}
 \begin{array}{cc}
 \p \coloneqq \Pi^{(p+1,q)}\circ \rd, & \tl{\p} \coloneqq \Pi^{(p,q+1)}\circ \rd,
 \end{array}
-\end{align*}
+\end{align}
 are the \textbf{para-complex Dolbeault operators}, satisfying
 \begin{align*}
 \p^2=\tl{\p}^2=\p\tl{\p}+\tl{\p}\p=0.
@@ -830,9 +830,9 @@ From here it is easy to see that matrices $(M_\pm)^a_b$ that rotate the $\pm$-ch
 [(M_\pm)^a_cQ_\pm^c,(M_\pm)^b_dQ_\pm^d]=2\eta^{ab}\p_\pm
 \end{align*}
 have to satisfy
-\begin{align*}
+\begin{align}\label{r_symmetry_matrix}
 (M_\pm)^a_c\eta^{cd}(M_\pm)^a_d=\eta^{ab},
-\end{align*}
+\end{align}
 i.e. $M_\pm$ have to lie in $SO(1,1)$ for each subscript $\pm$ and the R-symmetry group is therefore $G_R=SO(1,1)_+\times SO(1,1)_-$.
 %\david{this is only relevant for the (2,2) formalism, will se if we need this or not}
 %The R-symmetry acts on the odd coordinates accordingly as
@@ -1033,35 +1033,79 @@ For instance, in accomplishing (1) we should say concretely which bundles each o
 
 In this section we show that the R-symmetry of the para-$(2,2)$ superalgebra can be used to produce topological theories from the $(2,2)$ para-supersymmetric model presented in the Section \ref{sec:(2,2)parasusy} via a procedure called topological twisting, exactly analogous to topological twisting in ordinary supersymmetry. We show that the theories we obtain match the topological theories constructed in the Section \ref{sec:GpC_AKSZ} in the AKSZ formalism. 
 
-In our presentation, we use the similarities between the generalized K\"{a}hler (GK) and generalized para-K\"{a}hler (GpK) geometries, and we follow the approach presented in \cite{Kapustin:2004gv} for the GK case.
+In our presentation, we use the similarities between the generalized K\"{a}hler (GK) and generalized para-K\"{a}hler (GpK) geometries, and we follow the approach presented in \cite{Kapustin:2004gv} for the GK case. Let us briefly review the construction now.
 
-\david{how does the embedding of $SO(1,1)$ into $G_R$ reflect on the definition of $\QQ$?}
-\brian{In Euclidean space, we choose an embedding $SO(2) \hookrightarrow G_R$. 
-Then, the twisting supercharge is required to be invariant.
-The obvious analog is to require an embedding $SO(1,1) \to G_R$ for which $\QQ$ is invariant.
-This is the twisting homomorphism which tells us how to modify the Lorentz group.
-}
-
-\brian{
-There is another piece of data we have to fix to get the $\mathbb{Z}$-grading in the twisted theory. 
-Ordinarily this amounts to picking a homomorphism $U(1) \to G_R$ for which $\QQ$ is weight one. 
-It appears no such twisting homomorphism is possible.
-Indeed, every group homomorphism $U(1) \to SO(1,1) \times SO(1,1)$  are necessarily trivial since $U(1)$ is compact and $SO(1,1) \cong \RR \oplus \RR$ (the first copy is the connected component of the identity, and the second component is the connected component of minus identity).
-This means we may have to slightly reimagine what ``twisting data" is here.
-Since there is at least a copy of $\RR$ in $SO(1,1)$ we can probably use this to define a ``weight".}
-
-Let $(\eta,K_\pm,H=\rd b)$ be the bi-para-Hermitian geometry of the $(2,2)$ para-SUSY sigma model and let $\{Q^1_\pm,Q^1_\pm\}$ be the basis of the superalgebra \eqref{eq:(2,2)para}. We define the following nilpotent supercharge
-\begin{align}\label{QQ_nilpotent}
-\QQ=Q_L+Q_R,\quad Q_L=\frac{1}{2}(Q^1_++Q^2_+),\quad Q_R=\frac{1}{2}(Q^1_-+Q^2_-),
+Let $(\eta,K_\pm,H=\rd b)$ be the bi-para-Hermitian geometry of the $(2,2)$ para-SUSY sigma model and let $\{Q^1_\pm,Q^1_\pm\}$ be the basis of the superalgebra \eqref{eq:(2,2)para}. Our goal is to use the data of the $(2,2)$ para-SUSY theory to define a new, {\it topological} theory. In this section, we will show how to define the BRST complex for this new theory, which in particular requires the definition of a nilpotent BRST operator $\QQ^2=0$. Additionally, we want all fields in this complex to be scalars under the Lorentz group. For this, we must alter the original Lorentz group $SO(1,1)$ by its embedding in the R-symmetry group, $SO(1,1)_{G_R}\hookrightarrow G_R=SO(1,1)_+\times SO(1,1)_-$, so that the new Lorentz group action is given by the diagonal embedding of $SO(1,1)$ into $SO(1,1)\times SO(1,1)_{G_R}$
+\begin{align}\label{embeddings}
+SO(1,1)\overset{diag.}{\hookrightarrow} SO(1,1)\!\times\! SO(1,1)_{G_R}\!\!\hookrightarrow SO(1,1)\!\times\! \overbrace{SO(1,1)_+\!\times\! SO(1,1)_-}^{G_R},
 \end{align}
-\brian{Should we call this the  ``generalized para B twist"? It is invariant with respect to the anti-diagonal twisting homomorphism $SO(1,1) \to SO(1,1) \times SO(1,1)$. I think Kapustin-Li call this the axial.}
-and we also introduce the usual notation 
-\begin{align*}
-\chi=\frac{1}{2}(\id+K_+)\psi_+=P_+\psi_+=\psi_+^{(1,0)_+},\quad\lambda=\frac{1}{2}(\id+K_-)\psi_-=P_-\psi_-=\psi_-^{(1,0)_-}.
-\end{align*}
-\btd{Where do $\chi$ and $\lambda$ live?}
+defining a new Lorentz action, which will be a sum of the original one and the action of $SO(1,1)_{G_R}$ in $G_R$. In this sense, the Lorentz group gets {\it twisted} by the embedding into the R-symmetry group. Finally, the operator $\QQ$ must be chosen accordingly to the choice of $SO(1,1)_{G_R}\hookrightarrow G_R$ so that it transforms as a scalar itself under the new Lorentz action, which ensures that the fields in the BRST complex it defines are all scalars too.
 
-The action of $\QQ$ on these fields is the content of the following statement:
+%\david{how does the embedding of $SO(1,1)$ into $G_R$ reflect on the definition of $\QQ$?}
+%\brian{In Euclidean space, we choose an embedding $SO(2) \hookrightarrow G_R$. 
+%Then, the twisting supercharge is required to be invariant.
+%The obvious analog is to require an embedding $SO(1,1) \to G_R$ for which $\QQ$ is invariant.
+%This is the twisting homomorphism which tells us how to modify the Lorentz group.
+%}
+%
+%\brian{
+%There is another piece of data we have to fix to get the $\mathbb{Z}$-grading in the twisted theory. 
+%Ordinarily this amounts to picking a homomorphism $U(1) \to G_R$ for which $\QQ$ is weight one. 
+%It appears no such twisting homomorphism is possible.
+%Indeed, every group homomorphism $U(1) \to SO(1,1) \times SO(1,1)$  are necessarily trivial since $U(1)$ is compact and $SO(1,1) \cong \RR \oplus \RR$ (the first copy is the connected component of the identity, and the second component is the connected component of minus identity).
+%This means we may have to slightly reimagine what ``twisting data" is here.
+%Since there is at least a copy of $\RR$ in $SO(1,1)$ we can probably use this to define a ``weight".}
+\bigskip
+Let us start with the second, twisting, embedding in \eqref{embeddings}
+\begin{align*}
+\rho:\ SO(1,1)_{G_R}\hookrightarrow G_R=SO(1,1)_+\times SO(1,1)_-.
+\end{align*}
+Clearly, there are two inequivalent choices -- the diagonal and anti-diagonal -- and we shall label them as $SO(1,1)_V$ and $SO(1,1)_A$, respectivelly, and  calling the twist by $SO(1,1)_{V/A}$ the {\bf generalized para-A/B-twist}. Explicitly, if we represent $M_\pm\in SO(1,1)$ in \eqref{r_symmetry_matrix} as
+\begin{align*}
+ M_\pm(\alpha)\begin{pmatrix}
+ Q^1_\pm\\
+ Q^2_\pm
+ \end{pmatrix}=\begin{pmatrix}
+ \cosh(\alpha) & \sinh(\alpha) \\
+ \sinh(\alpha) & \cosh(\alpha)
+ \end{pmatrix}
+ \begin{pmatrix}
+ Q^1_\pm\\
+ Q^2_\pm
+ \end{pmatrix},
+ \end{align*}
+then the diagonal embedding is given by $M(\alpha) \mapsto (M(\alpha),M(\alpha))$ while the anti-diagonal is $M(\alpha) \mapsto (M(\alpha),M(-\alpha))$.
+
+To determine the corresponding nilpotent operators $\QQ_{V/A}$ on which $V$ and $A$ act trivially, we find that the following combinations of the supercharges
+\begin{align*}
+Q_{L\pm}=\frac{1}{2}(Q^1_+\pm Q^2_+),\quad Q_{R\pm}=\frac{1}{2}(Q^1_-\pm Q^2_-),
+\end{align*}
+are all nilpotent and satisfy $[Q_{L\pm},Q_{L\pm}]=0$, so that their sums and differences will also be nilpotent. However, they are charged under the Lorentz group. Their Lorentz charges along with their charges under $SO(1,1)_{V/A}$ are summarized in the following table
+\bigskip
+\begin{center}
+\begin{tabular}{c|c c c}
+		& $SO(1,1)_{Lor.}$ & $SO(1,1)_V$ & $SO(1,1)_A$\\ \hline
+$Q_{L+}$& $-1$ & $+1$ & $+1$\\
+$Q_{L-}$& $-1$ & $-1$ & $+1$\\
+$Q_{R+}$& $+1$ & $+1$ & $-1$\\
+$Q_{R-}$& $+1$ & $-1$ & $+1$
+\end{tabular}.
+\end{center}
+\bigskip
+From the above table, we can read off that the combination $\QQ_V=Q_{L+}+Q_{R-}$ will transform as a scalar under the new Lorentz group twisted by $U(1,1)_V$ and $\QQ_A=Q_{L+}+Q_{R+}$ will transform as a scalar under the new Lorentz group twisted by $U(1,1)_A$. Note also that the two are related by $Q_-^2\mapsto -Q_-^2$ and because $Q_-^2=K_-D_-$, this is acheived by changing the sign of $K_-$. Therefore, in the following we will study without loss of generality the twist given by $U(1,1)_A$ and $\QQ_B$, i.e. the generalized para-B-model:
+
+\begin{Def}\label{def:B-twist}
+The generalized para-B-model is a topological twist (in the above sense) of a $(2,2)$ para-SUSY sigma model given by the diagonal embedding of the Lorentz group $SO(1,1)\hookrightarrow SO(1,1)\times SO(1,1)_A$, where $SO(1,1)_A$ denotes the anti-diagonal embedding of $SO(1,1)$ into the R-symmetry group $G_R=SO(1,1)\times SO(1,1)$, and the nilpotent scalar BRST operator
+\begin{align}\label{QQ_nilpotent}
+\QQ=Q_L+Q_R,\quad Q_L=\frac{1}{2}(Q^1_++Q^2_+),\quad Q_R=\frac{1}{2}(Q^1_-+Q^2_-).
+\end{align}
+\end{Def}
+\bigskip
+We now turn to the BRST complex that describes the scalar fields in the twisted theory. For this, we introduce the usual notation 
+\begin{align*}
+\chi=\frac{1}{2}(\id+K_+)\psi_+=P_+\psi_+=\psi_+^{(1,0)_+},\quad\lambda=\frac{1}{2}(\id+K_-)\psi_-=P_-\psi_-=\psi_-^{(1,0)_-},
+\end{align*}
+where both $\chi$ and $\lambda$ are scalars under the twisted Lorentz action, which is the content of the following statement:
 \begin{proposition}\label{prop_toptwist}
 The action of $Q_{L/R}$ on the fields $\chi$, $\lambda$ and $\phi$ is given by
 \begin{align}\label{eq:Qcoh}
@@ -1075,14 +1119,18 @@ The action of $Q_{L/R}$ on the fields $\chi$, $\lambda$ and $\phi$ is given by
 \begin{proof}
 See Appendix \ref{appendix:proof_prop}.
 \end{proof}
-
-
+Recalling that $(\Gamma^+)^i_{jk}=(\Gamma^-)^i_{kj}$ (see \eqref{Gamma-pm}), we find that the BRST degrees of the fields are given by the following complex
+\begin{align*}
+&\phi \overset{\QQ}{\longrightarrow}\chi+\lambda\overset{\QQ}{\longrightarrow} 0\\
+&0 \phantom{\longrightarrow\longrightarrow} 1
+\end{align*}
+\noindent
 The observables of the twisted theory are therefore polynomials in the odd variables $\chi,\lambda$ with even coefficients dependent on $\phi$:
 \begin{align*}
 {\cal O}_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}\chi^{i_1}\cdots\chi^{i_a}\lambda^{j_1}\cdots\lambda^{j_b}.
 \end{align*}
 
-Because $\chi \in \XX^{(1,0)_+}$ and $\lambda \in \XX^{(1,0)_-}$, we can identify ${\cal O}_f$ with a function on the supermanifold $(T^{(1,0)_+}\oplus T^{(1,0)_-})[1]$, which in turn can be identified with the differential form
+Because $\chi \in \XX^{(1,0)_+}$ and $\lambda \in \XX^{(1,0)_-}$, we can identify ${\cal O}_f$ with a function on the supermanifold $(T^{(1,0)_+}\oplus T^{(1,0)_-})[1]$, which in turn can be identified with the mixed differential form
 \begin{align*}
 \Omega_f=f(\phi)_{i_1\cdots i_a,j_1\cdots j_b}dx^{i_1}_+\cdots dx^{i_a}_+ dx^{j_1}_- \cdots dx^{j_b}_-,
 \end{align*}
@@ -1091,16 +1139,15 @@ where $dx_\pm$ are the one-forms satisfying $K_\pm dx_\pm=dx_\pm$, i.e. sections
 \rd_\QQ:\ \Lambda^\bullet(T^{*(1,0)_+}\oplus T^{*(1,0)_-})\rightarrow \Lambda^{\bullet +1}(T^{*(1,0)_+}\oplus T^{*(1,0)_-})
 \end{align*}
 Since $\QQ$ squares to zero the operator $\rd_\QQ$ also squares to zero, hence it defines a differential. 
-In fact, we will see that $\rd_\QQ$ gives rise to a Chevalley-Eilenberg complex $\text{CE}(L)$ computing the Lie algebroid cohomology of a certain Lie algebroid.
+In fact, we will see that $\rd_\QQ$ gives rise to a Chevalley-Eilenberg complex $\text{CE}(L_{twist})$ computing the Lie algebroid cohomology of a certain Lie algebroid.
 
 \paragraph{Lie algebroid from bi-para-Hermitian data} 
-\btd{I suggest renaming $L$ to $L_{twist}$, or something else to denote the fact that is the Lie algebroid obtained via twisting.}
-Consider the Lie algebroid $L\overset{a}{\rightarrow} T$ with $L=T^{(1,0)_+}\oplus T^{(1,0)_-}$ and anchor given by the sum of the two inclusions $\imath_\pm:\ T^{(1,0)_\pm}\hookrightarrow T$:
+Consider the Lie algebroid $L_{twist}\overset{a}{\rightarrow} T$ with $L_{twist}=T^{(1,0)_+}\oplus T^{(1,0)_-}$ and anchor given by the sum of the two inclusions $\imath_\pm:\ T^{(1,0)_\pm}\hookrightarrow T$:
 \begin{align*}
-a:L=T^{(1,0)_+}\oplus T^{(1,0)_-} &\rightarrow T\\
+a:L_{twist}=T^{(1,0)_+}\oplus T^{(1,0)_-} &\rightarrow T\\
  e=(x_+,x_-) &\mapsto \imath_+(x_+)+\imath_-(x_-).
 \end{align*}
-From \eqref{eq:Qcoh} we can read off the action of $\rd_\QQ$ on degree one elements, i.e. sections $\alpha=(\alpha^+,\alpha^-)$ of $L^*=T^*_{(1,0)_+}\oplus T^*_{(1,0)_-}$:
+From \eqref{eq:Qcoh} we can read off the action of $\rd_\QQ$ on degree one elements, i.e. sections $\alpha=(\alpha^+,\alpha^-)$ of $L^*_{twist}=T^*_{(1,0)_+}\oplus T^*_{(1,0)_-}$:
 \begin{align*}
 \rd_\QQ\alpha&=\p_k\ap_i^+[dx_+^k+dx_-^k]\w dx_+^i-\ap^+_i(\Gamma^+)^i_{jk}dx_-^j\w dx_+^k\\
 &+\p_k\ap_i^-[dx_+^k+dx_-^k]\w dx_-^i-\ap^-_i(\Gamma^-)^i_{jk}dx_+^j\w dx_-^k.
@@ -1109,14 +1156,14 @@ From \eqref{eq:Qcoh} we can read off the action of $\rd_\QQ$ on degree one eleme
 %\begin{align*}
 %\rd_\QQ\ap=(\p_++\n^+_{P_-(\bullet)})\ap^++(\p_-+\n^-_{P_+(\bullet)})\ap^-,
 %\end{align*}
-By contracting in two sections of $L$, $e_1=x_++x_-$, $e_2=y_-+y_-$, we get the coordinate-free expression
+By contracting in two sections of $L_{twist}$, $e_1=x_++x_-$, $e_2=y_-+y_-$, we get the coordinate-free expression
 \begin{align}\label{eq:dQ}
 \begin{aligned}
 (\rd_\QQ\ap)(e_1,e_2)&=(\p_+\ap^+)(x_+,y_+)+\n^+_{x_-}\ap^+(y_+)-\n^+_{y_-}\ap^+(x_+)\\
 &+(\p_-\ap^-)(x_-,y_-)+\n^-_{x_+}\ap^-(y_-)-\n^-_{y_+}\ap^-(x_-),
 \end{aligned}
 \end{align}
-where $\p_\pm$ denotes the para-complex Dolbeault operators $\p$ for $K_\pm$. We can further rewrite this expression by writing $\ap=(\eta(\tl{z}_+),\eta(\tl{z}_-))$ for $\tl{z}_\pm \in \se(T^{(1,0)_\pm})$, invoking the formula $\p_\pm\ap^\pm(x_\pm,y_\pm)=\lc_{x_\pm}\ap^\pm(y_\pm)-\lc_{y_\pm}\ap^\pm(x_\pm)$ and recalling $\n^\pm=\lc\pm \frac{1}{2}\eta^{-1}H$:
+where $\p_\pm$ denotes the para-complex Dolbeault operators \eqref{paracomplex_dels} of the para-complex structure $K_\pm$. We can further rewrite this expression by writing $\ap=(\eta(\tl{z}_+),\eta(\tl{z}_-))$ for $\tl{z}_\pm \in \se(T^{(1,0)_\pm})$, invoking the formula $\p_\pm\ap^\pm(x_\pm,y_\pm)=\lc_{x_\pm}\ap^\pm(y_\pm)-\lc_{y_\pm}\ap^\pm(x_\pm)$ and recalling $\n^\pm=\lc\pm \frac{1}{2}\eta^{-1}H$:
 \begin{align}
 \begin{aligned}
 (\rd_\QQ\ap)(e_1,e_2)&=\eta((\lc_{x_+}+\n_{x_-}^+)\zt_+,y_+)-\eta((\lc_{y_+}+\n_{y_-}^+)\zt_+,x_+)\\
@@ -1125,19 +1172,20 @@ where $\p_\pm$ denotes the para-complex Dolbeault operators $\p$ for $K_\pm$. We
 &+\eta(\n_{x_++x_-}^-\zt_-,y_-)-\eta(\n_{y_++y_-}^-\zt_-,x_-)+H(x_-,\zt_-,y_-).
 \end{aligned}
 \end{align}
-This fully determines the Lie algebroid structure of $L$. However, in the following paragraph we will discuss how the same Lie algebroid arises from the data of a generalized para-K\"ahler structure.
+This fully determines the Lie algebroid structure of $L_{twist}$. Therefore, the topological twist gives rise to the Lie algebroid we just described explicitly using only the data of the bi-para-Hermitian geometry $(\eta,K_\pm,H)$. In the following paragraph, we will discuss how the same Lie algebroid arises from the data of the corresponding generalized para-K\"ahler structure.
 
 \paragraph{Lie algebroid from generalized para-K\"ahler data}
-
-\brian{Do we use the full GpK structure, or are we only using the GpC?}
-\btd{The title of this section is OK, but we should stress that the Lie algebroid {\em explicitly} does not depend on any Kahler data.}
-\btd{I suggest renaming $\Lb_+$ to $L_{AKSZ}$, or something else to denote the fact that is the Lie algebroid coming from the AKSZ description in Section \ref{sec: AKSZ}.}
+%
+%\brian{Do we use the full GpK structure, or are we only using the GpC?}
+%\btd{The title of this section is OK, but we should stress that the Lie algebroid {\em explicitly} does not depend on any Kahler data.}
+%\btd{I suggest renaming $\Lb_+$ to $L_{AKSZ}$, or something else to denote the fact that is the Lie algebroid coming from the AKSZ description in Section \ref{sec: AKSZ}.}
+We will now show that the Lie algberoid $(L_{twist},\rd_\QQ,a)$ is isomorphic to one defined by the $+1$-eigenbundle of the generalized para-complex structure $\KK_+$ of the generalized para-K\"ahler structure $(\KK_+,\KK_-)$ underlying the $(2,2)$ para-SUSY theory. Therefore, $(L_{twist},\rd_\QQ,a)$ coincides with the Lie algebroid used in Section \ref{sec: AKSZ} to define a topological theory in the AKSZ formalism from an arbitrary generalized para-complex structure $\KK$. Consequently, we find that the theories constructed in Section \ref{sec: AKSZ} labeled by a GpC structure $\KK$ can be realized as topological twists of a $2D$ $(2,2)$ para-SUSY $\sigma$-models whenever $\KK$ is a part of a GpK data $(\KK_+=\KK,\KK_-)$.
 
 Recall that a GpK structure defines the decomposition \eqref{GpK_bundles}
 \begin{align*}
 \TT=\ell_+\oplus\ell_-\oplus \ellt_+\oplus \ellt_-,
 \end{align*}
-where the the eigenbundles of $\KK_+$ are $\Lb_+=\ell_+\oplus\ell_-$ and $\wtl{\Lb}_+=\ellt_+\oplus \ellt_-$. Because $\Lb$ is a Dirac structure, it defines a Lie algebroid by restriction of the Courant algebroid on $\TT$ to $\Lb$, i.e. the Lie algebroid bracket and anchor are given by the restriction of the Dorfman bracket and the projection onto tangent bundle, respectively (see Proposition \ref{prop:dirac_Liealg}). We now show that such Lie algebroid is isomorphic to the Lie algebroid defined by $(L,a,\rd_\QQ)$ above:
+where the the eigenbundles of $\KK_+$ are $\Lb_+=\ell_+\oplus\ell_-$ and $\wtl{\Lb}_+=\ellt_+\oplus \ellt_-$. Because $\Lb$ is a Dirac structure, it defines a Lie algebroid by restriction of the Courant algebroid on $\TT$ to $\Lb_+$, i.e. the Lie algebroid bracket and anchor are given by the restriction of the Dorfman bracket and the projection onto tangent bundle, respectively (see Proposition \ref{prop:dirac_Liealg}). We now show that such Lie algebroid is isomorphic to the Lie algebroid defined by $(L_{twist},\rd_\QQ,a)$ above:
 \begin{theorem}
 The Lie algebroids $(L,a,\rd_\QQ)$ and $(\Lb_+,\pi_T\!\!\mid_{\Lb_+},\brac\!\!\mid_{\Lb_+})$ are isomorphic via the map $\pi=\pi_+\oplus \pi_-$.
 \end{theorem}
@@ -1198,10 +1246,10 @@ where $\zt_\pm\in \se(T^{(1,0)_\pm})$ and we used \eqref{pi:gG_relationship}. Th
 where we used \eqref{genBismut_pi_nabla_pm} and once again \eqref{pi:gG_relationship}. Finally, invoking \eqref{gentorsion_H}, we arrive at \eqref{eq:dQ}, showing that \eqref{eq:d_pi} holds and completing the proof.
 \end{proof}
 
-We have therefore shown that the observables in the topologically twisted theories are given by the Lie algebroid cohomology of $\Lb$, which is exactly the same as the $2D$ boundary topological theories constructed in the Section \ref{??}:
+We have therefore shown that the observables in the topologically twisted theories are given by the Lie algebroid cohomology of $\Lb$, which is exactly the same as for the $2D$ boundary topological theories constructed in the Section \ref{sec: AKSZ}:
 
 \begin{corollary}
-Let $\Phi:\Sigma^{2|2}\rightarrow \Mb$ be a $(2,2)$ para-supersymmetric $\sigma$-model with the target $(\Mb,\KK_\pm,\GG(\eta,b))$ a Generalized para-K\"ahler manifold. Then the topological twist of this $\sigma$-model defined by the nilpotent charge $\QQ$ \eqref{QQ_nilpotent} agrees with the $2D$ topological boundary theory determined by the generalized para-complex structure on the Courant algebroid $(\TT)\Mb$ with flux $H\overset{loc.}{=}\rd b$.
+Let $\Phi:\Sigma^{2|2}\rightarrow \Mb$ be a $(2,2)$ para-supersymmetric $\sigma$-model with the target $(\Mb,\KK_\pm,\GG(\eta,b))$ a Generalized para-K\"ahler manifold. Then the generalozed para-B-twist of this $\sigma$-model defined in Definition \ref{def:B-twist} coincides with the $2D$ topological boundary theory determined by the generalized para-complex structure on the Courant algebroid $(\TT)\Mb$ with flux $H\overset{loc.}{=}\rd b$.
 \end{corollary}
 
 \appendix
@@ -1267,9 +1315,9 @@ Similarly,
 \end{aligned}
 \end{align}
 where we used
-\begin{align*}
+\begin{align}\label{Gamma-pm}
 (\Gamma^+)^i_{jk}=g^{im}(\Gamma_{mjk}+\frac{1}{2}H_{jkm})=g^{im}(\Gamma_{mkj}-\frac{1}{2}H_{kjm})=(\Gamma^-)^i_{kj}.
-\end{align*}
+\end{align}
 Plugging \eqref{eq:calc1} and \eqref{eq:calc2} into \eqref{QL_lambda} with use of the equation of motion \eqref{F_EoM} for $F$ then yields
 \begin{align*}
 [Q_L,\lambda^i]&=((\Gamma^-)^i_{km}(P_-)^m_l-(\Gamma^-)^m_{kl}(P_-)^i_m)(P_+)^k_j\psi_-^l\psi_+^j\\
