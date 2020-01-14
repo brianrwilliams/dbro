@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[letterpaper,12pt]{article}
 \usepackage{amssymb, amsmath, amsthm, mathtools, bbm, tikz-cd,stmaryrd,enumerate,hyperref,bm}
 %-------------------
 \usepackage{fancyhdr}
@@ -6,7 +6,19 @@
 \fancyhf{}
 \fancyhead[L]{\leftmark}
 \fancyhead[R]{\thepage}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\addtolength{\headwidth}{0.25in}
 %----------------
+%\setlength{\marginparwidth}{0pt} % width of margin notes
+%\setlength{\marginparsep}{0pt} % width of space between body text and margin notes
+\setlength{\evensidemargin}{0.125in} % Adds 1/8 in. to binding side of all 
+\setlength{\oddsidemargin}{0.125in} % Adds 1/8 in. to the left of all pages
+\setlength{\textwidth}{6.375in} % assuming US letter paper (8.5 in. x 11 in.) and 
+\raggedbottom
+\setlength{\parskip}{\medskipamount}
+\renewcommand{\baselinestretch}{1}
+%---------------------------------
 \newcommand{\TT}{{T\oplus T^*}}
 \newcommand{\JJ}{\mathcal{J}}
 \newcommand{\KK}{\mathcal{K}}
