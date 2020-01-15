@@ -480,7 +480,7 @@ which consequently changes the bracket as
 which implies that when $H$ is trivial in cohomology, then a choice of a $b$-field transformation such that $\rd b=-H$ brings the twisted bracket $\brac_H$ into the standard form \eqref{eq:dorfman}. When $H$ is cohomologically non-trivial this can be done at least locally. This also means that any choice of splitting with a non-trivial $b$-field can be absorbed in the Courant algebroid bracket in terms of the {\it flux}\footnote{Flux is a term used mainly in physics, in this context simply meaning the ``tensorial contribution to the bracket''.} $\rd b$.
 
 \paragraph{Dirac Structures}
-An important object in Dirac geometry are (almost) dirac structures, which are subbundles $L\subset \TT$ with special properties.
+An important object in Dirac geometry are (almost) Dirac structures, which are subbundles $L\subset \TT$ with special properties.
 \begin{Def}
 An {\bf almost Dirac structure} $L$ is a maximally isotropic subbundle of $\TT$, i.e. $\la u,v\ra=0$ for any $u,v \in \se(L)$ and $\text{rank}(L)=\text{rank}(T)$. When $L$ is involutive under the Dorfman bracket, i.e. it satisfies $[L,L]\subset L$, we call $L$ simply a {\bf Dirac structure}.
 \end{Def}
@@ -502,6 +502,7 @@ A \textbf{(twisted) generalized para-complex} (GpC) structure $\KK$ is an endomo
 \mathcal{N}_\KK(u,v)=[\KK u,\KK v]_H+\KK^2[ u,v]_H-\KK([\KK u,v]_H+[ u,\KK v]_H)=0.
 \end{align}
 \end{Def}
+Let $L_\KK$ and $\Tilde{L}_{\KK}$ denote the $+1$ and $-1$ eigenbundles of $\KK$, respectively. 
 It is easy to check that the condition \eqref{eq:gen_nijenhuis} is equivalent to the $\pm 1$ eigenbundles of $\KK$ to be involutive under the twisted Dorfman bracket. Since in this paper the flux $H$ will be generically non-zero but all results hold for the special case $H=0$ as well, we will drop the word ``twisted" from our definitions.
 
 Generalized para-complex structures can be understood as the data one needs to specify a splitting of $\TT$ to a pair of integrable Dirac structures:
@@ -538,12 +539,13 @@ that has eigenbundles $T$ and $T^*$ and is always integrable. The following two 
 \id & 2\beta \\
 0 & -\id
 \end{pmatrix}.
-\end{align*}
-$\KK_b$ is integrable iff $\rd b =-H$, and its eigenbundles are $\Lb_b=\text{graph}(b)=\{X+b(X)\mid X \in \XX\}$ and $\widetilde{\Lb}=T^*$. Similarly, $\KK_\beta$ is integrable iff $\beta$ is a Poisson structure, (see \cite[Lemma~2.13]{Hu:2019zro}) and its eigenbundles are $\Lb=T$ and $\widetilde{\Lb}=\text{graph}(-\beta)=\{\ap-\beta(\ap)\}\mid \ap \in \Omega\}$.
+\end{align*} 
+$\KK_b$ is integrable iff $\rd b =-H$, and its eigenbundles are $L_{b} = \text{graph}(b)=\{X+b(X)\mid X \in \XX\}$ and $\widetilde{L}_b =T^*$. Similarly, $\KK_\beta$ is integrable iff $\beta$ is a Poisson structure, (see \cite[Lemma~2.13]{Hu:2019zro}) and its eigenbundles are $L_\beta =T$ and $\widetilde{L}_\beta =\text{graph}(-\beta)=\{\ap-\beta(\ap)\}\mid \ap \in \Omega\}$.
+The Lie algebroid $L_{\beta}$ is equivalent to the Lie algebroid with underlying bundle $T^*$ and anchor given by the Poisson bivector $\beta : T^* \to T$. 
 \end{Ex}
 
 \begin{Ex}[Para-complex structures]\label{eg: pc}
-A para-complex structure $K\in \Endo(T)$, defines the diagonal generalized para-complex structure:
+An almost para-complex structure $K\in \Endo(T)$, defines the diagonal generalized almost para-complex structure:
 \begin{align*}
 \KK_K=
 \begin{pmatrix}
@@ -551,7 +553,9 @@ K & 0 \\
 0 & -K^*
 \end{pmatrix}.
 \end{align*}
-The corresponding Dirac structures are given by $\Lb=T^{(1,0)}\oplus T^{*(0,1)}$ and $\widetilde{\Lb}=T^{(0,1)}\oplus T^{*(1,0)}$, where the bigrading is with respect to $K$. The integrability of $\KK_K$ is equivalent to Frobenius integrability of $K$ , i.e. vanishing of the Nijenhuis tensor of $K$.
+The integrability of $\KK_K$ is equivalent to Frobenius integrability of $K$ , i.e. vanishing of the Nijenhuis tensor of $K$.
+Thus a para-complex structure defines a generalized para-complex structure of the above form. 
+The corresponding Dirac structures are given by the $+1$ eigenbundle $L_K =T^{(1,0)}\oplus T^{*(0,1)}$ and $-1$ eigenbundle $\widetilde{L}_K =T^{(0,1)}\oplus T^{*(1,0)}$, where the bigrading is with respect to $K$.
 %
 %The structure $\KK_P$ can be generalized to the following
 %\begin{align*}
@@ -562,11 +566,10 @@ The corresponding Dirac structures are given by $\Lb=T^{(1,0)}\oplus T^{*(0,1)}$
 %\end{pmatrix},
 %\end{align*}
 %where we can read off from the constraints in \eqref{eq:GpC_generalform} that $P^2=\id$ implies that $\Pi\Omega=0$ and both $\Pi$ and $\Omega$ have to be of type $(2,0)+(0,2)$ with respect to the grading given by $P$.
-
 \end{Ex}
 
 \begin{Ex}[Symplectic structures]\label{ex:GpC_sympl}
-A symplectic form $\omega$ defines the anti-diagonal GpC structure
+A pre-symplectic form $\omega$ defines the anti-diagonal almost generalized para-complex structure
 \begin{align*}
 \KK_\omega=
 \begin{pmatrix}
@@ -574,15 +577,28 @@ A symplectic form $\omega$ defines the anti-diagonal GpC structure
 \omega & 0
 \end{pmatrix}.
 \end{align*}
-The $\pm 1$ eigenbundles are given by $\text{graph}(\pm\omega)=\{X\pm\omega(X)\mid X\in \XX\}$, and the integrability of $\KK_\omega$ is equivalent to $\rd\omega=0$.
+The integrability of $\KK_\omega$ is equivalent to $\rd\omega=0$.
+Thus, if $\omega$ is symplectic then $\KK_\omega$ is a generalized para-complex structure.
+The $\pm 1$ eigenbundles are given by $\text{graph}(\pm\omega)=\{X\pm\omega(X)\mid X\in \XX\}$.
 \end{Ex}
+
+\btd{Is there a classification of a most general GpC that can be written in the form
+\[
+\KK = 
+\begin{pmatrix}
+K & P \\
+\omega & -K^*
+\end{pmatrix}
+\]
+where $K \in {\rm End}(T)$, $P \in \wedge^2 T$ and $\omega \in \wedge^2 T^*$ satisfying some integrability conditions?
+}
 
 \paragraph{Comparision with generalized complex structures}
 Example \ref{ex:GpC_sympl} shows that a symplectic manifold $(M,\omega)$ is a GpC manifold and it is well-known \cite{Gualtieri:2003dx} that $(M,\omega)$ is also generalized complex (GC). However, while almost GC structures exist only on almost complex manifolds \cite{Gualtieri:2003dx}, Example \ref{ex:GpC_trivial} demonstrates that GpC structures exist on any Poisson manifold and in particular on any smooth manifold (with trivial Poisson structure). Another feature of GpC geometry that is not present in GC geometry is that the GpC structures can be half-integrable (similarly to ordinary para-complex structures): see the cases of $\KK_b$ and $\KK_\beta$ from Example \ref{ex:GpC_trivial} which are always at least half integrable and are fully integrable iff $b$ is closed and $\beta$ is Poisson, respectively. On the other hand, $\KK_\omega$ in Example \ref{ex:GpC_sympl} can only be half-integrable when the $H$-flux is non-zero.
 
 
 \paragraph{Para-Complexified version}
-One can also carry out all the above discussion in the setting of the para-complexified generalized tangent bundle $\TT\otimes_\RR \Cp$. In particular, one gets a one-to-one correspondence of GpC structures with {\it paracomplex} Dirac structures:
+One can also carry out all the above discussion in the setting of the para-complexified generalized tangent bundle $(\TT)\otimes_\RR \Cp$. In particular, one gets a one-to-one correspondence of GpC structures with {\it paracomplex} Dirac structures:
 \begin{proposition}
 A generalized paracomplex structure is equivalent to a paracomplex Dirac structure $L \subset (\TT)\otimes_\mathbb{R} \mathbf{C}$ of real index zero, i.e. $L \cap \bar{L}=0$.
 \end{proposition}
@@ -1422,6 +1438,6 @@ Here all terms cancel except for one, which finally reads
 \end{align*}
 \end{proof}
 
-\bibliographystyle{JHEP}
+\bibliographystyle{alpha}
 \bibliography{mybib}
 \end{document}
