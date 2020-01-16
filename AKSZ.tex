@@ -122,12 +122,18 @@ In this section we will show how to associate a class of $2D$ topological field 
 The construction closely follows the relationship between ordinary (non-para) generalized complex structures \cite{Gualtieri:2003dx} and $2D$ topological field theories developed in \cite{Cattaneo:2009zx, Pestun:2006rj}.
 For another class of $2D$ boundary theories to the $3D$ Courant algebroid $\sigma$-model see \cite{SeveraTduality}. \btd{Please add any more references you think fit.}
 
-For us, the prescription of defining the $2D$ topological theory associated to a GpC structure starts with a $3D$ topological field theory which is defined for any manifold $M$. 
+For us, the prescription of defining the $2D$ topological theory associated to a generalized para-complex structure starts with a $3D$ topological field theory which is defined for any manifold $M$. 
 More generally, this $3D$ theory can be defined for any Courant algebroid on $M$ \cite{Roytenberg:2002nu}, but for most examples we will only consider the standard exact Courant algebroid (or twisted versions) defined by the Dorfman bracket.
-The key to our construction is to realize the data of a G(p)C structure in terms of its eigenbundles, which are Dirac structures $L$ in the Courant algebroid $\TT$. 
+The key to our construction is to realize the data of a generalized para-complex structure in terms of its eigenbundles, which are Dirac structures in the real Courant algebroid $\TT$.
+More precisely, we obtain a pair of Dirac structures $L, \Tilde{L}$ corresponding to the $\pm$ eigenbundles of the generalized para-complex structure. 
 
-Via the AKSZ construction \cite{AKSZ}, this correspondence translates into the statement that the Dirac structure $L$ defines a topological boundary theory of the $3D$ topological theory defined by the standard Courant algebroid.
-In turn, we will directly describe the BRST observables of the $2D$ theory in terms of the cohomology of the Lie algebroid $L$. 
+Via the AKSZ construction \cite{AKSZ}, this correspondence translates into the statement that the pair of Dirac structures define a pair of topological boundary theories of the $3D$ topological theory.
+In turn, we will directly describe the BRST observables of the $2D$ theories in terms of the cohomology of the Lie algebroid $L$. 
+
+By similar reasoning, one can obtain a single $2D$ TFT from the data of a generalized para-complex structure. 
+One considers the para-complexification $(\TT) \otimes_{\RR} \Cc$ of the standard Courant algebroid. 
+The real Dirac structures $L, \Tilde{L}$ combine to give a para-complex Dirac structure $L \oplus \Tilde{L}$. 
+In turn, we obtain a single $2D$ TFT defined over the para-complex numbers.
 
 In Section \ref{sec: twist}, we will relate these theories topological twists of $2D$ $(2,2)$ (para-)SUSY sigma models described in Section \ref{sec:toptwist} closely following the methods in \cite{Kapustin:2004gv} for ordinary generalized complex geometry.
 
@@ -243,11 +249,11 @@ induces a pairing
 \displaystyle \alpha & \times & \beta & \mapsto & \displaystyle \int_N \pi_N^* \alpha \wedge {\rm ev}^* \beta 
  \end{array}
  \]
-Applied to the element $1 \times \omega_X \in \Omega^0_N \times \Omega^{\brian{??}}_X$ we obtain a $(-1)$-shifted symplectic form that we denote $\int_N \omega_X$.
+Applied to the element $1 \times \omega_X \in \Omega^0_N \times \Omega^{2}_X$ we obtain a $(-1)$-shifted symplectic form that we denote $\int_N \omega_X$.
 
 \begin{Ex}
-The most important example for us will be the source dg manifold $(N, \Omega^*_N)$, that is $\sA_N = \Omega^*_N$ equipped with de Rham differential. 
-We denote this dg manifold by $N_{\rm dR}$.
+The most important example for us will be the source dg manifold $\cN = (N, \Omega^*_N)$, that is $\sA_\cN = \Omega^*_N$ equipped with de Rham differential. 
+We denote this dg manifold by $\cN = N_{\rm dR}$.
 Take the dg manifold $(N, \Omega^*_N)$ where $N$ is any smooth manifold. 
 If $N$ is closed and oriented there exists an integration map
 \[
@@ -261,7 +267,7 @@ If $N$ has a para-complex structure, $(N, \mathbf{\Omega}^{0,\bullet})$ has the 
 Here $\mathbf{\Omega}^{0,\bullet}$ is the para-Dolbeault complex from Section \ref{sec: paracomplex} with differential given by the para $\pd$-operator. 
 We will denote this dg manifold by $N_{\pd}$. 
 To equip the dg manifold $(N, \mathbf{\Omega}^{0,\bullet})$ with an orientation, one must fix additional data. 
-One way to do this is to assume that the para-complex manifold $N$ is equipped with a para-holomorphic volume form $\Omega_N$. \brian{Cite David's new section.}
+One way to do this is to assume that the para-complex manifold $N$ is equipped with a para-holomorphic volume form $\Omega_N$.
 \end{Ex}
 
 \brian{Hamiltonians and action functional}
@@ -323,14 +329,14 @@ By the Jacobi identity, this subbundle is integrable and so determines a Dirac s
 If we place the 3D AKSZ theory with target the Courant algebroid $\TT$ on $N^3$ with $\partial N = \Sigma$, the boundary condition determined by this Dirac structure is equivalent to the Poisson $\sigma$-model on $\Sigma$, see \cite{KSSdirac}, for instance.
 \end{Ex}
 
-\subsection{Two dimensional TFT from GpC structures}
+\subsection{Two dimensional TFT from generalized para-complex structures}
 
 Let $M$ be a manifold.
 Throughout this section we will only consider the standard Dorfman Courant algebroid $X_H$ on $M$, possibly twisted by an $H$-flux.
-By Theorem \ref{thm:pairofdirac}, the choice of a GpC structure $\KK$ determines a pair of transversal Dirac structures $L_{\KK}$ and $\tilde{L}_{\KK}$ on $M$ given by the positive and negative eigenbundles of $\KK$. 
-In particular, $L$ determines a Lagrangian in the shifted symplectic space $X_{H}$. 
+By Theorem \ref{thm:pairofdirac}, the choice of a generalized para-complex structure $\KK$ determines a pair of transversal Dirac structures $L_{\KK}$ and $\tilde{L}_{\KK}$ on $M$ given by the positive and negative eigenbundles of $\KK$. 
+In particular, $L_{\KK}$ determines a Lagrangian in the shifted symplectic space $X_{H}$. 
 This Lagrangian then defines a boundary condition for the three-dimensional AKSZ theory.
-Thus, we see that any GpC structure $\KK$ defines a 2D TFT living at the boundary of the 3D theory. 
+Thus, we see that any generalized para-complex structure $\KK$ defines a 2D TFT living at the boundary of the 3D theory. 
 By Proposition \ref{prop:dirac_Liealg} the eigenbundle $L_\KK$ has the structure of a Lie algebroid compatible with the anchor and Dorfman bracket on $\TT$. 
 
 \begin{remark}
@@ -367,7 +373,7 @@ Let $\KK$ be a generalized para-complex structure on $M$ and $L_{\KK}$ the corre
 The BRST cohomology of the local observables of the 2D TFT determined by $\KK$ is equivalent to the Lie algebroid cohomology of $L_{\KK}$. 
 \end{proposition}
 
-\subsubsection*{Trivial GpC structures}
+\subsubsection*{Trivial generalized para-complex structures}
 
 Let $M$ be a smooth manifold.
 Consider the case of the trivial generalized para-complex structure on $M$ defined by
@@ -565,13 +571,13 @@ There are closely related $\sigma$-models which depending {\em para-holomorphica
 %
 %\subsubsection{Dirac structures and boundary conditions}
 %
-%\subsection{Two dimensional TFT from GpC structures}
-%\label{sec:GpC_AKSZ}
+%\subsection{Two dimensional TFT from generalized para-complex structures}
+%\label{sec:generalized para-complex_AKSZ}
 %\brian{Recall that a generalized (para-)complex structure $\JJ$ defines a Dirac structure in $\TT$, and hence a Lagrangian inside of the $2$-shifted symplectic space $\XX_H$.  
 %%More generally, if $\JJ$ is a generalized complex structure in an arbitrary Courant algebroid $E$, then we obtain a $2$-shifted Lagrangian inside of the $2$-shifted symplectic space $\XX_E$. 
 %This Lagrangian then defines a boundary condition for the three-dimensional AKSZ theory. }
 %
-%\subsubsection*{Trivial GpC structure}
+%\subsubsection*{Trivial generalized para-complex structure}
 %
 %\subsubsection*{(Real) Poisson $\sigma$-model}
 %
