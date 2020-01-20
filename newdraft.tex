@@ -819,7 +819,7 @@ Here, $\d_\cN$ is a linear differential operator of degree $+1$, and together th
 In particular, as a graded algebra $\sA^*_\cN$ is given by functions on the total space of some graded vector bundle $A_\cN$ on $N$ (which is of finite rank and concentrated in finitely many degrees). 
 In the language of $NQ$ manifolds, the homological vector field defining the $Q$-structure is $\d_\cN$. 
 
-\brian{Symplectic form}
+\brian{Introduce symplectic form}
 
 A striking result of \cite{Roytenberg:2002nu} classifies all $2$-shifted symplectic spaces in terms of Courant algebroids. 
 
@@ -925,7 +925,7 @@ One way to do this is to assume that the para-complex manifold $N$ is equipped w
 \brian{Relate to Lie algebroid description.}
 \end{Ex}
 
-\brian{Hamiltonians and action functional}
+\brian{Hamiltonians and action functional. This is just more review and citations.}
 
 \subsubsection{The AKSZ theory associated to a Courant algebroid}
 
@@ -985,8 +985,7 @@ The intersection defines the fields of the theory on $\partial N$.
 When the bulk theory is trivial, so there are no degrees of freedom, the resulting theory on $\partial N$ is also equipped with a $(-1)$-symplectic structure. 
 For proofs of these facts about the Lagrangian intersection we refer to \cite{Calaque,PTVV}.
 
-This formalism can be made explicit in the case of the $3D$/$2D$ system. \brian{finish}
-
+This formalism can be made explicit in the case of the $3D$/$2D$ system. \brian{I basically do this already below, but I might add some filler statements here.}
 
 \begin{Ex}
 Suppose $(M, \pi)$ is a Poisson manifold. 
@@ -1016,8 +1015,8 @@ There is a different presentation of the $2$-symplectic manifold $X_E$ in terms 
 Consider the graded manifold $T^*[2] \Tilde{L}_{\KK} [1]$.
 In coordinates, we can parametrize this graded manifold by: $\{l^m, \Tilde{l}_n, x^i, p_j\}$ where $l^m$ parameterizes the fiber of $\Tilde{L}^*[1] \cong L [1]$ and is of degree $1$, $\Tilde{l}_n$ parametrizes the fiber of $\Tilde{L}[1]$ and is of degree $1$, and $x^i, p_j$ are as before.
 
-\brian{define $\omega_{\KK}$ see Appendix A of \cite{Cattaneo:2009zx}.}
-
+\brian{define $\omega_{\KK}$ see Appendix A of \cite{Cattaneo:2009zx}. 
+If dbro is OK, I say we just translate his result and cite it. The proof seems to follow immediately.}
 \begin{proposition}\label{prop: symp}
 Suppose $\KK$ is a generalized para-complex structure on a Courant algebroid $E$.
 Then, there are symplectomorphisms of $2$-shifted symplectic dg manifolds
@@ -1111,6 +1110,12 @@ The following is true about the local observables of the $2D$ TFTs determined by
  \end{itemize}
 \end{proposition}
 
+\begin{proof}
+The BRST operator is of the form $\d_{dR} + Q$ where $Q$ is a degree $+1$ vector field on the target and $\d_{dR}$ is the de Rham differential on $\Sigma$.  
+Locally, the BRST cohomology reduces to the cohomology of functions on the target graded manifold equipped with differential $Q$.
+In each case at hand, the target is of the form $L[1]$ with differential $Q = \d_L$.
+\end{proof}
+
 We now restrict to the case $E = \TT$ with its standard Courant algebroid structure and outline important special cases.
 
 \subsubsection*{Trivial generalized para-complex structures}
@@ -1188,7 +1193,10 @@ The {\bf para-$B$-model} with source a closed Riemann surface $\Sigma$ and targe
 
 The classical BRST cohomology of the para-B-model is isomorphic to the cohomology of para-holomorphic polyvector fields on the target para-complex manifold $X$.
 
-\brian{below needs to be fixed up a bit}
+\btd{I'm getting snagged on this a bit. 
+What I want to show is that the full theory has as its BRST cohomology the complex I describe below. 
+Do you see how this works?
+}
 
 The Lie algebroid cohomology $H^*(\cO(L_{\KK}[1]), \d_{L_\KK})$ is computed by a differential of the form
 \[
@@ -1200,19 +1208,16 @@ Using the splitting $\wedge^*(T^{1,0} \oplus T^{*0,1}) = \wedge^* T^{1,0} \otime
 \]
 Thus, the BRST cohomology is precisely the Dolbeault cohomology of para-holomorphic polyvector fields.
 
+%\brian{Case of para structure on $M \times M$. Two copies of $BF$ theory.}
+
+\subsection{Anomalies and para holomorphic variants}
+
 \brian{discuss anomalies. Para-holomorphic volume form.}
 
 \brian{Discuss Si's work on perturbative quantization}
 
-
-\hrulefill
-
-\brian{***para Kahler example, **example where the paracomplex structures commute but are not equal (this is where people see ``twisted chiral"), para version of T-duality, **Poisson $\sigma$-model, going back and forth between generalized (para) complex.
-}  
-
-\brian{Case of para structure on $M \times M$. Two copies of $BF$ theory.}
-
-\subsection{Para holomorphic variants}
+%\brian{***para Kahler example, **example where the paracomplex structures commute but are not equal (this is where people see ``twisted chiral"), para version of T-duality, **Poisson $\sigma$-model, going back and forth between generalized (para) complex.
+%}  
 
 \brian{My plan is to just turn this into an extended remark}
 
