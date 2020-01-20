@@ -354,7 +354,13 @@ In order to make the analogy between complex and para-complex geometry more expl
 \begin{align*}
 \mathbf{C} \ni z=(x,y)=x+k\cdot y.
 \end{align*}
-On $\mathbf{C}$, we define following operations: para-complex conjugation $z=(x,y)\mapsto \bar{z}=(x,-y)$, i.e. $\overline{x+ky}=x-ky$, the real and imaginary parts given by $Re(z)=\frac{1}{2}(z+\bar{z})$, $Im(z)=k\frac{1}{2}(z-\bar{z})$, i.e. $Re(x+ky)=x,\ Im(x+ky)=y$.
+On $\mathbf{C}$, we define the following familiar operations:\begin{align}
+\begin{aligned}
+&\bullet\quad \text{Para-complex conjugation: }x+\kk y\mapsto \overline{x+\kk y}=x-\kk y\\
+&\bullet\quad \text{Real part: } x+\kk y \mapsto \text{Re}(x+\kk y)=x\\
+&\bullet\quad \text{Imaginary part: } x+\kk y \mapsto \text{Im}(x+\kk y)=y.
+\end{aligned}
+\end{align}
 
 
 Therefore, we see that $\mathbf{C}^n$ is a paracomplex vector space with the paracomplex structure given by the multiplication by $k$. Conversely, any $2n$-dimensional paracomplex vector space $(V,K)$ can be identified with $(\mathbf{C}^n,k)$; the $\mathbf{C}$-module structure is defined as $(a+kb)v=av+bK(v)$ and if $(x^i, \xt^i)$ is a basis of $V$ spanning the $\pm 1$ eigenspaces of $K$, then $z^i\coloneqq \frac{1+k}{2}x^i+\frac{1-k}{2}\xt^i$ is a basis of $\Cc^n$. In other words, we have the following identification of paracomplex vector spaces
@@ -425,22 +431,88 @@ In particular, the condition of holomorphicity in the para-complex coordinates $
 %\rd^p\ap=(-1)^n(\Lambda^kK)\rd\ap=(-1)^{2n}\p_+ \ap +(-1)^{2n+1}\p_-\ap=(\p_+-\p_-)\ap,
 %\end{align*}
 %\end{proof}
-\paragraph{The para-holomorphic volume form}
-In K\"ahler geometry, the notion of a holomorphic volume form is very important and in particular gives rise to Calabi-Yau manifolds, perhaps the most important subclass of K\"ahler manifolds. Here we discuss the para-complex version of this story because it plays an important role when considering the anomalies of the R-symmetry at the quantum level.
 
-Remember that a holomorphic volume form on a complex manifold $M$ of complex dimension $k$ is a non-vanishing section of the canonical bundle, $\Omega \in \Omega^{(k,0)}(M)$, that is holomorphic, $\bar{\p}\Omega=0$. Recalling the para-complex Dolbeault complex \eqref{para-dolbeault}, we can immediately infer what should be the analogous object in para-complex geometry:
+%\paragraph{The para-holomorphic volume form}
+%In K\"ahler geometry, the notion of a holomorphic volume form is very important and in particular gives rise to Calabi-Yau manifolds, perhaps the most important subclass of K\"ahler manifolds. Here we discuss the para-complex version of this story because it plays an important role when considering the anomalies of the R-symmetry at the quantum level.
+%
+%Remember that a holomorphic volume form on a complex manifold $M$ of complex dimension $k$ is a non-vanishing section of the canonical bundle, $\Omega \in \Omega^{(k,0)}(M)$, that is holomorphic, $\bar{\p}\Omega=0$. Recalling the para-complex Dolbeault complex \eqref{para-dolbeault}, we can immediately infer what should be the analogous object in para-complex geometry:
+%\begin{Def}
+%Let $(\PS,K)$ be a para-complex manifold of dimension $2n$. We define a {\bf para-holomorphic volume form} to be a nowhere vanishing section $\hat{\Omega}=(\Omega,\tl{\Omega})\in \Omega^{(n,0)+(0,n)}(\PS)$, where $\Omega \in \Omega^{(n,0)}(\PS)$ and $\tl{\Omega}\in \Omega^{(0,n)}(\PS)$ are each non-vanishing and satisfy
+%\begin{align*}
+%\pt \Omega=\p \tl{\Omega}=0.
+%\end{align*}
+%\end{Def}
+%Because $\Omega^{(n,0)}(\PS)$ is naturally isomorphic to $\Omega^n(M)$, the section $\Omega$ is non-vanishing and $\pt \Omega=0$ implies it is invariant under the translation along $\Mt$, the above definition implies that $\Omega$ defines an honest volume form on $M$. Similarly, $\tl{\Omega}$ is a volume form on $\Mt$ and therefore both the canonical foliations $M$ and $\Mt$ of the para-complex manifold are orientable.
+%
+%As an extension of the above definition and the direct analogy with Calabi-Yau manifolds, we can introduce a definition of the para-Calabi-Yau manifolds:
+%\begin{Def}
+%A {\bf para-Calabi-Yau manifold} is a compact, para-K\"ahler manifold $(\PS,\eta,K)$ with a para-Holomorphic volume form $\hat{\Omega}$.
+%\end{Def}
+
+\subsubsection{Para-Hermitian Geometry}
+We now introduce a metric $\eta$ compatible with the para-complex structure $K$, which by contraction $\eta \circ  K$ induces a non-degenerate two-form $\omega$. This gives rise to para-Hermitian geometry:
 \begin{Def}
-Let $(\PS,K)$ be a para-complex manifold of dimension $2n$. We define a {\bf para-holomorphic volume form} to be a nowhere vanishing section $\hat{\Omega}=(\Omega,\tl{\Omega})\in \Omega^{(n,0)+(0,n)}(\PS)$, where $\Omega \in \Omega^{(n,0)}(\PS)$ and $\tl{\Omega}\in \Omega^{(0,n)}(\PS)$ are each non-vanishing and satisfy
+	Let $(\PS,K)$ be a para-complex manifold and let $\eta$ be a pseudo-Riemannian metric that satisfies $\eta(K\cdot,K\cdot)=-\eta$. Then we call $(\PS,K,\eta)$ a \textbf{para-Hermitian manifold}\footnote{If $K$ is not integrable, i.e. $(\PS,K)$ is almost para-complex, we would call $(\PS,K,\eta)$ an almost para-Hermitian manifold.}.
+\end{Def}
+\noindent
+The above definition implies that the tensor $\omega\coloneqq \eta K$ is skew
 \begin{align*}
-\pt \Omega=\p \tl{\Omega}=0.
+\omega(X,Y)=\eta(KX,Y)=-\eta(X,KY)=-\omega(Y,X),
 \end{align*}
-\end{Def}
-Because $\Omega^{(n,0)}(\PS)$ is naturally isomorphic to $\Omega^n(M)$, the section $\Omega$ is non-vanishing and $\pt \Omega=0$ implies it is invariant under the translation along $\Mt$, the above definition implies that $\Omega$ defines an honest volume form on $M$. Similarly, $\tl{\Omega}$ is a volume form on $\Mt$ and therefore both the canonical foliations $M$ and $\Mt$ of the para-complex manifold are orientable.
-
-As an extension of the above definition and the direct analogy with Calabi-Yau manifolds, we can introduce a definition of the para-Calabi-Yau manifolds:
+and nondegenrate (because $\eta$ is nondegenerate), therefore $\omega$ is an almost symplectic form, sometimes called the \textbf{fundamental form}. From $K^2=\id$ we also have $K=\eta^{-1}\omega=\omega^{-1}\eta$. Another observation is that since the eigenbundles of $K$ have the same rank, $\eta$ has split signature $(d,d)$. Furthermore, the eigenbundles of $K$ are isotropic with respect to both $\eta$ and $\omega$. This means that the almost symplectic form $\omega$ is of the type $(1,1)$, $\omega \in \Omega^{(1,1)}(\PS)$.
+\begin{remark}
+	As shown above, the data $(\PS,K,\eta)$, $(\PS,\eta,\omega)$ and $(\PS,K,\omega)$ are on a para-Hermitian manifold equivalent and so we may use the different triples interchangeably to refer to a para-Hermitian manifold.
+\end{remark}
+Again, in a complete analogy with K\"ahler geometry, we get para-K\"ahler geometry whenever the fundamental form $\omega$ is closed
 \begin{Def}
-A {\bf para-Calabi-Yau manifold} is a compact, para-K\"ahler manifold $(\PS,\eta,K)$ with a para-Holomorphic volume form $\hat{\Omega}$.
+	Let $(\PS,\eta,\omega)$ be a para-Hermitian manifold with $\rd\omega=0$. We call $(\PS,\eta,\omega)$ a \textbf{para-K\"ahler manifold}.
 \end{Def}
+
+\paragraph{Para-Calabi-Yau geometry}
+
+In \cite{mythesis}, the notion of para-Calabi-Yau geometry is introduced. As the name suggests, these manifolds should play the role of the para-complex version of Calabi-Yau manifolds in complex geometry. We now recall some basic properties of para-Calabi-Yau manifolds, motivating the definition by Calabi-Yau geometry, which is a standard notion in the literature.
+
+There are many different ways to define what a Calabi-Yau manifold is, but for the purpose of our discussion we will call a Calabi-Yau manifold a K\"ahler manifold $(M,g,I)$ with the holonomy group of the underlying Riemannian metric to be $\text{Hol}(g)\subseteq SU(d)$, as opposed to $U(d)$, which is the case for ordinary K\"ahler manifolds.\footnote{Typically, a part of the definition of a Calabi-Yau manifold is the requirement of compactness of $M$ and sometimes, one requires that $\text{Hol}(g)$ is exactly equal to $SU(d)$.} A consequence of this property is that there exists a {\it holomorphic volume form}, i.e. a non-vanishing section $\Omega \in \Omega^{d,0}$ that is holomorphic, $\bar{\p}\Omega=0$ and satisfies
+\begin{align*}
+    \frac{\omega^d}{d!}=(-1)^\frac{d(d-1)}{2}\left(\frac{i}{2}\right)^d \Omega\w \bar{\Omega},
+\end{align*}
+where $\omega=gI$ is the K\"ahler form.
+
+% a Calabi-Yau manifolds
+
+% A Calabi-Yau manifold is a K\"ahler manifold $(M,\omega,I)$ of complex dimension $k$ with a non-vanishing holomorphic volume form $\Omega$,
+% \begin{align*}
+%     \Omega \in \Omega^{(k,0)}(M),\quad \bar{\p}\Omega=0,
+% \end{align*}
+% which satisfies a compatibility condition with the K\"ahler fundamental form $\omega$ (sometimes called the complex Monge-Ampere equation)
+% \begin{align*}
+%     \frac{\omega^k}{k!}=(-1)^\frac{k(k-1)}{2}\left(\frac{i}{2}\right)^k \Omega\w \bar{\Omega}.
+% \end{align*}
+% Calabi-Yau manifolds play an important role in theoretical physics, especially in string theory where they serve as the geometric model for string compactifications. For more details on Calabi-Yau manifolds, the reader may consult for example the book \cite{joyce2000compact}.
+
+We now turn to the analogue of the above notions in the para-complex setting. Let $(K,\eta,\omega)$ be a $2d$-dimensional para-K\"ahler manifold with $\lc$ the Levi-Civita conencion of $\eta$. From $\lc\omega=\lc\eta$, we have that the holonomy group of a para-K\"ahler manifold is $GL(d)=O(d,d)\cap Sp(2d)$. For a para-Calabi-Yau manifold, the natural definition is therefore the following:
+
+\begin{Def}
+A {\bf para-Calabi-Yau manifold} is a para-K\"ahler manifold $(\PS,K,\eta)$ of dimension $2d$ such that the holonomy group of $\eta$ is $\text{Hol}(\eta)\subseteq SL(d)$.
+\end{Def}
+\begin{remark}
+Note the interesting property that both $SU(d)$ and $SL(d)$ are real forms of $SL_\mathbb{C}(d)$.
+\end{remark}
+
+Let us now investigate what is the structure on para-Calabi-Yau analogous to the holomorphic volume form. We choose the local adapted coordinates $(x^i,\xt_j)$ in which $\eta$ and $\omega$ have the canonical form
+\begin{align*}
+    \eta=dx^i\otimes d\xt_i+d\xt_i\otimes dx^i,\quad \omega=dx^i\w d\xt_i.
+\end{align*}
+Because the holonomy of $\eta$ is now contained in $SL(d)$, there is also a covariantly constant tensor $\hat{\Omega}$
+\begin{align*}
+    \hat{\Omega}=dx^1\w\cdots\w dx^d+d\xt_1\w\cdots\w d\xt_d=\Omega+\tl{\Omega},
+\end{align*}
+which satisfies $\pt\Omega=\p\tl{\Omega}=0$ as well as
+\begin{align*}
+   \frac{\omega^d}{d!}=(-1)^\frac{d(d-1)}{2} \Omega\w \tl{\Omega}. 
+\end{align*}
+
+We call $\hat{\Omega}=(\Omega,\tl{\Omega})$ a {\bf para-holomorphic volume form}. Remember that on a para-complex manifold $\PS$ of dimension $2n$, the appropriate analogue of the holomorphic forms are the para-holomorphic forms, given by pairs $(\alpha,\tl{\alpha})\in\Omega^{(k,0)+(0,k)}(\PS)$ (here the bigrading is with respect to the para-complex structure), satisfying $\pt\ap=\p\tl{\ap}=0$. Therefore, the {para-holomorphic volume form} is exactly the correct analogue of the holomorphic volume form in case of the Calabi-Yau manifolds. Furthermore, because $\Omega^{(n,0)}(\PS)$ is naturally isomorphic to $\Omega^n(M)$, the section $\Omega$ is non-vanishing and $\pt \Omega=0$ implies it is invariant under the translation along $\Mt$, and so it defines a volume form on $M$. Similarly, $\tl{\Omega}$ is a volume form on $\Mt$ and we see that the para-Calabi-Yau structure on $\PS$ augments the canonical foliations $M$ and $\Mt$ of the para-complex manifold with volume forms and both the foliation manifolds are consequently orientable.
 
 \subsection{Basics of generalized geometry}
 In this paper, the term {\it generalized geometry} is used for the study of geometric structures on the bundle $TM \oplus T^*M$ over some manifold $M$. We will typically abbreviate this bundle to $\TT$ whenever the base is understood or unimportant for the discussion.
@@ -506,6 +578,23 @@ A \textbf{(twisted) generalized para-complex} (GpC) structure $\KK$ is an endomo
 \mathcal{N}_\KK(u,v)=[\KK u,\KK v]_H+\KK^2[ u,v]_H-\KK([\KK u,v]_H+[ u,\KK v]_H)=0.
 \end{align}
 \end{Def}
+
+It is a straightforward exercise to check that the most general form of an almost GpC structure is given by
+\begin{align}\label{eq:GpC_generalform}
+ \KK =
+ \begin{pmatrix}
+ A & \Pi \\
+ \Omega & -A^*
+ \end{pmatrix}, \text{ with }
+ \begin{cases}
+  A^2 + \Pi \Omega & = \id\\
+  A\Pi - \Pi A^* & = 0\\
+  \Omega A + A^*\Omega & = 0
+ \end{cases}.
+\end{align}
+where $A \in \End(T)$ and $\Omega \in \Omega^2(M)$, $\Pi \in \se(\Lambda^2 T)$ are skew tensors. The integrability conditions on these tensors are a bit more involved and we will only discuss their special cases when discussing examples. An interested reader can consult \cite{crainic-integrability}, where the integrability is presented in the most general form for generalized complex structures, where the conditions are analogous.
+
+
 Let $L_\KK$ and $\Tilde{L}_{\KK}$ denote the $+1$ and $-1$ eigenbundles of $\KK$, respectively. 
 It is easy to check that the condition \eqref{eq:gen_nijenhuis} is equivalent to the $\pm 1$ eigenbundles of $\KK$ to be involutive under the twisted Dorfman bracket. Since in this paper the flux $H$ will be generically non-zero but all results hold for the special case $H=0$ as well, we will drop the word ``twisted" from our definitions.
 
@@ -586,16 +675,7 @@ Thus, if $\omega$ is symplectic then $\KK_\omega$ is a generalized para-complex 
 The $\pm 1$ eigenbundles are given by $\text{graph}(\pm\omega)=\{X\pm\omega(X)\mid X\in \XX\}$.
 \end{Ex}
 
-\btd{Is there a classification of a most general GpC that can be written in the form
-\[
-\KK = 
-\begin{pmatrix}
-K & P \\
-\omega & -K^*
-\end{pmatrix}
-\]
-where $K \in {\rm End}(T)$, $P \in \wedge^2 T$ and $\omega \in \wedge^2 T^*$ satisfying some integrability conditions?
-}
+
 
 \paragraph{Comparision with generalized complex structures}
 Example \ref{ex:GpC_sympl} shows that a symplectic manifold $(M,\omega)$ is a GpC manifold and it is well-known \cite{Gualtieri:2003dx} that $(M,\omega)$ is also generalized complex (GC). However, while almost GC structures exist only on almost complex manifolds \cite{Gualtieri:2003dx}, Example \ref{ex:GpC_trivial} demonstrates that GpC structures exist on any Poisson manifold and in particular on any smooth manifold (with trivial Poisson structure). Another feature of GpC geometry that is not present in GC geometry is that the GpC structures can be half-integrable (similarly to ordinary para-complex structures): see the cases of $\KK_b$ and $\KK_\beta$ from Example \ref{ex:GpC_trivial} which are always at least half integrable and are fully integrable iff $b$ is closed and $\beta$ is Poisson, respectively. On the other hand, $\KK_\omega$ in Example \ref{ex:GpC_sympl} can only be half-integrable when the $H$-flux is non-zero.
@@ -890,12 +970,18 @@ The graded manifold $\cE(\cN, X)$ is equipped with the homological vector field 
 
 The AKSZ construction endows the mapping space $\cE(N, X)$ in (\ref{eqn: map}) with a $(-1)$-shifted symplectic symplectic form as follows, compatible with the homological vector field $\d_{\cN} + Q$ as follows.
 The fundamental observation is that the diagram
-\[
-\xymatrix{
-& N \times \cE(N, X) \ar[dr]^-{{\rm ev}} \ar[dl]_-{\pi_N} & \\
-N & & X
-}
-\]
+%\[
+%\xymatrix{
+%& N \times \cE(N, X) \ar[dr]^-{{\rm ev}} \ar[dl]_-{\pi_N} & \\
+%N & & X
+%}
+%\]
+\begin{equation*}
+	\begin{tikzcd}
+	& N \times \cE(N, X)\arrow{rd}{{\rm ev}}\arrow[swap]{ld}{\pi_N} &\\
+	N & & X
+	\end{tikzcd}
+\end{equation*}
 induces a pairing
 \[
 \begin{array}{ccccc}
@@ -1137,7 +1223,7 @@ The negative $2D$ theory is given by the AKSZ theory
 \[
 {\rm Map}(\Sigma_{dR} , T^*[1] M)
 \]
-where $T^*[1]M$ is equipped with its standard $1$-symplectic structure. 
+where $T^*[1]M$ is equipped with its standard $1$-symplectic structure. \david{so is this the BFF theory?}
 
 \subsubsection*{Poisson $\sigma$-model}
 Consider the case of the generalized para-complex structure on $M$ defined by
@@ -1348,13 +1434,13 @@ We can also write the para-SUSY algebra in the more conventional off-diagonal ba
 [{Q}_\pm,\wtl{Q}_\pm]=-2\p_\pm.
 \end{align*}
 The two bases $\{Q^1_{\pm}, Q^2_\pm\}$ and $\{{Q}_\pm,\wtl{Q}_\pm\}$ are related by
-\begin{align*}
-Q_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm+Q^1_\pm),\quad \wtl{Q}_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm-Q^1_\pm).
-\end{align*}
+\begin{align}\label{parasusy_offdiagonal_basis}
+Q_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm-Q^1_\pm),\quad \wtl{Q}_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm+Q^1_\pm).
+\end{align}
 Again, this is analogous to the complex basis of the ordinary $(2,2)$ superalgebra
-\begin{align*}
-[Q_\pm,\overline{Q}_\pm]=2\p_\pm.
-\end{align*}
+\begin{align}\label{complex_(2,2)}
+[Q_\pm,\overline{Q}_\pm]=2i\p_\pm.
+\end{align}
 
 \begin{remark}
 
@@ -1815,6 +1901,114 @@ We have therefore shown that the observables in the topologically twisted theori
 \begin{corollary}
 Let $\Phi:\Sigma^{2|2}\rightarrow \Mb$ be a $(2,2)$ para-supersymmetric $\sigma$-model with the target $(\Mb,\KK_\pm,\GG(\eta,b))$ a Generalized para-K\"ahler manifold. Then the generalozed para-B-twist of this $\sigma$-model defined in Definition \ref{def:B-twist} coincides with the $2D$ topological boundary theory determined by the generalized para-complex structure on the Courant algebroid $(\TT)\Mb$ with flux $H\overset{loc.}{=}\rd b$.
 \end{corollary}
+
+\section{Para-complex semi-flat mirror symmetry}
+In this section we present our first observations about a possible notion of mirror symmetry for para-complex geometry. We show that the initial observations about $2D$ $(2,2)$ SUSY $\sigma$-models that initiated the vast research program of mirror symmetry apply perfectly well to $(2,2)$ para-SUSY models and therefore give rise to parallel statements in the para-holomorphic category.
+
+The original example of mirror symmetry in physics is based on the observation that the $(2,2)$ SUSY algebra (in its complex form) exhibits a $\mathbb{Z}_2$ outer endomorphism, which exchanges the vector and axial $U(1)$ generators and in particular then exchanges the two topological twists \cite{Witten_mirror_topological}. On the level of the supercharges \eqref{complex_(2,2)}, this is manifested by the exchange (see for example \cite{susy_hori} for details)
+\begin{align*}
+Q_-\longleftrightarrow \overline{Q}_-,
+\end{align*}
+which clearly preserves the commutation relations. In our case, the $\mathbb{Z}_2$ symmetry acts on \eqref{parasusy_offdiagonal_basis} as
+\begin{align*}
+Q_-\longleftrightarrow \widetilde{Q}_-,
+\end{align*}
+or, equvalently on the diagonal basis \eqref{eq:(2,2)para} $Q^2_-\mapsto -Q^2_-$, as discussed in Section \ref{sec:toptwist}, where we also argued that this exchanges the two types of topological twists.
+
+The geometric realization of the above-described $\mathbb{Z}_2$ action on the $(2,2)$ superalgebra was described in \cite{SYZ} and since has acquired the name SYZ mirror symmetry. There, the mirror symmetry is described as a correspondence between pairs of Calabi-Yau manifolds $M$ and $\Mt$, specifically ones that admit a particular types of fibrations over the same base $B$. The mirror symmetry in this case acts geometrically as an exchange of these fibrations, which are essentially linear duals to each other. One of the hallmarks of mirror symmetry is the feature that it relates the moduli space of symplectic structures on $M$ with a moduli space of complex structures on $\Mt$. On the physics side, this exchange is realized as a correspondence between an $A$-model on $M$ and a $B$-model on $\Mt$.
+
+In the following paragraphs, we will study the semi-flat case of SYZ mirror symmetry, where the pair of K\"ahler Calabi-Yau manifolds is given by $M=TB$ and $\Mt=T^*B$, the tangent and cotangent bundles of an affine manifold $B$. Our result is that this setting admits an equally natural description in terms of para-K\"ahler and para-Calabi-Yau geometry, where the mirror map exchanges the {\bf symplectic moduli} on $M$ with the {\bf para-complex moduli} on $\Mt$. The underlying symplectic fundamental forms of both the K\"ahler and para-K\"ahler gometries coincide, while the complex and para-complex structures anti-commute and therefore the triple $(\omega,K,I)$ defines {\it Born geometry} \cite{freidel2014born,Freidel:2018tkj,mythesis} (see also \cite{Marotta:2018myj,Hassler:2019wvn,Marotta:2018swj,Marotta:2019eqc}). Consequently, the mirror map in the semi-flat case relates Born geometries on $M$ and $\Mt$, mapping between the symplectic moduli on one side and the para-complex and complex moduli on the other side.
+
+In the following we closely follow the discussions presented in \cite{mythesis,mirror_w-o_corrections,hitchin1997moduli}
+
+\paragraph{The para-complex point of view} We start with the discussion of the para-Calabi-Yau geometry on the side of $M$ and then contrast it with the Calabi-Yau geometry of $M$. Consider an affine manifold $B$ and take a neighbourhood $U\subset B$ with local coordinates $u^i$. Let $U\times \RR^n$ with the coordinates $(u^i,v^i)$, $v^i$ denoting the coordinates on $\RR^n$, be the local model for $M=TB$. We define the para-complex structure on $M$ in terms of its adapted coordinates $(x^i=u^i+v^i,\xt_j=u^k-v^k)$. The fact that $M$ is affine means that the transition functions are in $GL_n(\RR)\ltimes \RR^n$, i.e. of the form
+\begin{align*}
+    u^i\mapsto u'^i(u^i)=A_{\ j}^{i}u^j+B^i,\quad A \in GL_n,\ B\in \RR^n.
+\end{align*}
+This implies that the natural fiber coordinates of $TM$, $v^i=du^i$,  transform as $u^i\mapsto A^i_{\ j}u^j$, so that the combinations $(x^i=u^i+v^i,\xt^j=u^k-v^k)$ transform by
+\begin{align*}
+    (x^i,\xt_j)\mapsto (A_{\ k}^{i}x^k+B^i,A_{\ k}^{j}\xt^k+B^j),
+\end{align*}
+which assures that the total space of $TB$ is an affine manifold with $(x^i,\xt^j)$ affine coordinates. In particular $(x^i,\xt^j)$ are adapted coordinates of an integrable para-complex structure on $TB$, because the transition functions are para-holomorphic.
+
+We now endow $M$ with a para-Calabi-Yau structure defined by the fundamental form $\omega$ and a para-Holomorphic volume form $\Omega$:
+\begin{align*}
+    \omega&=\omega_{ij}\ dx^i\w d \xt^j=2\omega_{ij}\ du^i\w dv^j,\\
+    \hat{\Omega} &=dx^1\w\cdots\w dx^n+d\xt^1\w\cdots\w d\xt^n=\Omega+\tl{\Omega}.
+\end{align*}
+We also assume that the local para-K\"ahler potential $\phi$ on $U\subset M$, which defines $\omega$ via
+\begin{align*}
+\omega_{ij}=\p_i\pt^j\phi=\left(\frac{\p^2}{\p u^i \p u^j}-\frac{\p^2}{\p v^i \p v^j}\right)\phi,
+\end{align*}
+is of the form $\phi(u,v)=\phi(u)$. This means it is invariant under the translations in the fiber directions of $TB$ and the geometry is therefore {\it semi-flat}, hence the name semi-flat mirror symmetry. The fact that the pair $(\omega,\hat{\Omega})$ defines a para-Calabi-Yau structure means that it satisfies the Monge-Ampere equation:
+\begin{align*}
+    C\omega^n=\Omega\w\tl{\Omega} \Longleftrightarrow   \text{det}(\frac{\p^2\phi}{\p u^i\p u^j})=C.
+\end{align*}
+The above has a unique solution for $\phi$ \cite{calabi1975construction} assuming $\phi\mid_{\p U}=0$ and $\phi$ is convex ($\p_i\p_j\phi>0$). For the Monge-Ampere equation to be invariant under the affine transformations, we must have $\text{det}(A)=1$, which is a requirement that defines a {\it special affine manifold}. Therefore, we will from now on require that $B$ is special affine. For completeness, we note that the para-K\"ahler metric $\eta$ takes the form
+\begin{align*}
+    \eta=\omega_{ij} (dx^i\otimes d\xt^j+d\xt^i\otimes dx^j)=2\omega_{ij}(du^i\otimes du^j-dv^i\otimes dv^j).
+\end{align*}
+
+\paragraph{The complex point of view}
+In the usual discussion of the semi-flat mirror symmetry, one considers a complex structure defined by the holomorphic coordinates $z^i=u^i+iv^i$ instead of the para-complex structure above. The fundamental form is then taken to be $\omega_I=i\p\bar{\p}\phi$, which in the semi-flat case $\phi(u,v)=\phi(u)$ coincides with $\omega$. The Riemannian K\"ahler metric is then
+\begin{align*}
+    g=\omega_{ij}(du^i\otimes du^j+dv^i\otimes dv^j).
+\end{align*}
+It is easy to show that $I$ and $K$ anticommute, and because $\omega_I=\omega$, we see that this geometric setting defines Born geometry.
+\newcommand{\uh}{\hat{u}}
+\newcommand{\vh}{\hat{v}}
+\newcommand{\xh}{\hat{x}}
+\newcommand{\xth}{\hat{\xt}}
+
+\paragraph{Legendre transform and the mirror map}
+Consider new coordinates $\uh_i$ on $U$ given by
+\begin{align*}
+\frac{\p\uh_i(u)}{\p u^j}=\omega_{ij}=  \frac{\p^2\phi}{\p u^i \p u^j},
+\end{align*}
+with the inverse transformation $\frac{\p u^i(\uh)}{\p \uh_j}=\omega^{ij}=(\omega_{ij})^{-1}$. Integrating this, we can write the relationship between the coordinates
+\begin{align*}
+    u^i(\uh)=\frac{\p \psi(\uh)}{\p \uh_i},
+\end{align*}
+for some local function $\psi(\uh)$ so that $\omega^{ij}=\frac{\p \psi(\uh)}{\p \uh_i\uh_j}$ and $\phi(u)$ and $\psi(\uh)$ are Legendre transforms of one another:
+\begin{align*}
+    \psi(\uh)=u^i \uh_i-\phi(u).
+\end{align*}
+This ensures that also $\psi$ satisfies the Monge-Ampere equation, but with an inverse constant
+\begin{align}\label{dual-monge-ampere}
+    \text{det}(\frac{\p^2\psi}{\p \uh_i\p \uh_j})=C^{-1}.
+\end{align}
+
+We continue by discussing the cotangent bundle $\Mt=T^*B$. The metric $\eta$ on $M=TB$ defines a negative-definite metric $-2\omega_{ij}dv^i\otimes dv^j$ on each fiber, which can be inverted to give a negative-definite metric on fibres of $T^*B$ and consequently on the whole $\Mt$:
+\begin{align*}
+    \hat{\eta}=2(\omega_{ij}du^i\otimes du^j-\omega^{ij}d\vh_i\otimes d\vh_j),
+\end{align*}
+denoting the fibre coordinates dual to $v^i=dx^i$ by $\vh_i=\frac{\p}{\p u^i}$. Using the canonical symplectic form on $T^*B$,
+\begin{align*}
+    \hat{\omega}=du^i\w d\vh_i
+\end{align*}
+we define a para-K\"ahler structure $\hat{K}$ via
+\begin{align*}
+    \hat{K}\coloneqq \hat{\eta}^{-1}\hat{\omega}.
+\end{align*}
+It can be checked that $\hat{K}$ is again integrable and the corresponding adapted coordinates are $(\xh_i=\uh_i+\vh_i,\xth_j=\uh_i-\vh_i)$, in terms of which we get
+\begin{align*}
+    \hat{\omega}&=\hat{\omega}^{ij}d\xh_i\w d\xth_j\\
+    \hat{\eta}&=\hat{\omega}^{ij}(d\xh_i\otimes d\xth_j + d\xth_i\otimes d\xh_j),
+\end{align*}
+where $\hat{\omega}^{ij}=\frac{\p^2 \psi}{\p \uh^i\p \uh^j}$. Crucially, $\Mt$ is also a para-Calabi-Yau manifold because $\psi$ satisfies the Monge-Ampere equation \eqref{dual-monge-ampere}. Moreover, we get a relationship between the moduli of symplectic structures on $M$ and para-complex structures on $\Mt$, since varying the symplectic structure on $M$ corresponds to a change of $\phi$, which also changes $\psi$ as well as the coordinates $\uh_i$. This in turn changes the para-complex structure $\hat{K}$ defined by its adapted coordinates, and in particular depends on $\uh_i$.
+
+We find that in this case the mirror symmetry not only relates the symplectic and complex moduli of the mirror manifolds $M$ and $\Mt$, but also relates the symplectic and para-complex moduli and therefore gives a map of moduli of Born geometries on $M$ and $\Mt$, where the variation of the symplectic structure on one side corresponds to a variation of the complex and para-complex structures on the other.
+
+\paragraph{Speculations about para-mirror symmetry}
+Because the semi-flat case is so simple, the mirror pair is the same in both the complex and para-complex cases. However, this does not always have to be the case and the para-complex mirror symmetry could relate pairs of manifolds that are not related by the usual mirror symmetry. Moreover, this new notion of mirror symmetry gives rise to a possibility of {\it mirror trialities}, i.e. situations when the symplectic moduli space on $M$ is related to the complex moduli on $\Mt$ as well as the para-complex moduli on $\Mt'$:
+\begin{equation*}
+\begin{tikzcd}
+& (M,\omega)\arrow[leftrightarrow,sloped,swap]{ld}{\mathclap{mirror}}\arrow[leftrightarrow,sloped]{rd}{\mathclap{para-mirror}}&\\
+(\Mt,I)\arrow[leftrightarrow, dotted]{rr}{?}&&(\Mt',K)
+\end{tikzcd}
+\end{equation*}
+
+Additionally, the para-mirror symmetry could open many doors, for example to study the symplectic invariants -- such as the Gromov-Witten invariants -- of manifolds that do not have mirrors but have para-mirrors, so that the corresponding A-model is mirror to a para-B-model but not to a usual B-model. Similarly, para-complex mirror symmetry could also prove useful in the homological approach to mirror symmetry, providing new insights about the Fukaya category on the symplectic side.
 
 \appendix
 \section{Proof of Proposition \ref{prop_toptwist}}\label{appendix:proof_prop}
