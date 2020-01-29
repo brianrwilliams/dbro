@@ -830,8 +830,8 @@ T^D(\pi_\pm^{-1}X,\pi_\pm^{-1}Y,\pi_\pm^{-1}Z)=2H_b(X,Y,Z).
 %\end{align*}
 %which is the same as \eqref{map_pi_pm} with $b=0$, which they implicitly absorb inside the $H$-flux.
 
-\subsubsection{SKT Geometry and half generalized structures}
-\david{will see if we'll be using this}
+\subsubsection{SKT Geometry and half generalized structures} \label{SKT}
+
 An {\bf SKT} structure is a Hermitian structure $(I,g)$ for which the fundamental form $\omega$ even though is not closed, is $\rd \rd^c$-closed, i.e. $\rd \rd^c \omega=0$. The version of this geometry is easily formulated for the para- case where we will call it para-SKT. It follows directly from the definition that the bi-para-Hermitian geometry consists of two such structures -- one for each chirality -- and here we will describe how one SKT structure can be described using the language of generalized geometry.
 
 For this purpose we define a positive-chirality\footnote{Similarly one could define a negative-chirality half G(p)C structure by changing $C_+$ for $C_-$} {\bf half generalized almost (para-)complex structure} as a pair $(\GG,\JJ_{C_+})$, where $\GG$ is a (neutral) generalized metric which induces a splitting $\TT=C_+\oplus C_-$ and an isomorphism $C_+\oplus C_-\simeq T\oplus T$, and $\JJ_{C_+}$ is a (para-)complex endomorphism of $C_+$, i.e.
@@ -1323,11 +1323,11 @@ The main content of the present section is therefore to define the topological t
 
 \subsection{A reminder on $(1,1)$ supersymmetry}
 
-The $2$-dimensional $(1,1)$ supertranslation algebra is the super Lie algebra
+The $2$-dimensional $(1,1)$ supertranslation algebra is the real super Lie algebra
 \[
 \mathfrak{t}_{(1,1)} = \RR^{1,1} \oplus \Pi (S_+) \oplus \Pi(S_-)
 \]
-where $S_\pm \cong \RR$ are the semi-spin representations of ${\rm Spin}(1,1)$ labeled by helicities $\pm \frac{1}{2}$. 
+where $S_\pm \cong \RR$ are the real spin representations of ${\rm Spin}(1,1)$ labeled by helicities $\pm \frac{1}{2}$. 
 Note that there are natural ${\rm Spin}(1,1)$-equivariant maps
 \[
 \Gamma_{\pm} : {\rm Sym}^2(S_\pm) \to \RR^{1,1}
@@ -1346,20 +1346,20 @@ We will use the lightcone basis $\p_{\pm}$ for $\RR^{1,1}$ and we also fix a bas
 
 \subsubsection{The $(1,1)$ supersymmetric $\sigma$-model} 
 
-Let $\Sigma^{2|2}$ be a super Riemann surface with two real odd directions. 
-The even part of this supermanifold is a Riemann surface (with coordinates $\sigma$, $\tau$).
-For instance, in the flat case we consider the superspace $\RR^{2|2} = \{(x^i , \theta_1^{\pm}) \; | \; i = 1,2\}$, where $\theta_1^{\pm}$ are odd variables. 
+Let $\Sigma^{1,1|2}$ be a surface of split signature with two real odd directions. 
+The even part of this supermanifold is a real surface (with coordinates $\tau$, $\sigma$).
+For instance, in the flat case we consider the superspace $\RR^{1,1|2} = \{(\tau,\sigma ; \theta_1^{\pm})\}$, where $\theta_1^{\pm}$ are odd variables. 
 
 The most general $(1,1)$ supersymmetric sigma model into a target pseudo-Riemannian manifold $(M,\eta)$ is given by the action functional
 \begin{align}\label{eq:(1,1)action}
-S_{(1,1)}(\Phi)=\int_{\Sigma^{2|2}} [g(\Phi)+b(\Phi)]_{ij}D^1_+\Phi^iD^1_-\Phi^j,
+S_{(1,1)}(\Phi)=\int_{\Sigma^{1,1|2}} [g(\Phi)+b(\Phi)]_{ij}D^1_+\Phi^iD^1_-\Phi^j,
 \end{align}
-where $\Phi=(\Phi^i)_{i=1\cdots n}$ are local representatives for the $(1,1)$ {superfields} which are maps $\Phi: \Sigma^{2|2} \rightarrow M$.
+where $\Phi=(\Phi^i)_{i=1\cdots n}$ are local representatives for the $(1,1)$ {superfields} which are maps $\Phi: \Sigma^{1,1|2} \rightarrow M$.
 In the action, $b$ denotes a local two-form potential for a closed three-form, $H=\rd b$, and $D^1_\pm$ are the superderivatives
 \begin{align}\label{eq:D1}
 D^1_\pm=\frac{\p}{\p \theta_1^\pm}-\theta_1^\pm \p_\pm,
 \end{align}
-where $\p_\pm=\frac{\p}{\p x_\pm}$ are derivatives along the lightcone coordinates on $\Sigma$, $x_\pm=\tau\pm\sigma$. In superworldsheet coordinates, the superfields decompose as
+where $\p_\pm=\frac{\p}{\p x_\pm}$ are derivatives with respect to the lightcone coordinates on $\Sigma$, $x_\pm= \frac{1}{\sqrt{2}} (\tau\pm\sigma)$. In superworldsheet coordinates, the superfields decompose as
 \begin{align}\label{fields_(1,1)}
 \Phi^i(\sigma,\tau,\theta_+,\theta_-)=\phi^i(\sigma,\tau)+\theta^+\psi^i_+(\sigma,\tau)+\theta^-\psi_-(\sigma,\tau)+\theta^+\theta^-F^i(\sigma,\tau).
 \end{align}
@@ -1373,7 +1373,7 @@ The sigma model \eqref{eq:(1,1)action} is fully determined by the geometric data
 \end{remark}
 
 \paragraph{Expanding the $(1,1)$ action}
-We now expand the action \eqref{eq:(1,1)action} by plugging in \eqref{fields_(1,1)} and \eqref{eq:D1}. The expansions read
+We expand the action \eqref{eq:(1,1)action} by plugging in \eqref{fields_(1,1)} and \eqref{eq:D1}. The expansions read
 %In components, the superfield has the form
 %\[
 %\Phi^i =\phi^i+\theta^+\psi^i_++\theta^-\psi^i_-+\theta^+\theta^-F^i
@@ -1411,13 +1411,19 @@ we vary the resulting bosonic action with respect to $F^i$:
 Here, $\Gamma^-$ are the Christoffel symbols of the connection $\n^-=\lc-\frac{1}{2}\eta^{-1}H$.
 
 \subsection{$(2,2)$ para-supersymmetry}\label{sec:(2,2)parasusy}
-We continue by extending the above $(1,1)$ picture to the $(2,2)$ para-SUSY setting. This version of supersymmetry and the corresponding sigma models were first discussed in \cite{HullTwistedSUSY}.
+By requiring that the target manifold $M$ be equipped with additional geometric structure, it is possible to enhance the symmetry by the $(1,1)$-supersymmetry algebra to a bigger supersymmetry algebra.
+We will consider the so-called $(2,2)$ para-supersymmetry algebra. 
+This version of supersymmetry and the corresponding sigma models were first discussed in \cite{HullTwistedSUSY}.
 
-The {\bf (2,2) para-supersymmetry algebra} has the underlying supervector space
+As before, let $S_\pm$ be the real spin representations of ${\rm Spin}(1,1)$.
+The para (2,2) super Poincar\'{e} Lie algebra is of the form $\mathfrak{so}(1,1) \ltimes \mathfrak{t}_{(2,2)}$ where $\mathfrak{t}_{(2,2)}$ is the {\bf (2,2) para-supersymmetry algebra} which has as its underlying supervector space
 \[
-\mathfrak{t}_{(2,2)} = \RR^{1,1} \oplus \Pi(S_+ \oplus S_+) \oplus \Pi(S_- \oplus S_-),
+\mathfrak{t}_{(2,2)} = \RR^{1,1} \oplus \Pi(S_+ \oplus S_+) \oplus \Pi(S_- \oplus S_-) ,
 \]
-with the Lie brackets defined as follows: we choose a basis $\{Q^1_{\pm}, Q^2_\pm\}$ for $S_\pm \oplus S_\pm$ in which the nontrivial brackets read 
+with the Lie brackets defined as follows.
+Here $\RR^{1,1}$ is the abelian Lie algebras of translations generated in light cone coordinates by the basis elements $\{\partial_{\pm}\}$.
+To write down the Lie bracket, fix a basis $\{Q^1_{\pm}, Q^2_\pm\}$ for $S_\pm \oplus S_\pm$.
+The nontrivial brackets are defined by 
 \begin{equation}\label{eq:(2,2)para}
 (2,2)\ \text{para-SUSY:}\quad [Q_\pm^1, Q_\pm^1] = 2 \partial_{\pm}, \quad [Q_{\pm}^2, Q_{\pm}^2] = -2 \partial_{\pm} .
 \end{equation}
@@ -1437,13 +1443,13 @@ The two bases $\{Q^1_{\pm}, Q^2_\pm\}$ and $\{{Q}_\pm,\wtl{Q}_\pm\}$ are related
 \begin{align}\label{parasusy_offdiagonal_basis}
 Q_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm-Q^1_\pm),\quad \wtl{Q}_\pm=\frac{1}{\sqrt{2}}(Q^2_\pm+Q^1_\pm).
 \end{align}
-Again, this is analogous to the complex basis of the ordinary $(2,2)$ superalgebra
-\begin{align}\label{complex_(2,2)}
-[Q_\pm,\overline{Q}_\pm]=2i\p_\pm.
-\end{align}
+%Again, this is analogous to the complex basis of the ordinary $(2,2)$ superalgebra
+%\begin{align}\label{complex_(2,2)}
+%[Q_\pm,\overline{Q}_\pm]=2i\p_\pm.
+%\end{align}
 
 \begin{remark}
-
+\label{rmk: generalsusy}
 More generally, suppose $W_\pm$ are vector spaces of dimension $k_\pm$, respectively.
 In addition, suppose $\eta_\pm$ are symmetric nondegenerate forms on $W_\pm$. 
 Then, we can define a super Lie algebra of the form
@@ -1455,7 +1461,14 @@ with brackets defined by
 [Q_\pm^{a}, Q_\pm^{b}] = 2 \eta^{ab}_\pm \partial_\pm .
 \] 
 This is a general form of the $\cN = (k_+, k_-)$ supersymmetry algebra for which ordinary supersymmetry and para-supersymmetry are special cases.
-The case of $\mathfrak{t}_{(2,2)}$, which will be of most interested to us, corresponds to taking $k_+ = k_- = 2$ and $\eta_\pm^{11} = 1$, $\eta^{22}_\pm = - 1$, $\eta^{12}_{\pm} = 0$. 
+The case of $\mathfrak{t}_{(2,2)}$, which will be of most interested to us, corresponds to taking $k_+ = k_- = 2$ and 
+\[
+\eta^{ab}=\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\]
+whereas ordinary $(2,2)$ supersymmetry corresponds to taking $\eta^{ab} = \delta^{ab}$. 
 
 \end{remark}
 
@@ -1484,7 +1497,9 @@ have to satisfy
 \begin{align}\label{r_symmetry_matrix}
 (M_\pm)^a_c\eta^{cd}(M_\pm)^a_d=\eta^{ab},
 \end{align}
-i.e. $M_\pm$ have to lie in $SO(1,1)$ for each subscript $\pm$ and the R-symmetry group is therefore $G_R=SO(1,1)_+\times SO(1,1)_-$.
+i.e. $M_\pm$ have to lie in $SO(1,1)$ for each subscript $\pm$. 
+Thus, we find that the R-symmetry group $G_R=SO(1,1)_+\times SO(1,1)_-$ acts on $\mathfrak{t}_{(2,2)}$.
+
 %\david{this is only relevant for the (2,2) formalism, will se if we need this or not}
 %The R-symmetry acts on the odd coordinates accordingly as
 %\begin{align*}
@@ -1533,7 +1548,7 @@ We now describe the $2D$ sigma models that carry the $(2,2)$ para-supersymmetry 
 %where $D_\pm =\frac{\p}{\p\theta^\pm}-\theta^\pm\p_\pm$. 
 \paragraph{Extended supersymmetry}
 
-The $\sigma$-model \eqref{eq:(1,1)action} has manifest $(1,1)$ supersymmetry.  We now impose additional symmetries of the action $S_{(1,1)}$ that generate the $(2,2)$ parasupersymmetry algebra (\ref{eq:(2,2)para}) and discuss the required geometric properties of the target manifold for such extension.
+When $\Sigma = \RR^{1,1|2}$, the $\sigma$-model \eqref{eq:(1,1)action} has manifest $(1,1)$ supersymmetry.  We now impose additional symmetries of the action $S_{(1,1)}$ that generate the $(2,2)$ parasupersymmetry algebra (\ref{eq:(2,2)para}) and discuss the required geometric properties of the target manifold for such extension.
 %In general, this extended symmetry exists only after we make some additional assumptions on the geometric data prescribing the action. 
 
 Setting $\theta^\pm_1\coloneqq \theta^\pm$ for notational simplicity, we propose the following $(2,2)$ para-supersymmetry algebra representation on the $(1,1)$ superfields:
@@ -1643,37 +1658,16 @@ Q^2_{-} : (\phi^i, \psi^i_+, \psi^i_-, F^i) \mapsto &\ (\phi^i, \psi^i_+, \psi^i
 %}
 
 \subsection{$(2,1)$ and $(2,0)$ parasupersymmetry}
-\brian{Turn this whole section into a loose discussion.}
-Many of the constructions above make sense when there is less total supersymmetry, and we briefly mention two important cases. The first concerns the $(2,1)$ parasupersymmetry algebra.
-This algebra $\mathfrak{t}_{(2,1)}$ consists of generators $\{Q^1_\pm, Q^2_+\}$ satisfying the same algebra as in (\ref{eq:(2,2)para}). 
+Many of the constructions above make sense when there is less total supersymmetry, and we briefly mention two important cases. The first concerns the $(2,1)$ parasupersymmetry algebra, see Remark \ref{rmk: generalsusy}. 
+This algebra $\mathfrak{t}_{(2,1)}$ consists of generators $\{Q^1_\pm, Q^2_+\}$ satisfying the same relations as in (\ref{eq:(2,2)para}). 
 Starting with the $(1,1)$ supersymmetric $\sigma$-model (\ref{eq:(1,1)action}), and labeling the odd coordinates by $\theta^\pm = \theta_1^\pm$, one can ask for an additional odd symmetry 
 \[
-Q^2_+ :  \Phi \mapsto \Phi + \epsilon_2^+ K_+(\Phi)^j_i D_+ \Phi^i
+Q^2_+ :  \Phi \mapsto \Phi + \epsilon_2^+ K_+(\Phi)^j_i D_+ \Phi^i .
 \]
-which determines a symmetry by the $(2,1)$ parasupersymmetry algebra.
+The odd vector field $Q_2^+$ is a symmetry of the $(1,1)$ supersymmetric $\sigma$-model provided the target has the structure of a para SKT manifold, see Section \ref{SKT}. 
+Thus, the $(1,1)$ supersymmetric $\sigma$-model has $(2,1)$ parasupersymmetry provided the target has the structure of a para SKT manifold.
 
-\begin{proposition}
-The odd vector field $Q_2^+$ is a symmetry of the $(1,1)$ supersymmetric $\sigma$-model provided $(K_+)^{j}_i$ is a paracomplex structure satisfying \brian{What conditions here?}
-Thus, the $(1,1)$ supersymmetric $\sigma$-model has $(2,1)$ parasupersymmetry provided the target is \brian{same conditions}. 
-\end{proposition}
-
-The next symmetry algebra we wish to consider is the $(2,0)$ parasupersymmetry algebra $\mathfrak{t}_{(2,0)}$. 
-This algebra has the same even generators as the $(2,1)$ and $(2,2)$ algebras, and odd generators $\{Q^1_+, Q^2_+\}$ satisfying the relations
-\[
-[Q^1_+, Q^1_+] =  2 \partial_\pm \;\;\; , \;\;\; [Q^2_+, Q^2_+] = - 2 \partial_\pm
-\]
-
-\brian{The (1,0) action}
-
-We propose an extended symmetry of the $(1,0)$ $\sigma$-model by the following action by the odd vector field $Q_+^2$:
-\[
-Q^2_+ : \Phi \mapsto \Phi + \epsilon_2^+ K_+(\Phi)^j_i D_+ \Phi^i .
-\]
-
-\begin{proposition}
-The odd vector field $Q_2^+$ is a symmetry of the $(1,0)$ supersymmetric $\sigma$-model provided $(K_+)^{j}_i$ is a paracomplex structure. 
-Thus, the $(1,0)$ supersymmetric $\sigma$-model has $(2,0)$ parasupersymmetry provided the target is paracomplex. \brian{there is a version for a target vector bundle as well...}
-\end{proposition}
+Similarly, by forgetting part of the supersymmetry, this means that the $(1,0)$ supersymmetric $\sigma$-model has $(2,0)$ parasupersymmetry provided the target is a para SKT manifold. 
 
 \subsection{Topological twists}\label{sec:toptwist}
 
