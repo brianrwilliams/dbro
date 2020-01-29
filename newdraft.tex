@@ -54,7 +54,7 @@
 \newcommand{\n}{\nabla}
 \newcommand{\rd}{\mathrm{d}}
 \newcommand{\PH}{(\PS,\eta,\omega)}
-\newcommand{\Lt}{\tl{L}}
+\newcommand{\Lt}{{\tl{L}}}
 \newcommand{\Lb}{\mathbb{L}}
 \newcommand{\s}{\mathbf{s}}
 \newcommand{\se}{\Gamma}
@@ -107,12 +107,21 @@
 \newtheorem*{notation*}{Notation}
 
 \theoremstyle{remark}
-\newtheorem{Ex}[theorem]{Example}
 \newtheorem{question}[theorem]{Question}
 \newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
 \newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $[acksquare$}
 
-
+\newtheoremstyle{examples}%                % Name
+   {10pt}%                                     % Space above
+   {10pt}%                                     % Space below
+   {}%                                     % Body font
+   {}%                                     % Indent amount
+   {\bfseries}%                            % Theorem head font
+   {:}%                                    % Punctuation after theorem head
+   { }%                                    % Space after theorem head, ' ', or \newline
+   {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{examples}
+\newtheorem{Ex}[theorem]{Example}
 \input xy
 
 \xyoption{all}
@@ -339,9 +348,9 @@ The conditions \eqref{eq:holomorphic_real} tell us that the holomorphic function
 \end{align}
 
 This also gives us an intuition into what holomorphic bundles and their holomorphic sections look like. First, we notice that the tangent bundle $T\PS$ itself is a holomorphic bundle (see for example \cite{Cortes:2003zd,Hu:2019zro}); this is simply because of the form of the transition functions \eqref{para-coordinate-transf} that induce a holomorphic structure on the tangent bundle. The holomorphic sections of $T\PS$ -- the holomorphic vector fields -- are locally of the form
-\begin{align*}
+\begin{align}\label{para-holo-vector}
 X= X^i(x)\p_i+\tl{X}_i(\xt)\pt^i,
-\end{align*}
+\end{align}
 i.e. the components in $L$ and $\Lt$ individually define vector fields on the foliations $M$ and $\Mt$, respectively.  
 
 Similarly, the cotangent bundle is a holomorphic bundle. For the higher wedge powers, we find that only $\Lambda^{(k,0)+(0,k)}(T^*\PS)$, $1\leq k\leq n$, are holomorphic bundles. The {\bf para-complex Dolbeault complex} is therefore given by
@@ -411,7 +420,7 @@ The isomorphism of para-complex vector spaces \eqref{para-complexification} indu
 \phi:\ (\ap,\tl{\ap})\ \in\ \Omega^{(p,q)}\otimes \Omega^{(q,p)}\longmapsto \frac{1+k}{2}\ap + \frac{1-k}{2}\tl{\ap}\ \in\ \Omega_\Cp^{p,q}
 \end{align}
 with the inverse
-\begin{align}
+\begin{align}\label{isom_bigradings2}
 \phi^{-1}:\ \bm{\ap}\ \in\ \Omega_\Cp^{p,q}\longmapsto (\text{Re}(\bm{\alpha})+\text{Im}(\bm{\ap}),\text{Re}(\bm{\alpha})-\text{Im}(\bm{\ap}))\ \in\ \Omega^{(p,q)}\otimes \Omega^{(q,p)}.
 \end{align}
 The point we would like to emphasize here is that to one para-complex differential form of degree $p,q$ corresponds a {\it pair} of real forms in degrees $(p,q)$ and $(q,p)$. In particular, a para-complex form in degree $k,0$ corresponds to a pair of forms in degrees $(k,0)$ and $(0,k)$, i.e. a two $k$-forms on the two canonical para-complex foliations. Consequently, recalling the para-complex Dolbeault complex \eqref{para-dolbeault}, we can easily deduce that the corresponding {\bf para-complexified Dolbeault complex} is given by
@@ -449,6 +458,70 @@ In particular, the condition of holomorphicity in the para-complex coordinates $
 %A {\bf para-Calabi-Yau manifold} is a compact, para-K\"ahler manifold $(\PS,\eta,K)$ with a para-Holomorphic volume form $\hat{\Omega}$.
 %\end{Def}
 
+\subsubsection{Lie algebroids of a para-complex manifold}\label{lie_algds_paracpx}
+Here we briefly discuss what Lie algebroids the para-complex structure on a manifold $\PS$ gives rise to.
+%First, we recall that a Lie algebroid over $\PS$ is the triple $(E,a,\brac_E)$, where $E\rightarrow \PS$ is a vector bundle, $a: E\rightarrow T\PS$ is a bundle map and $\brac$ is a bracket operation on the sheaf of sections of $E$. The three satisfy the following:
+%\begin{enumerate}
+%\item $a([e_1,e_2]_E)=[a(e_1),a(e_2)]$, $\brac$ being the Lie bracket on $T\PS$,
+%\item $[e_1,fe_2]_E=f[e_1,e_2]_E+a(e_1)[f]e_2$.
+%\end{enumerate}
+
+The first example is the tangent Lie algebroid
+\begin{Ex}[Tangent Lie algebroid]\label{ex:tangent_lie}
+The {\bf tangent Lie algebroid} exists on any manifold $\PS$ and is given by the data $E=T\PS$, $a=\id$ and $\brac_E=\brac$.
+\end{Ex}
+
+The following examples are of the same flavor, except we consider the subbbundle of the tangent bundle:
+\begin{Ex}[Lie algebroids of para-complex eigenbundles]\label{ex:real-lie-algds-on-paracpx}
+Let $(\PS,K)$ be a para-complex manifold with $\pm 1$ eigenbundles $L$ and $\Lt$. The following are Lie algebroids
+\begin{enumerate}
+\item $E=L$, $a=\imath_L:L\hookrightarrow T\PS$, $\brac_E=\brac\mid_L$, and
+\item $E=\Lt$, $a=\imath_\Lt:\Lt\hookrightarrow T\PS$, $\brac_E=\brac\mid_\Lt$,
+\end{enumerate}
+%\begin{itemize}
+%\item $E=TM\rightarrow M$, $a=\id_{TM}$, $\brac_E=\brac_M$, and
+%\item $E=T\Mt\rightarrow \Mt$, $a=\id_{T\Mt}$, $\brac_E=\brac_\Mt$,
+%\end{itemize}
+where $\imath_{L/\Lt}$ are the inclusion maps and $\brac\mid_{L/\Lt}$ are the restrictions of the Lie bracket to $L$ and $\Lt$. The above are Lie algebroids in particular because $K$ is integrable so that $[L,L]\subset L$ and $[\Lt,\Lt]\subset \Lt$. Moreover, the two above Lie algebroids are exactly the tangent Lie algebroids of the integral foliations of $L$ and $\Lt$, $M$ and $\Mt$ respectively, once we restrict the module from $C^\infty(\PS)$ to $C^\infty(M)$ and $C^\infty(\Mt)$. Note that the two Lie algebroids exist individually on half-integrable almost para-complex manifolds.
+
+The Chevalley-Eilenberg complexes of the two Lie algebroids are given by
+\begin{enumerate}
+\item $(\Lambda^\bullet L^*=\Lambda^{(\bullet,0)}(\PS),\p)$, and
+\item $(\Lambda^\bullet \Lt^*=\Lambda^{(0,\bullet)}(\PS),\pt)$,
+\end{enumerate}
+where $\p$ and $\pt$ are defined by \eqref{paracomplex_dels}.
+\end{Ex}
+
+If we now consider the para-complexified tangent bundle $T\PS_\Cc$, we get a para-complex Lie algebroid, which can be understood as certain sense as a {\it sum} of the two above Lie algebroids:
+\begin{Ex}[Para-holomorphic tangent bundle]\label{ex:para-hol-tangent}
+The $+k$-eigenbundle $T^{1,0}\subset T\PS_\Cc$ is a para-complex Lie algebroid with the bracket given by the extension of the usual Lie bracket to $T\PS_\Cc$ and restricted to $T^{1,0}$ and the anchor is again the inclusion $\imath:\  T^{1,0}\hookrightarrow T\PS_\Cc$. We can identify $T\PS_\Cc=T\oplus k T$, so that a section $X\in \XX_\Cc(\PS)$ is written as $X=U+kV=(U,V)$ for $U,V \in \XX(\PS)$ real vector fields and the Lie algebroid bracket is then given in terms of the usual Lie bracket of real vector fields as
+\begin{align*}
+[(U,V),(U',V')]=([U,U']+[V,V'],[U,V']+[V,U']).
+\end{align*}
+The Chevalley-Eilenberg complex is the para-complexified Dolbeault complex \eqref{para-dolbeault}.
+
+
+There is an analogous map to \eqref{isom_bigradings2} for vector fields (which we also denote $\phi^{-1}$) mapping $X \in \XX^{1,0}_\Cc(\PS)$ to a pair of vector fields
+\begin{align*}
+X=(U,V) \overset{\phi^{-1}}{\mapsto} (U+V,U-V) \in \XX^{(1,0)}(\PS)\otimes \XX^{(0,1)}(\PS),
+\end{align*}
+realizing the $\mathbb{R}$-linear isomorphism between $T^{1,0}$ and $T\PS=L\oplus \Lt$. This map can be used to map the para-complex Lie algebroid $T^{1,0}$ with a pair of real Lie algebroids. It is a simple exercise to check that $\phi^{-1}$ in fact maps to the pair of real Lie algebroids described in Example \ref{ex:real-lie-algds-on-paracpx}, so that the following diagram commutes
+\begin{equation*}
+\begin{tikzcd}
+T^{1,0} \arrow[hookrightarrow]{d}{\imath}\arrow{r}{\phi^{-1}} & L\oplus \Lt\arrow[hookrightarrow]{d}{\imath_L\oplus\imath_\Lt}\\
+TP_\Cc \arrow{r}{(\text{Re},\text{Im})} & T\oplus T
+\end{tikzcd}\ .
+\end{equation*}
+Note, however, that $L\otimes \Lt=T$ here is not a Lie algebroid (and in particular is not the tangent Lie algebroid) because the direct sum of anchors $\imath_L\oplus \imath_\Lt$ maps into $T\oplus T$ as opposed to $T$.
+
+Consequently, the Chevalley-Eilenberg complex then also splits and can be understood as a direct sum of the two complexes corresponding to $L$ and $\Lt$, as denoted in \eqref{para-dolbeault}.
+\end{Ex}
+
+\begin{remark}
+The Lie algebroid described above is again analogous to the complex Lie algebroid $T^{1,0}\subset T_{\mathbb{C}}M$ over a complex manifold $(M,I)$. The crucial difference is that because $I$ does not give rise to a splitting of the real bundle $TM$, there is no correspondence to a pair of real Lie algebroids as in the para-complex case.
+\end{remark}
+
+
 \subsubsection{Para-Hermitian Geometry}
 We now introduce a metric $\eta$ compatible with the para-complex structure $K$, which by contraction $\eta \circ  K$ induces a non-degenerate two-form $\omega$. This gives rise to para-Hermitian geometry:
 \begin{Def}
@@ -472,11 +545,24 @@ Again, in a complete analogy with K\"ahler geometry, we get para-K\"ahler geomet
 
 In \cite{mythesis}, the notion of para-Calabi-Yau geometry is introduced. As the name suggests, these manifolds should play the role of the para-complex version of Calabi-Yau manifolds in complex geometry. We now recall some basic properties of para-Calabi-Yau manifolds, motivating the definition by Calabi-Yau geometry, which is a standard notion in the literature.
 
-There are many different ways to define what a Calabi-Yau manifold is, but for the purpose of our discussion we will call a Calabi-Yau manifold a K\"ahler manifold $(M,g,I)$ with the holonomy group of the underlying Riemannian metric to be $\text{Hol}(g)\subseteq SU(d)$, as opposed to $U(d)$, which is the case for ordinary K\"ahler manifolds.\footnote{Typically, a part of the definition of a Calabi-Yau manifold is the requirement of compactness of $M$ and sometimes, one requires that $\text{Hol}(g)$ is exactly equal to $SU(d)$.} A consequence of this property is that there exists a {\it holomorphic volume form}, i.e. a non-vanishing section $\Omega \in \Omega^{d,0}$ that is holomorphic, $\bar{\p}\Omega=0$ and satisfies
+We start with a recollection of Calabi-Yau manifolds. For more details, the reader may consult for example the book \cite{joyce2000compact}. There are many different ways to define what a Calabi-Yau manifold is, but for the purpose of our discussion we choose the following:
+\begin{Def}
+A Calabi-Yau manifold is a K\"ahler manifold $(M,g,I)$ of complex dimension $d$ such that the holonomy group of the underlying Riemannian metric $g$ is $\text{Hol}(g)\subseteq SU(d)$.
+\end{Def}
+Typically, a part of the definition of a Calabi-Yau manifold is the requirement of compactness of $M$ and sometimes, one requires that $\text{Hol}(g)$ is exactly equal to $SU(d)$.
+
+Remember that on any K\"ahler manifold we have $\text{Hol}(g)\subseteq U(d)$. A consequence of the property $\text{Hol}(g)\subseteq SU(d)\subset U(d)$ is that there exists a covariantly constant, non-vanishing section $\Omega \in \Omega^{(d,0)}(M)$ called the {\it holomorphic volume form}. On $\mathbb{C}^d$, the structures $(g,\omega,\Omega)$ take in the canonical holomorphic coordinates the form:
 \begin{align*}
-    \frac{\omega^d}{d!}=(-1)^\frac{d(d-1)}{2}\left(\frac{i}{2}\right)^d \Omega\w \bar{\Omega},
+    g=\sum_{i=1}^d dz^i\otimes d\bar{z}^i,\quad \omega=\dfrac{i}{2}\sum_{i=1}^d dz^i\w d\bar{z}^i,
+ \quad   \Omega=dz^1\w\cdots\w dz^d.
 \end{align*}
-where $\omega=gI$ is the K\"ahler form.
+We can describe $\Omega$ in coordinate-independent way as follows:
+\begin{lemma}\label{lem:CY}
+Let $(M,g,I)$ be a Calabi-Yau manifold of complex dimension $d$ and $\omega=gI$ the fundamental form. There exists a nowhere vanishing section $\Omega \in \Omega^{(d,0)}(M)$ that is holomorphic, $\bar{\p}\Omega=0$ and satisfies
+\begin{align*}
+    \frac{\omega^d}{d!}=(-1)^\frac{d(d-1)}{2}\left(\frac{i}{2}\right)^d \Omega\w \bar{\Omega}.
+\end{align*}
+\end{lemma}
 
 % a Calabi-Yau manifolds
 
@@ -499,20 +585,30 @@ A {\bf para-Calabi-Yau manifold} is a para-K\"ahler manifold $(\PS,K,\eta)$ of d
 Note the interesting property that both $SU(d)$ and $SL(d)$ are real forms of $SL_\mathbb{C}(d)$.
 \end{remark}
 
-Let us now investigate what is the structure on para-Calabi-Yau analogous to the holomorphic volume form. We choose the local adapted coordinates $(x^i,\xt_j)$ in which $\eta$ and $\omega$ have the canonical form
+Let us now investigate what is the structure on para-Calabi-Yau analogous to the holomorphic volume form. Consider the canonical para-K\"ahler structure on $\RR^{2d}$
 \begin{align*}
-    \eta=dx^i\otimes d\xt_i+d\xt_i\otimes dx^i,\quad \omega=dx^i\w d\xt_i.
+    \eta=dx^i\otimes d\xt_i+d\xt_i\otimes dx^i,\quad \omega=dx^i\w d\xt_i,
 \end{align*}
-Because the holonomy of $\eta$ is now contained in $SL(d)$, there is also a covariantly constant tensor $\hat{\Omega}$
+which is preserved by $GL(d)$. Introducing the following constant tensor
 \begin{align*}
     \hat{\Omega}=dx^1\w\cdots\w dx^d+d\xt_1\w\cdots\w d\xt_d=\Omega+\tl{\Omega},
 \end{align*}
-which satisfies $\pt\Omega=\p\tl{\Omega}=0$ as well as
+we see that the triple $(\eta,\omega,\hat{\Omega})$ is preserved exactly by $SL(d)$ and $\hat{\Omega}$ satisfies
 \begin{align*}
    \frac{\omega^d}{d!}=(-1)^\frac{d(d-1)}{2} \Omega\w \tl{\Omega}. 
 \end{align*}
+Therefore, we have the analogue of Lemma \ref{lem:CY}:
+\begin{lemma}
+Let $(\PS,\eta,K)$ be a para-Calabi-Yau manifold of dimension $2d$ and $\omega=\eta K$ the fundamental form. There exists a nowhere vanishing section $\hat{\Omega}=(\Omega,\tl{\Omega}) \in\Omega^{(d,0)+(0,d)}(\PS)$ that is para-holomorphic, $\pt\Omega=\p\tl{\Omega}=0$ and satisfies
+\begin{align*}
+   \frac{\omega^d}{d!}=(-1)^\frac{d(d-1)}{2} \Omega\w \tl{\Omega}. 
+\end{align*}
+\end{lemma}
+\begin{proof}
+The proof is exactly analogous to the complex case, see for example \cite[Lemma~4.4]{Joyce:2001xt}.
+\end{proof}
 
-We call $\hat{\Omega}=(\Omega,\tl{\Omega})$ a {\bf para-holomorphic volume form}. Remember that on a para-complex manifold $\PS$ of dimension $2n$, the appropriate analogue of the holomorphic forms are the para-holomorphic forms, given by pairs $(\alpha,\tl{\alpha})\in\Omega^{(k,0)+(0,k)}(\PS)$ (here the bigrading is with respect to the para-complex structure), satisfying $\pt\ap=\p\tl{\ap}=0$. Therefore, the {para-holomorphic volume form} is exactly the correct analogue of the holomorphic volume form in case of the Calabi-Yau manifolds. Furthermore, because $\Omega^{(n,0)}(\PS)$ is naturally isomorphic to $\Omega^n(M)$, the section $\Omega$ is non-vanishing and $\pt \Omega=0$ implies it is invariant under the translation along $\Mt$, and so it defines a volume form on $M$. Similarly, $\tl{\Omega}$ is a volume form on $\Mt$ and we see that the para-Calabi-Yau structure on $\PS$ augments the canonical foliations $M$ and $\Mt$ of the para-complex manifold with volume forms and both the foliation manifolds are consequently orientable.
+Remember that on a para-complex manifold $\PS$ of dimension $2n$, the appropriate analogue of the holomorphic forms are the para-holomorphic forms, given by pairs $(\alpha,\tl{\alpha})\in\Omega^{(k,0)+(0,k)}(\PS)$ (here the bigrading is with respect to the para-complex structure), satisfying $\pt\ap=\p\tl{\ap}=0$. Therefore, the {para-holomorphic volume form} is exactly the correct analogue of the holomorphic volume form in case of the Calabi-Yau manifolds. Furthermore, because $\Omega^{(n,0)}(\PS)$ is naturally isomorphic to $\Omega^n(M)$, the section $\Omega$ is non-vanishing and $\pt \Omega=0$ implies it is invariant under the translation along $\Mt$, and so it defines a volume form on $M$. Similarly, $\tl{\Omega}$ is a volume form on $\Mt$ and we see that the para-Calabi-Yau structure on $\PS$ augments the canonical foliations $M$ and $\Mt$ of the para-complex manifold with volume forms and both the foliation manifolds are consequently orientable.
 
 \subsection{Basics of generalized geometry}
 In this paper, the term {\it generalized geometry} is used for the study of geometric structures on the bundle $TM \oplus T^*M$ over some manifold $M$. We will typically abbreviate this bundle to $\TT$ whenever the base is understood or unimportant for the discussion.
@@ -1007,8 +1103,10 @@ If $N$ has a para-complex structure, $(N, \mathbf{\Omega}^{0,\bullet})$ has the 
 Here $\mathbf{\Omega}^{0,\bullet}$ is the para-Dolbeault complex from Section \ref{sec: paracomplex} with differential given by the para $\pd$-operator. 
 We will denote this dg manifold by $N_{\pd}$. 
 To equip the dg manifold $(N, \mathbf{\Omega}^{0,\bullet})$ with an orientation, one must fix additional data. 
-One way to do this is to assume that the para-complex manifold $N$ is equipped with a para-holomorphic volume form $\Omega_N$.
-\brian{Relate to Lie algebroid description.}
+One way to do this is to assume that the para-complex manifold $N$ is equipped with a para-holomorphic volume form $\hat{\Omega_N}$.
+
+The Lie algebroid whose Chevalley-Eilenberg complex is the para-complex Dolbeault complex is the para-complex Lie algebroid on the para-Holomorphic tangent bundle $T^{0,1}$ described in Example \ref{ex:para-hol-tangent}.
+%The differential on the
 \end{Ex}
 
 \brian{Hamiltonians and action functional. This is just more review and citations.}
@@ -1921,20 +2019,21 @@ In the following paragraphs, we will study the semi-flat case of SYZ mirror symm
 
 In the following we closely follow the discussions presented in \cite{mythesis,mirror_w-o_corrections,hitchin1997moduli}
 
-\paragraph{The para-complex point of view} We start with the discussion of the para-Calabi-Yau geometry on the side of $M$ and then contrast it with the Calabi-Yau geometry of $M$. Consider an affine manifold $B$ and take a neighbourhood $U\subset B$ with local coordinates $u^i$. Let $U\times \RR^n$ with the coordinates $(u^i,v^i)$, $v^i$ denoting the coordinates on $\RR^n$, be the local model for $M=TB$. We define the para-complex structure on $M$ in terms of its adapted coordinates $(x^i=u^i+v^i,\xt_j=u^k-v^k)$. The fact that $M$ is affine means that the transition functions are in $GL_n(\RR)\ltimes \RR^n$, i.e. of the form
+
+\paragraph{The para-complex point of view} We start with the discussion of the para-Calabi-Yau geometry on the side of $M$ and then contrast it with the usual Calabi-Yau geometry of $M$. Consider an affine manifold $B$ and take a neighbourhood $U\subset B$ with local coordinates $u^i$. Let $U\times \RR^n$ with the coordinates $(u^i,v^i)$, $v^i$ denoting the coordinates on $\RR^n$, be the local model for $M=TB$. We define the para-complex structure on $M$ in terms of its adapted coordinates $(x^i=u^i+v^i,\xt_j=u^k-v^k)$. The fact that $M$ is affine means that the transition functions are in $GL_n(\RR)\ltimes \RR^n$, i.e. of the form
 \begin{align*}
     u^i\mapsto u'^i(u^i)=A_{\ j}^{i}u^j+B^i,\quad A \in GL_n,\ B\in \RR^n.
 \end{align*}
-This implies that the natural fiber coordinates of $TM$, $v^i=du^i$,  transform as $u^i\mapsto A^i_{\ j}u^j$, so that the combinations $(x^i=u^i+v^i,\xt^j=u^k-v^k)$ transform by
+This implies that the natural fiber coordinates of $TM$, $v^i=du^i$,  transform as $v^i\mapsto A^i_{\ j}v^j$, so that the combinations $(x^i=u^i+v^i,\xt^j=u^k-v^k)$ transform by
 \begin{align*}
     (x^i,\xt_j)\mapsto (A_{\ k}^{i}x^k+B^i,A_{\ k}^{j}\xt^k+B^j),
 \end{align*}
 which assures that the total space of $TB$ is an affine manifold with $(x^i,\xt^j)$ affine coordinates. In particular $(x^i,\xt^j)$ are adapted coordinates of an integrable para-complex structure on $TB$, because the transition functions are para-holomorphic.
 
-We now endow $M$ with a para-Calabi-Yau structure defined by the fundamental form $\omega$ and a para-Holomorphic volume form $\Omega$:
+We now endow $M$ with a para-Calabi-Yau structure defined by the fundamental form $\omega$ and a para-Holomorphic volume form $\hat{\Omega}$:
 \begin{align*}
     \omega&=\omega_{ij}\ dx^i\w d \xt^j=2\omega_{ij}\ du^i\w dv^j,\\
-    \hat{\Omega} &=dx^1\w\cdots\w dx^n+d\xt^1\w\cdots\w d\xt^n=\Omega+\tl{\Omega}.
+    \hat{\Omega} &=\frac{1}{2} (dx^1\w\cdots\w dx^n+d\xt^1\w\cdots\w d\xt^n)=\Omega+\tl{\Omega}.
 \end{align*}
 We also assume that the local para-K\"ahler potential $\phi$ on $U\subset M$, which defines $\omega$ via
 \begin{align*}
@@ -1961,7 +2060,7 @@ It is easy to show that $I$ and $K$ anticommute, and because $\omega_I=\omega$, 
 \newcommand{\xth}{\hat{\xt}}
 
 \paragraph{Legendre transform and the mirror map}
-Consider new coordinates $\uh_i$ on $U$ given by
+So far we described the geometry on the side of $TB$. Now, we will describe the corresponding mirror geometry on $T^*B$. We start by considering new coordinates $\uh_i$ on $U\subset B$ given by
 \begin{align*}
 \frac{\p\uh_i(u)}{\p u^j}=\omega_{ij}=  \frac{\p^2\phi}{\p u^i \p u^j},
 \end{align*}
@@ -1973,16 +2072,16 @@ for some local function $\psi(\uh)$ so that $\omega^{ij}=\frac{\p \psi(\uh)}{\p 
 \begin{align*}
     \psi(\uh)=u^i \uh_i-\phi(u).
 \end{align*}
-This ensures that also $\psi$ satisfies the Monge-Ampere equation, but with an inverse constant
+This ensures that $\psi$ also satisfies the Monge-Ampere equation, but with an inverse constant
 \begin{align}\label{dual-monge-ampere}
     \text{det}(\frac{\p^2\psi}{\p \uh_i\p \uh_j})=C^{-1}.
 \end{align}
 
-We continue by discussing the cotangent bundle $\Mt=T^*B$. The metric $\eta$ on $M=TB$ defines a negative-definite metric $-2\omega_{ij}dv^i\otimes dv^j$ on each fiber, which can be inverted to give a negative-definite metric on fibres of $T^*B$ and consequently on the whole $\Mt$:
+We continue by discussing the cotangent bundle $\Mt=T^*B$. The metric $\eta$ on $M=TB$ defines a negative-definite metric $-2\omega_{ij}dv^i\otimes dv^j$ on each fiber, which can be inverted to give a negative-definite metric on fibres of $T^*B$ so that there is a metric on $\Mt$:
 \begin{align*}
     \hat{\eta}=2(\omega_{ij}du^i\otimes du^j-\omega^{ij}d\vh_i\otimes d\vh_j),
 \end{align*}
-denoting the fibre coordinates dual to $v^i=dx^i$ by $\vh_i=\frac{\p}{\p u^i}$. Using the canonical symplectic form on $T^*B$,
+where we denoted the fibre coordinates dual to $v^i=du^i$ by $\vh_i=\frac{\p}{\p u^i}$. Using the canonical symplectic form on $T^*B$,
 \begin{align*}
     \hat{\omega}=du^i\w d\vh_i
 \end{align*}
@@ -1995,7 +2094,7 @@ It can be checked that $\hat{K}$ is again integrable and the corresponding adapt
     \hat{\omega}&=\hat{\omega}^{ij}d\xh_i\w d\xth_j\\
     \hat{\eta}&=\hat{\omega}^{ij}(d\xh_i\otimes d\xth_j + d\xth_i\otimes d\xh_j),
 \end{align*}
-where $\hat{\omega}^{ij}=\frac{\p^2 \psi}{\p \uh^i\p \uh^j}$. Crucially, $\Mt$ is also a para-Calabi-Yau manifold because $\psi$ satisfies the Monge-Ampere equation \eqref{dual-monge-ampere}. Moreover, we get a relationship between the moduli of symplectic structures on $M$ and para-complex structures on $\Mt$, since varying the symplectic structure on $M$ corresponds to a change of $\phi$, which also changes $\psi$ as well as the coordinates $\uh_i$. This in turn changes the para-complex structure $\hat{K}$ defined by its adapted coordinates, and in particular depends on $\uh_i$.
+where $\hat{\omega}^{ij}=\frac{\p^2 \psi}{\p \uh^i\p \uh^j}$. Crucially, $\Mt$ is also a para-Calabi-Yau manifold because $\psi$ satisfies the Monge-Ampere equation \eqref{dual-monge-ampere}. Moreover, we get a relationship between the moduli of symplectic structures on $M$ and para-complex structures on $\Mt$, since varying the symplectic structure on $M$ corresponds to a change of $\phi$, which also changes $\psi$ as well as the coordinates $\uh_i$. This in turn changes the para-complex structure $\hat{K}$ defined by its adapted coordinates, and in particular depending on $\uh_i$.
 
 We find that in this case the mirror symmetry not only relates the symplectic and complex moduli of the mirror manifolds $M$ and $\Mt$, but also relates the symplectic and para-complex moduli and therefore gives a map of moduli of Born geometries on $M$ and $\Mt$, where the variation of the symplectic structure on one side corresponds to a variation of the complex and para-complex structures on the other.
 
