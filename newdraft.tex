@@ -1232,22 +1232,44 @@ More generally, if $\KK$ is a generalized para-complex structure in an arbitrary
 Many of our examples take $E$ to be the standard Courant algebroid, but the following discussion applies in general. 
 We will continue to denote $L_{\KK}$ and $\Tilde{L}_{\KK}$ the $\pm$ eigenbundles in $E$. 
 
-There is a different presentation of the $2$-symplectic manifold $X_E$ in terms of $L_{\KK}$ and $\Tilde{L}_{\KK}$ that we will use in our identification of the boundary $2D$ TFT's. 
-Consider the graded manifold $T^*[2] \Tilde{L}_{\KK} [1]$.
-In coordinates, we can parametrize this graded manifold by: $\{l^m, \Tilde{l}_n, x^i, p_j\}$ where $l^m$ parameterizes the fiber of $\Tilde{L}^*[1] \cong L [1]$ and is of degree $1$, $\Tilde{l}_n$ parametrizes the fiber of $\Tilde{L}[1]$ and is of degree $1$, and $x^i, p_j$ are as before.
+In \cite{Cattaneo:2009zx}, the authors show that whenever there is a  generalized (para-)complex structure $\KK$ on the Courant algebroid $(\TT)M$, there is a different presentation of the $2$-symplectic manifold $X_E$ adapted to the splitting $(\TT)M=L_{\KK}\oplus \Tilde{L}_{\KK}$ (or $(\TT)_\mathbb{C}M=L_{\KK}\oplus \overline{L}_{\KK}$ in the complex case).
 
+%  and that we will use in our identification of the boundary $2D$ TFT's. 
+%Consider the graded manifold $T^*[2] \Tilde{L}_{\KK} [1]$.
+%In coordinates, we can parametrize this graded manifold by: $\{l^m, \Tilde{l}_n, x^i, p_j\}$ where $l^m$ parameterizes the fiber of $\Tilde{L}^*[1] \cong L [1]$ and is of degree $1$, $\Tilde{l}_n$ parametrizes the fiber of $\Tilde{L}[1]$ and is of degree $1$, and $x^i, p_j$ are as before.
 \brian{define $\omega_{\KK}$ see Appendix A of \cite{Cattaneo:2009zx}. 
 If dbro is OK, I say we just translate his result and cite it. The proof seems to follow immediately.}
 \begin{proposition}\label{prop: symp}
 Suppose $\KK$ is a generalized para-complex structure on a Courant algebroid $E$.
 Then, there are symplectomorphisms of $2$-shifted symplectic dg manifolds
 \[
-\left(T^*[2] \Tilde{L}, \omega_{\KK} \right) \cong X_E \cong \left(T^*[2] \overset{\;}{L}, \Tilde{\omega}_{\KK} \right) .
+\left(T^*[2] \Tilde{L}[1], \omega_{\KK} \right) \cong X_E \cong \left(T^*[2] {L}[1], \Tilde{\omega}_{\KK} \right) .
 \]
 \end{proposition}
 \begin{proof}
 The proof is completely analogous to the proofs of the results in Appendix A of \cite{Cattaneo:2009zx}.
 \end{proof}
+The point of the construction in \cite{Cattaneo:2009zx} is to show that the existence of a generalized (para-)complex structure impplies that there always exists the local change of coordinates to $\{l^A, \Tilde{l}_B, x^i, p'_j\}$ adapted to the generalized (para-)complex structure and that $X_E$ with the symplectic form \eqref{eq:omega_E} takes in these coordinates the form
+\begin{align*}
+\omega_E=dp'_i dx^i+d\tl{l}_Adl^A.
+\end{align*}
+The fibre coordinates $l^A$ and $\Tilde{l}_B$ are simply given by the rotations of the standard degree $1$ coordinates $e^a$ of $T^*[2]T[1]M$ via the vielbeins $F^A_a$ (lower case indices are raised/lowered by the metric $g_{ab}$, upper case indices are raised/lowered by the flat metric $\delta_{AB}$)
+\begin{align*}
+l^A\coloneqq F^A_ae^a, \quad \Tilde{l}_B\coloneqq F_{Bb}e^b,
+\end{align*}
+which are adapted to the splitting $(\TT)M=L_{\KK}\oplus \Tilde{L}_{\KK}$ in the sense that
+\begin{align*}
+\KK_a^b F^A_b=F^A_a, quad \KK_a^b F_{bB}=-F_{bB},
+\end{align*}
+and the metric $g$ takes in the new coordinates the canonical form:
+\begin{align*}
+g^A_B=\la l^A,\Tilde{l}_B\ra = \delta^A_B, \quad g^{AB}=\la l^A,l^B\ra=0=g_{AB}=\la \Tilde{l}_A,\Tilde{l}_B\ra.
+\end{align*}
+
+The coordinates $\{p'_j\}$ are then defined by the following deformation of the original coordinates $\{p_j\}$ by terms quadratic in the vielbeins
+\begin{align*}
+p'_j=p_j+ \frac{1}{2}\left((\p_j F_{aA})F^{a}_Bl^Al^B +(\p_j F_{a}^A)F^{aB}_B \Tilde{l}_A\Tilde{l}_B-F_{a}^A(\p_j F^{a}_B)\Tilde{l}_Al^B\right).
+\end{align*}
 
 Equipped with the description of the $2$-symplectic manifold $X_E$ in terms of the generalized para-complex structure of $E$, we can read off the resulting $2D$ boundary TFT as follows.
 The $3D$ theory is given by the AKSZ formalism as ${\rm Map}(N_{dR}, X_E)$ where $N_{dR}$ is a smooth oriented $3$-manifold.
@@ -1259,7 +1281,7 @@ which is a dg manifold equipped with a natural $0$-shifted symplectic structure.
 On the right-hand side, we use the symplectic structure defined by $\omega_{\KK}$. 
 
 The $2D$ theory is given as a Lagrangian inside of this symplectic dg manifold. 
-In the coordinates granted by Proposition \ref{prop: symp} this Lagrangian takes a particularly nice form.
+In the coordinates granted by Proposition \ref{prop: symp}, this Lagrangian takes a particularly nice form.
 The Dirac structure $L_\KK$ defines the Lagrangian submanifold $L_\KK[1] \subset T^*[2] \Tilde{L}_{\KK}$. 
 At the level of the AKSZ theory, this Lagrangian is simply
 \[
